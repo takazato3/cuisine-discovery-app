@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>料理ジャンル発見 - 世界の味を探そう</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">
+        <span class="title-icon">🍽️</span>
+        世界の料理を探そう
+      </h1>
+      <p class="site-subtitle">気になるジャンルを選んで、近くのレストランを見つけよう</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="section-header">
+      <h2 class="section-title">料理ジャンル</h2>
+      <span class="section-count" id="genre-count"></span>
+    </div>
+    <div class="cuisine-grid" id="cuisine-grid">
+      <!-- Cards are rendered by app.js -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>店舗数はダミーデータです。今後APIと連携予定。</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
