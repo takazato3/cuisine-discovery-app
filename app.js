@@ -26,6 +26,28 @@ const CUISINES = [
 ];
 
 // ============================================================
+// Region Data
+// Multipliers relative to Tokyo baseline (dummy data)
+// ============================================================
+const REGION_MULTIPLIERS = {
+  tokyo:   1.00,
+  osaka:   0.72,
+  nagoya:  0.44,
+  fukuoka: 0.37,
+  sapporo: 0.29,
+};
+
+let currentRegion = 'tokyo';
+
+function getRegionCuisines(region) {
+  const multiplier = REGION_MULTIPLIERS[region] ?? 1.0;
+  return CUISINES.map((c) => ({
+    ...c,
+    count: Math.max(1, Math.round(c.count * multiplier)),
+  }));
+}
+
+// ============================================================
 // Utility: format store count with locale separator
 // ============================================================
 function formatCount(n) {
@@ -110,8 +132,22 @@ function handleCuisineSelect(cuisine) {
 }
 
 // ============================================================
+// Handler: region changed
+// ============================================================
+function handleRegionChange(region) {
+  currentRegion = region;
+  renderGrid(getRegionCuisines(region));
+}
+
+// ============================================================
 // Init
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
-  renderGrid(CUISINES);
+  const regionSelect = document.getElementById('region-select');
+  if (regionSelect) {
+    regionSelect.addEventListener('change', (e) => {
+      handleRegionChange(e.target.value);
+    });
+  }
+  renderGrid(getRegionCuisines(currentRegion));
 });
