@@ -5,24 +5,24 @@
 // store count is dummy data — will be replaced by API later
 // ============================================================
 const CUISINES = [
-  { id: 'thai',      flag: '🇹🇭', name: 'タイ料理',       origin: 'タイ',         count: 328 },
-  { id: 'vietnamese',flag: '🇻🇳', name: 'ベトナム料理',   origin: 'ベトナム',     count: 214 },
-  { id: 'korean',    flag: '🇰🇷', name: '韓国料理',       origin: '韓国',         count: 486 },
-  { id: 'indian',    flag: '🇮🇳', name: 'インド料理',     origin: 'インド',       count: 301 },
-  { id: 'mexican',   flag: '🇲🇽', name: 'メキシコ料理',   origin: 'メキシコ',     count: 97  },
-  { id: 'italian',   flag: '🇮🇹', name: 'イタリア料理',   origin: 'イタリア',     count: 612 },
-  { id: 'french',    flag: '🇫🇷', name: 'フランス料理',   origin: 'フランス',     count: 278 },
-  { id: 'chinese',   flag: '🇨🇳', name: '中国料理',       origin: '中国',         count: 731 },
-  { id: 'greek',     flag: '🇬🇷', name: 'ギリシャ料理',   origin: 'ギリシャ',     count: 54  },
-  { id: 'ethiopian', flag: '🇪🇹', name: 'エチオピア料理', origin: 'エチオピア',   count: 23  },
-  { id: 'peruvian',  flag: '🇵🇪', name: 'ペルー料理',     origin: 'ペルー',       count: 41  },
-  { id: 'lebanese',  flag: '🇱🇧', name: 'レバノン料理',   origin: 'レバノン',     count: 68  },
-  { id: 'spanish',   flag: '🇪🇸', name: 'スペイン料理',   origin: 'スペイン',     count: 143 },
-  { id: 'japanese',  flag: '🇯🇵', name: '日本料理',       origin: '日本',         count: 924 },
-  { id: 'moroccan',  flag: '🇲🇦', name: 'モロッコ料理',   origin: 'モロッコ',     count: 35  },
-  { id: 'turkish',   flag: '🇹🇷', name: 'トルコ料理',     origin: 'トルコ',       count: 89  },
-  { id: 'brazilian', flag: '🇧🇷', name: 'ブラジル料理',   origin: 'ブラジル',     count: 62  },
-  { id: 'american',  flag: '🇺🇸', name: 'アメリカ料理',   origin: 'アメリカ',     count: 208 },
+  { id: 'thai',      flagCode: 'th', name: 'タイ料理',       count: 328,  query: 'thai restaurant' },
+  { id: 'vietnamese',flagCode: 'vn', name: 'ベトナム料理',   count: 214,  query: 'vietnamese restaurant' },
+  { id: 'korean',    flagCode: 'kr', name: '韓国料理',       count: 486,  query: 'korean restaurant' },
+  { id: 'indian',    flagCode: 'in', name: 'インド料理',     count: 301,  query: 'indian restaurant' },
+  { id: 'mexican',   flagCode: 'mx', name: 'メキシコ料理',   count: 97,   query: 'mexican restaurant' },
+  { id: 'italian',   flagCode: 'it', name: 'イタリア料理',   count: 612,  query: 'italian restaurant' },
+  { id: 'french',    flagCode: 'fr', name: 'フランス料理',   count: 278,  query: 'french restaurant' },
+  { id: 'chinese',   flagCode: 'cn', name: '中国料理',       count: 731,  query: 'chinese restaurant' },
+  { id: 'greek',     flagCode: 'gr', name: 'ギリシャ料理',   count: 54,   query: 'greek restaurant' },
+  { id: 'ethiopian', flagCode: 'et', name: 'エチオピア料理', count: 23,   query: 'ethiopian restaurant' },
+  { id: 'peruvian',  flagCode: 'pe', name: 'ペルー料理',     count: 41,   query: 'peruvian restaurant' },
+  { id: 'lebanese',  flagCode: 'lb', name: 'レバノン料理',   count: 68,   query: 'lebanese restaurant' },
+  { id: 'turkish',   flagCode: 'tr', name: 'トルコ料理',     count: 89,   query: 'turkish restaurant' },
+  { id: 'spanish',   flagCode: 'es', name: 'スペイン料理',   count: 143,  query: 'spanish restaurant' },
+  { id: 'brazilian', flagCode: 'br', name: 'ブラジル料理',   count: 62,   query: 'brazilian restaurant' },
+  { id: 'japanese',  flagCode: 'jp', name: '日本料理',       count: 924,  query: 'japanese restaurant' },
+  { id: 'russian',   flagCode: 'ru', name: 'ロシア料理',     count: 76,   query: 'russian restaurant' },
+  { id: 'moroccan',  flagCode: 'ma', name: 'モロッコ料理',   count: 35,   query: 'moroccan restaurant' },
 ];
 
 // ============================================================
@@ -55,23 +55,6 @@ function formatCount(n) {
 }
 
 // ============================================================
-// Utility: render flag emoji onto a canvas and return a data URL
-// Avoids external CDN dependencies and platform emoji font issues
-// ============================================================
-function flagEmojiToDataURL(emoji) {
-  const size = 80;
-  const canvas = document.createElement('canvas');
-  canvas.width = size;
-  canvas.height = size;
-  const ctx = canvas.getContext('2d');
-  ctx.font = `${Math.round(size * 0.72)}px 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', serif`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(emoji, size / 2, size / 2);
-  return canvas.toDataURL();
-}
-
-// ============================================================
 // Render: build a single card element
 // ============================================================
 function createCuisineCard(cuisine) {
@@ -81,20 +64,14 @@ function createCuisineCard(cuisine) {
   card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(cuisine.count)}店舗`);
   card.dataset.id = cuisine.id;
 
-  const flagImg = document.createElement('img');
-  flagImg.className = 'card-flag';
-  flagImg.alt = `${cuisine.origin}の国旗`;
-  flagImg.src = flagEmojiToDataURL(cuisine.flag);
-
   card.innerHTML = `
-    <span class="card-name">${cuisine.name}</span>
-    <div class="card-count-wrap">
-      <span class="card-count">${formatCount(cuisine.count)}</span>
-      <span class="card-count-label">店舗</span>
-    </div>
-    <span class="card-origin">${cuisine.origin}</span>
+    <img src="https://flagcdn.com/w80/${cuisine.flagCode}.png"
+         alt="${cuisine.name}の国旗"
+         class="cuisine-flag">
+    <div class="cuisine-name">${cuisine.name}</div>
+    <div class="cuisine-count">${formatCount(cuisine.count)}</div>
+    <div class="cuisine-label">店舗</div>
   `;
-  card.prepend(flagImg);
 
   card.addEventListener('click', (e) => {
     e.preventDefault();
