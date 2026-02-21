@@ -260,6 +260,13 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* Representative menu items (index card) */
+.cuisine-menu-preview {
+  font-size: 0.72rem;
+  color: #999;
+  line-height: 1.4;
+}
+
 /* Store count */
 .cuisine-count {
   font-size: 1.4rem;
@@ -307,6 +314,14 @@ body {
   padding: 18px 24px;
   font-size: 0.8rem;
   color: var(--color-text-secondary);
+}
+
+/* Representative menu items (detail header) */
+.cuisine-representative-menu {
+  font-size: 0.78rem;
+  color: #999;
+  margin-top: 3px;
+  line-height: 1.4;
 }
 
 /* ========================================

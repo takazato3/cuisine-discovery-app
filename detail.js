@@ -9,6 +9,30 @@ const cuisineName = params.get('name')    || '料理ジャンル';
 const region      = params.get('region')  || 'tokyo';
 
 // ============================================================
+// Representative Menu Items per Cuisine Genre
+// ============================================================
+const CUISINE_REPRESENTATIVE_MENUS = {
+  thai:       'トムヤムクン・ガパオライス・パッタイ',
+  vietnamese: 'フォー・バインミー・生春巻き',
+  korean:     'サムギョプサル・ビビンバ・チヂミ',
+  indian:     'バターチキンカレー・ナン・タンドリーチキン',
+  mexican:    'タコス・ブリトー・ナチョス',
+  italian:    'マルゲリータ・カルボナーラ・ティラミス',
+  french:     'キッシュ・ガレット・ラタトゥイユ',
+  chinese:    '麻婆豆腐・チャーハン・小籠包',
+  greek:      'ムサカ・スブラキ・ギリシャサラダ',
+  ethiopian:  'インジェラ・ドロワット・ティブス',
+  peruvian:   'セビーチェ・ロモサルタード・アンティクーチョ',
+  lebanese:   'フムス・ファラフェル・タブーレ',
+  turkish:    'ケバブ・メゼ・バクラヴァ',
+  spanish:    'パエリア・タパス・ガスパチョ',
+  brazilian:  'シュラスコ・フェジョアーダ・ポンデケージョ',
+  japanese:   'ラーメン・寿司・天ぷら',
+  russian:    'ボルシチ・ピロシキ・ビーフストロガノフ',
+  moroccan:   'タジン・クスクス・ハリラ',
+};
+
+// ============================================================
 // Region Display Names
 // ============================================================
 const REGION_NAMES = {
@@ -452,10 +476,15 @@ async function init() {
   document.title = `${cuisineName}の店舗一覧 - 世界の料理を探そう`;
 
   // Set headings
-  const headingEl = document.getElementById('cuisine-heading');
-  const regionEl  = document.getElementById('region-label');
+  const headingEl  = document.getElementById('cuisine-heading');
+  const regionEl   = document.getElementById('region-label');
+  const menuLabelEl = document.getElementById('cuisine-menu-label');
   if (headingEl) headingEl.textContent = cuisineName;
   if (regionEl)  regionEl.textContent  = regionName;
+  if (menuLabelEl) {
+    const menuText = CUISINE_REPRESENTATIVE_MENUS[cuisineId];
+    menuLabelEl.textContent = menuText ? `代表メニュー: ${menuText}` : '';
+  }
 
   // Update back button to restore region state
   const backBtn = document.getElementById('back-btn');
