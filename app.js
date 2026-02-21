@@ -55,6 +55,18 @@ function formatCount(n) {
 }
 
 // ============================================================
+// Utility: convert flag emoji to ISO country code (lowercase)
+// e.g. '🇹🇭' → 'th'
+// Regional Indicator Symbol Letters are offset from ASCII by 0x1F1A5
+// ============================================================
+function flagEmojiToCode(emoji) {
+  return [...emoji]
+    .map(c => String.fromCharCode(c.codePointAt(0) - 0x1F1A5))
+    .join('')
+    .toLowerCase();
+}
+
+// ============================================================
 // Render: build a single card element
 // ============================================================
 function createCuisineCard(cuisine) {
@@ -64,8 +76,10 @@ function createCuisineCard(cuisine) {
   card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(cuisine.count)}店舗`);
   card.dataset.id = cuisine.id;
 
+  const countryCode = flagEmojiToCode(cuisine.flag);
   card.innerHTML = `
-    <span class="card-flag" aria-hidden="true">${cuisine.flag}</span>
+    <img class="card-flag" src="https://flagcdn.com/w80/${countryCode}.png"
+         alt="${cuisine.origin}の国旗" loading="lazy">
     <span class="card-name">${cuisine.name}</span>
     <div class="card-count-wrap">
       <span class="card-count">${formatCount(cuisine.count)}</span>
