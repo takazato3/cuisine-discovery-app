@@ -36,10 +36,13 @@
         <h2 class="section-title">近くのお店</h2>
         <span class="section-count" id="restaurant-count"></span>
       </div>
+      <div class="api-error" id="api-error" hidden>
+        ⚠️ 店舗情報の取得に失敗しました。ダミーデータを表示しています。
+      </div>
       <div class="restaurant-list" id="restaurant-list">
         <!-- Rendered by detail.js -->
       </div>
-      <p class="dummy-note">※ 現在はダミーデータを表示しています。Google Places API連携後に実データに切り替わります。</p>
+      <p class="dummy-note" id="dummy-note">※ 現在はダミーデータを表示しています。Google Places API連携後に実データに切り替わります。</p>
     </section>
 
   </main>
@@ -48,6 +51,7 @@
     <p>店舗情報はダミーデータです。今後Google Places APIと連携予定。</p>
   </footer>
 
+  <script src="config.js"></script>
   <script src="detail.js"></script>
 </body>
 </html>

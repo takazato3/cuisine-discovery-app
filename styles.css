@@ -514,6 +514,16 @@ body {
   line-height: 1.5;
 }
 
+.api-error {
+  background-color: #fff8e1;
+  border: 1px solid #f5c842;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  color: #5c4000;
+}
+
 /* Restaurant skeleton */
 .restaurant-skeleton {
   background: linear-gradient(90deg, #eeece8 25%, #f5f3ee 50%, #eeece8 75%);

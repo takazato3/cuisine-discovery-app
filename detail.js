@@ -159,6 +159,111 @@ const DUMMY_RESTAURANTS = {
 };
 
 // ============================================================
+// Cache: localStorage helpers
+// Cache key: places_<cuisineId>_<region>
+// TTL: 1 hour
+// ============================================================
+const CACHE_TTL = 3_600_000;
+
+function getCached(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const { data, timestamp } = JSON.parse(raw);
+    if (Date.now() - timestamp < CACHE_TTL) return data;
+  } catch (_) { /* ignore: private mode, parse error, etc. */ }
+  return null;
+}
+
+function setCache(key, data) {
+  try {
+    localStorage.setItem(key, JSON.stringify({ data, timestamp: Date.now() }));
+  } catch (_) { /* ignore: storage full, private mode, etc. */ }
+}
+
+// ============================================================
+// Region center coordinates (for distance calculation)
+// ============================================================
+const REGION_COORDS = {
+  tokyo:   { lat: 35.6762, lng: 139.6503 },
+  osaka:   { lat: 34.6937, lng: 135.5023 },
+  nagoya:  { lat: 35.1815, lng: 136.9066 },
+  fukuoka: { lat: 33.5904, lng: 130.4017 },
+  sapporo: { lat: 43.0618, lng: 141.3545 },
+};
+
+// ============================================================
+// Utility: Haversine distance in meters between two lat/lng points
+// ============================================================
+function calcDistance(lat1, lng1, lat2, lng2) {
+  const R = 6_371_000;
+  const toRad = (d) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return Math.round(2 * R * Math.asin(Math.sqrt(a)));
+}
+
+// ============================================================
+// Places API (New): Text Search
+// Docs: https://developers.google.com/maps/documentation/places/web-service/text-search
+// ============================================================
+async function fetchFromPlacesAPI(queryCuisineName, queryRegionName, queryRegion) {
+  const coords = REGION_COORDS[queryRegion];
+  const body = {
+    textQuery: `${queryCuisineName} ${queryRegionName}`,
+    languageCode: 'ja',
+    maxResultCount: 10,
+    ...(coords && {
+      locationBias: {
+        circle: {
+          center: { latitude: coords.lat, longitude: coords.lng },
+          radius: 5000.0,
+        },
+      },
+    }),
+  };
+
+  const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Goog-Api-Key': CONFIG.GOOGLE_MAPS_API_KEY,
+      'X-Goog-FieldMask': [
+        'places.id',
+        'places.displayName',
+        'places.rating',
+        'places.userRatingCount',
+        'places.formattedAddress',
+        'places.location',
+      ].join(','),
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) throw new Error(`Places API: HTTP ${res.status}`);
+  const json = await res.json();
+  if (json.error) throw new Error(json.error.message || 'API error');
+
+  return (json.places || []).map((place) => {
+    const lat = place.location?.latitude;
+    const lng = place.location?.longitude;
+    return {
+      name:        place.displayName?.text || '名称不明',
+      rating:      place.rating    ?? 0,
+      ratingCount: place.userRatingCount ?? 0,
+      address:     place.formattedAddress || '',
+      distance:    lat != null && lng != null && coords
+        ? calcDistance(coords.lat, coords.lng, lat, lng)
+        : null,
+      menuItems:   [],  // Places API does not provide menu items
+    };
+  });
+}
+
+// ============================================================
 // Utility: render star rating (★☆)
 // ============================================================
 function renderStars(rating) {
@@ -169,58 +274,12 @@ function renderStars(rating) {
 }
 
 // ============================================================
-// Utility: format distance
+// Utility: format distance (null-safe)
 // ============================================================
 function formatDistance(meters) {
-  if (meters < 1000) {
-    return `${meters}m`;
-  }
+  if (meters == null) return '---';
+  if (meters < 1000) return `${meters}m`;
   return `${(meters / 1000).toFixed(1)}km`;
-}
-
-// ============================================================
-// Render: restaurant list
-// ============================================================
-function renderRestaurants(restaurants) {
-  const list    = document.getElementById('restaurant-list');
-  const countEl = document.getElementById('restaurant-count');
-
-  // Show skeletons while "loading"
-  list.innerHTML = '';
-  for (let i = 0; i < 3; i++) {
-    const sk = document.createElement('div');
-    sk.className = 'restaurant-skeleton';
-    list.appendChild(sk);
-  }
-
-  // Replace with real cards after brief delay (mirrors async API pattern)
-  setTimeout(() => {
-    list.innerHTML = '';
-    restaurants.forEach((r) => {
-      const card = document.createElement('div');
-      card.className = 'restaurant-card';
-      card.innerHTML = `
-        <div class="restaurant-name">${escapeHtml(r.name)}</div>
-        <div class="restaurant-rating">
-          <span class="stars" aria-label="評価${r.rating}">${renderStars(r.rating)}</span>
-          <span class="rating-value">${r.rating.toFixed(1)}</span>
-          <span class="rating-count">(${r.ratingCount.toLocaleString('ja-JP')}件)</span>
-        </div>
-        <div class="restaurant-address">📍 ${escapeHtml(r.address)}</div>
-        ${r.menuItems && r.menuItems.length > 0 ? `
-        <div class="popular-menu">
-          <span class="menu-label">人気:</span>
-          <span class="menu-items">${r.menuItems.slice(0, 3).map(escapeHtml).join('、')}</span>
-        </div>` : ''}
-        <div class="restaurant-distance">🚶 ${formatDistance(r.distance)}</div>
-      `;
-      list.appendChild(card);
-    });
-
-    if (countEl) {
-      countEl.textContent = `${restaurants.length}件`;
-    }
-  }, 400);
 }
 
 // ============================================================
@@ -232,6 +291,67 @@ function escapeHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+// ============================================================
+// Render: skeleton placeholders while data loads
+// ============================================================
+function showSkeletons(count = 3) {
+  const list = document.getElementById('restaurant-list');
+  list.innerHTML = '';
+  for (let i = 0; i < count; i++) {
+    const sk = document.createElement('div');
+    sk.className = 'restaurant-skeleton';
+    list.appendChild(sk);
+  }
+}
+
+// ============================================================
+// Render: restaurant cards
+// isLive = true  → Google Places API real data
+// isLive = false → dummy data
+// ============================================================
+function renderRestaurantCards(restaurants, isLive = false) {
+  const list    = document.getElementById('restaurant-list');
+  const countEl = document.getElementById('restaurant-count');
+  const noteEl  = document.getElementById('dummy-note');
+
+  list.innerHTML = '';
+  restaurants.forEach((r) => {
+    const card = document.createElement('div');
+    card.className = 'restaurant-card';
+    card.innerHTML = `
+      <div class="restaurant-name">${escapeHtml(r.name)}</div>
+      <div class="restaurant-rating">
+        <span class="stars" aria-label="評価${r.rating}">${renderStars(r.rating)}</span>
+        <span class="rating-value">${r.rating.toFixed(1)}</span>
+        <span class="rating-count">(${r.ratingCount.toLocaleString('ja-JP')}件)</span>
+      </div>
+      <div class="restaurant-address">📍 ${escapeHtml(r.address)}</div>
+      ${r.menuItems && r.menuItems.length > 0 ? `
+      <div class="popular-menu">
+        <span class="menu-label">人気:</span>
+        <span class="menu-items">${r.menuItems.slice(0, 3).map(escapeHtml).join('、')}</span>
+      </div>` : ''}
+      <div class="restaurant-distance">🚶 ${formatDistance(r.distance)}</div>
+    `;
+    list.appendChild(card);
+  });
+
+  if (countEl) countEl.textContent = `${restaurants.length}件`;
+  if (noteEl) {
+    noteEl.textContent = isLive
+      ? '※ Google Places APIの実データを表示しています。'
+      : '※ 現在はダミーデータを表示しています。Google Places API連携後に実データに切り替わります。';
+  }
+}
+
+// ============================================================
+// Render: show API error banner
+// ============================================================
+function showApiError() {
+  const el = document.getElementById('api-error');
+  if (el) el.hidden = false;
 }
 
 // ============================================================
@@ -278,7 +398,7 @@ function initMap(query, rName) {
 // ============================================================
 // Init
 // ============================================================
-function init() {
+async function init() {
   // Set page title
   document.title = `${cuisineName}の店舗一覧 - 世界の料理を探そう`;
 
@@ -290,17 +410,45 @@ function init() {
 
   // Update back button to restore region state
   const backBtn = document.getElementById('back-btn');
-  if (backBtn) {
-    backBtn.href = `index.html?region=${region}`;
+  if (backBtn) backBtn.href = `index.html?region=${region}`;
+
+  // Initialize map
+  initMap(cuisineId + ' restaurant', regionName);
+
+  // ---- Restaurant data loading ----
+  const cacheKey = `places_${cuisineId}_${region}`;
+  const fallback = DUMMY_RESTAURANTS[cuisineId] || DUMMY_RESTAURANTS['japanese'];
+
+  // Show skeletons immediately as loading state
+  showSkeletons();
+
+  // 1. Check localStorage cache first (valid for 1 hour)
+  const cached = getCached(cacheKey);
+  if (cached) {
+    renderRestaurantCards(cached, true);
+    return;
   }
 
-  // Get restaurants for this cuisine (fallback to japanese if unknown)
-  const restaurants = DUMMY_RESTAURANTS[cuisineId] || DUMMY_RESTAURANTS['japanese'];
-  renderRestaurants(restaurants);
+  // 2. Detect whether a real API key has been configured
+  const apiKey        = (typeof CONFIG !== 'undefined') ? CONFIG.GOOGLE_MAPS_API_KEY : null;
+  const apiConfigured = Boolean(apiKey && apiKey !== 'YOUR_API_KEY_HERE');
 
-  // Initialize map using cuisine query string
-  const cuisineQuery = encodeURIComponent(cuisineId + ' restaurant');
-  initMap(cuisineId + ' restaurant', regionName);
+  if (apiConfigured) {
+    // 3a. Fetch from Places API
+    try {
+      const results = await fetchFromPlacesAPI(cuisineName, regionName, region);
+      if (results.length === 0) throw new Error('検索結果が0件でした');
+      setCache(cacheKey, results);
+      renderRestaurantCards(results, true);
+    } catch (err) {
+      console.error('Places API error:', err);
+      showApiError();
+      renderRestaurantCards(fallback, false);
+    }
+  } else {
+    // 3b. No API key — use dummy data with simulated async delay
+    setTimeout(() => renderRestaurantCards(fallback, false), 400);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
