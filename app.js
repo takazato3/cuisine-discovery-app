@@ -60,7 +60,7 @@ function formatCount(n) {
 function createCuisineCard(cuisine) {
   const card = document.createElement('a');
   card.className = 'cuisine-card';
-  card.href = `#${cuisine.id}`;       // placeholder — swap for real route later
+  card.href = `detail.html?cuisine=${cuisine.id}&name=${encodeURIComponent(cuisine.name)}`;
   card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(cuisine.count)}店舗`);
   card.dataset.id = cuisine.id;
 
@@ -111,23 +111,11 @@ function renderGrid(cuisines) {
 }
 
 // ============================================================
-// Handler: cuisine card selected
-// (Placeholder — Phase 2 will navigate to restaurant list)
+// Handler: cuisine card selected — navigate to detail page
 // ============================================================
 function handleCuisineSelect(cuisine) {
-  // TODO Phase 2: navigate to restaurant list filtered by cuisine
-  console.log('[cuisine-discovery] selected:', cuisine.id, cuisine.name);
-
-  // Visual feedback: brief highlight
-  const card = document.querySelector(`[data-id="${cuisine.id}"]`);
-  if (card) {
-    card.style.transition = 'none';
-    card.style.backgroundColor = '#fff0e8';
-    setTimeout(() => {
-      card.style.transition = '';
-      card.style.backgroundColor = '';
-    }, 200);
-  }
+  const url = `detail.html?cuisine=${cuisine.id}&name=${encodeURIComponent(cuisine.name)}&region=${currentRegion}`;
+  window.location.href = url;
 }
 
 // ============================================================

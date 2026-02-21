@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>店舗一覧 - 世界の料理を探そう</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header detail-header">
+    <div class="header-inner">
+      <a href="index.html" class="back-btn" id="back-btn">← 戻る</a>
+      <div class="detail-header-title">
+        <h1 class="site-title detail-title" id="cuisine-heading">料理ジャンル</h1>
+        <p class="site-subtitle"><span id="region-label">東京</span>の店舗一覧</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content detail-main">
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="map-container" id="map-container">
+        <div class="map-placeholder" id="map-placeholder">
+          <span class="map-placeholder-icon">🗺️</span>
+          <span>地図を読み込んでいます...</span>
+        </div>
+      </div>
+      <p class="map-note" id="map-note"></p>
+    </section>
+
+    <!-- Restaurant List -->
+    <section class="restaurant-section">
+      <div class="section-header">
+        <h2 class="section-title">近くのお店</h2>
+        <span class="section-count" id="restaurant-count"></span>
+      </div>
+      <div class="restaurant-list" id="restaurant-list">
+        <!-- Rendered by detail.js -->
+      </div>
+      <p class="dummy-note">※ 現在はダミーデータを表示しています。Google Places API連携後に実データに切り替わります。</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>店舗情報はダミーデータです。今後Google Places APIと連携予定。</p>
+  </footer>
+
+  <script src="detail.js"></script>
+</body>
+</html>

@@ -310,6 +310,241 @@ body {
 }
 
 /* ========================================
+   Detail Page — Header
+======================================== */
+.detail-header .header-inner {
+  gap: 12px;
+  align-items: center;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 8px;
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.back-btn:hover,
+.back-btn:focus-visible {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  outline: none;
+}
+
+.detail-header-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-title {
+  font-size: 1.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   Detail Page — Main layout
+======================================== */
+.detail-main {
+  padding-top: 28px;
+  padding-bottom: 48px;
+}
+
+/* ========================================
+   Detail Page — Map
+======================================== */
+.map-section {
+  margin-bottom: 32px;
+}
+
+.map-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid var(--color-border);
+  height: 300px;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.map-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.map-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  background-color: var(--color-surface);
+  z-index: 1;
+}
+
+.map-placeholder-icon {
+  font-size: 2rem;
+}
+
+.map-note {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ========================================
+   Detail Page — Restaurant List
+======================================== */
+.restaurant-section {
+  /* inherits from main-content */
+}
+
+.restaurant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.restaurant-card {
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+}
+
+.restaurant-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-hover-border);
+  transform: translateY(-2px);
+}
+
+.restaurant-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.01em;
+}
+
+.restaurant-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  color: #f5a623;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.rating-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.rating-count {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.restaurant-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.restaurant-address {
+  flex: 1;
+  font-size: 0.83rem;
+  color: var(--color-text-secondary);
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.restaurant-distance {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dummy-note {
+  margin-top: 20px;
+  font-size: 0.76rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Restaurant skeleton */
+.restaurant-skeleton {
+  background: linear-gradient(90deg, #eeece8 25%, #f5f3ee 50%, #eeece8 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 12px;
+  height: 108px;
+  border: 1.5px solid var(--color-border);
+}
+
+/* Responsive — detail page */
+@media (max-width: 560px) {
+  .detail-title {
+    font-size: 1.15rem;
+  }
+
+  .back-btn {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+  }
+
+  .map-container {
+    height: 220px;
+  }
+
+  .restaurant-card {
+    padding: 14px 16px;
+  }
+
+  .restaurant-name {
+    font-size: 0.93rem;
+  }
+}
+
+/* ========================================
    Loading state (skeleton)
 ======================================== */
 @keyframes shimmer {
