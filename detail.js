@@ -238,6 +238,8 @@ async function fetchFromPlacesAPI(queryCuisineName, queryRegionName, queryRegion
         'places.userRatingCount',
         'places.formattedAddress',
         'places.location',
+        'places.photos',
+        'places.currentOpeningHours',
       ].join(','),
     },
     body: JSON.stringify(body),
@@ -250,6 +252,7 @@ async function fetchFromPlacesAPI(queryCuisineName, queryRegionName, queryRegion
   return (json.places || []).map((place) => {
     const lat = place.location?.latitude;
     const lng = place.location?.longitude;
+    const weekdayDescriptions = place.currentOpeningHours?.weekdayDescriptions;
     return {
       name:        place.displayName?.text || '名称不明',
       rating:      place.rating    ?? 0,
@@ -259,6 +262,9 @@ async function fetchFromPlacesAPI(queryCuisineName, queryRegionName, queryRegion
         ? calcDistance(coords.lat, coords.lng, lat, lng)
         : null,
       menuItems:   [],  // Places API does not provide menu items
+      photoName:   place.photos?.[0]?.name || null,
+      openNow:     place.currentOpeningHours?.openNow ?? null,
+      todayHours:  getTodayHoursText(weekdayDescriptions),
     };
   });
 }
@@ -294,6 +300,42 @@ function escapeHtml(str) {
 }
 
 // ============================================================
+// Utility: build photo URL from Places API (New) photo resource name
+// ============================================================
+function getPhotoUrl(photoName) {
+  const apiKey = CONFIG.GOOGLE_MAPS_API_KEY;
+  return `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=400&key=${apiKey}`;
+}
+
+// ============================================================
+// Utility: extract today's hours text from weekdayDescriptions
+// weekdayDescriptions: ["月曜日: 11:00~22:00", ...] index 0=Mon … 6=Sun
+// JS getDay(): 0=Sun, 1=Mon, ..., 6=Sat
+// ============================================================
+function getTodayHoursText(weekdayDescriptions) {
+  if (!weekdayDescriptions || weekdayDescriptions.length === 0) return null;
+  const dayIndex = (new Date().getDay() + 6) % 7;
+  const entry = weekdayDescriptions[dayIndex];
+  if (!entry) return null;
+  const colonIdx = entry.indexOf(': ');
+  return colonIdx !== -1 ? entry.slice(colonIdx + 2) : entry;
+}
+
+// ============================================================
+// Utility: render hours row HTML (hours + open/closed badge)
+// ============================================================
+function renderHoursRow(r) {
+  const hoursText = r.todayHours || '要確認';
+  let statusHtml = '';
+  if (r.openNow === true) {
+    statusHtml = ' <span class="open-status open-status--open">🟢 営業中</span>';
+  } else if (r.openNow === false) {
+    statusHtml = ' <span class="open-status open-status--closed">⚫ 閉店中</span>';
+  }
+  return `<div class="restaurant-hours">🕒 ${escapeHtml(hoursText)}${statusHtml}</div>`;
+}
+
+// ============================================================
 // Render: skeleton placeholders while data loads
 // ============================================================
 function showSkeletons(count = 3) {
@@ -320,20 +362,27 @@ function renderRestaurantCards(restaurants, isLive = false) {
   restaurants.forEach((r) => {
     const card = document.createElement('div');
     card.className = 'restaurant-card';
+    const photoHtml = r.photoName
+      ? `<img class="restaurant-photo" src="${getPhotoUrl(r.photoName)}" alt="${escapeHtml(r.name)}" loading="lazy">`
+      : `<div class="restaurant-photo-placeholder">🍽️</div>`;
     card.innerHTML = `
-      <div class="restaurant-name">${escapeHtml(r.name)}</div>
-      <div class="restaurant-rating">
-        <span class="stars" aria-label="評価${r.rating}">${renderStars(r.rating)}</span>
-        <span class="rating-value">${r.rating.toFixed(1)}</span>
-        <span class="rating-count">(${r.ratingCount.toLocaleString('ja-JP')}件)</span>
+      <div class="restaurant-photo-wrap">${photoHtml}</div>
+      <div class="restaurant-card-body">
+        <div class="restaurant-name">${escapeHtml(r.name)}</div>
+        <div class="restaurant-rating">
+          <span class="stars" aria-label="評価${r.rating}">${renderStars(r.rating)}</span>
+          <span class="rating-value">${r.rating.toFixed(1)}</span>
+          <span class="rating-count">(${r.ratingCount.toLocaleString('ja-JP')}件)</span>
+        </div>
+        <div class="restaurant-address">📍 ${escapeHtml(r.address)}</div>
+        ${renderHoursRow(r)}
+        ${r.menuItems && r.menuItems.length > 0 ? `
+        <div class="popular-menu">
+          <span class="menu-label">人気:</span>
+          <span class="menu-items">${r.menuItems.slice(0, 3).map(escapeHtml).join('、')}</span>
+        </div>` : ''}
+        <div class="restaurant-distance">🚶 ${formatDistance(r.distance)}</div>
       </div>
-      <div class="restaurant-address">📍 ${escapeHtml(r.address)}</div>
-      ${r.menuItems && r.menuItems.length > 0 ? `
-      <div class="popular-menu">
-        <span class="menu-label">人気:</span>
-        <span class="menu-items">${r.menuItems.slice(0, 3).map(escapeHtml).join('、')}</span>
-      </div>` : ''}
-      <div class="restaurant-distance">🚶 ${formatDistance(r.distance)}</div>
     `;
     list.appendChild(card);
   });
