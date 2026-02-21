@@ -478,28 +478,32 @@ body {
   color: var(--color-text-secondary);
 }
 
-.restaurant-meta {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
 .restaurant-address {
-  flex: 1;
   font-size: 0.83rem;
   color: var(--color-text-secondary);
-  min-width: 0;
   line-height: 1.4;
+}
+
+.popular-menu {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.menu-label {
+  font-weight: 600;
+  color: #333;
+  margin-right: 4px;
+}
+
+.menu-items {
+  color: #e67e22;
 }
 
 .restaurant-distance {
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--color-accent);
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .dummy-note {
