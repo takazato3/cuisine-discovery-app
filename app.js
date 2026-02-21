@@ -55,6 +55,23 @@ function formatCount(n) {
 }
 
 // ============================================================
+// Utility: render flag emoji onto a canvas and return a data URL
+// Avoids external CDN dependencies and platform emoji font issues
+// ============================================================
+function flagEmojiToDataURL(emoji) {
+  const size = 80;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.font = `${Math.round(size * 0.72)}px 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(emoji, size / 2, size / 2);
+  return canvas.toDataURL();
+}
+
+// ============================================================
 // Render: build a single card element
 // ============================================================
 function createCuisineCard(cuisine) {
@@ -64,8 +81,12 @@ function createCuisineCard(cuisine) {
   card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(cuisine.count)}店舗`);
   card.dataset.id = cuisine.id;
 
+  const flagImg = document.createElement('img');
+  flagImg.className = 'card-flag';
+  flagImg.alt = `${cuisine.origin}の国旗`;
+  flagImg.src = flagEmojiToDataURL(cuisine.flag);
+
   card.innerHTML = `
-    <span class="card-flag" aria-hidden="true">${cuisine.flag}</span>
     <span class="card-name">${cuisine.name}</span>
     <div class="card-count-wrap">
       <span class="card-count">${formatCount(cuisine.count)}</span>
@@ -73,6 +94,7 @@ function createCuisineCard(cuisine) {
     </div>
     <span class="card-origin">${cuisine.origin}</span>
   `;
+  card.prepend(flagImg);
 
   card.addEventListener('click', (e) => {
     e.preventDefault();
