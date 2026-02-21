@@ -55,15 +55,20 @@ function formatCount(n) {
 }
 
 // ============================================================
-// Utility: convert flag emoji to ISO country code (lowercase)
-// e.g. '🇹🇭' → 'th'
-// Regional Indicator Symbol Letters are offset from ASCII by 0x1F1A5
+// Utility: render flag emoji onto a canvas and return a data URL
+// Avoids external CDN dependencies and platform emoji font issues
 // ============================================================
-function flagEmojiToCode(emoji) {
-  return [...emoji]
-    .map(c => String.fromCharCode(c.codePointAt(0) - 0x1F1A5))
-    .join('')
-    .toLowerCase();
+function flagEmojiToDataURL(emoji) {
+  const size = 80;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.font = `${Math.round(size * 0.72)}px 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(emoji, size / 2, size / 2);
+  return canvas.toDataURL();
 }
 
 // ============================================================
@@ -76,10 +81,12 @@ function createCuisineCard(cuisine) {
   card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(cuisine.count)}店舗`);
   card.dataset.id = cuisine.id;
 
-  const countryCode = flagEmojiToCode(cuisine.flag);
+  const flagImg = document.createElement('img');
+  flagImg.className = 'card-flag';
+  flagImg.alt = `${cuisine.origin}の国旗`;
+  flagImg.src = flagEmojiToDataURL(cuisine.flag);
+
   card.innerHTML = `
-    <img class="card-flag" src="https://flagcdn.com/w80/${countryCode}.png"
-         alt="${cuisine.origin}の国旗" loading="lazy">
     <span class="card-name">${cuisine.name}</span>
     <div class="card-count-wrap">
       <span class="card-count">${formatCount(cuisine.count)}</span>
@@ -87,6 +94,7 @@ function createCuisineCard(cuisine) {
     </div>
     <span class="card-origin">${cuisine.origin}</span>
   `;
+  card.prepend(flagImg);
 
   card.addEventListener('click', (e) => {
     e.preventDefault();
