@@ -1,0 +1,42 @@
+name: Update Restaurant Counts
+
+on:
+  # 毎週月曜 0:00 UTC（日本時間 月曜 9:00）
+  schedule:
+    - cron: '0 0 * * 1'
+  # 手動実行
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run update-counts.js
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: node update-counts.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add app.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            DATE=$(date -u +%Y-%m-%d)
+            git commit -m "chore: update restaurant counts [${DATE}]"
+            git push origin main
+          fi

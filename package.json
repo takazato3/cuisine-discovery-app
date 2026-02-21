@@ -1,0 +1,11 @@
+{
+  "name": "cuisine-discovery-app",
+  "version": "1.0.0",
+  "description": "料理ジャンル発見型レストラン検索アプリ",
+  "scripts": {
+    "update-counts": "node update-counts.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

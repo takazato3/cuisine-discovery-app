@@ -316,6 +316,12 @@ body {
   color: var(--color-text-secondary);
 }
 
+.update-info {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 6px;
+}
+
 /* Representative menu items (detail header) */
 .cuisine-representative-menu {
   font-size: 0.78rem;
