@@ -1,51 +1,69 @@
 'use strict';
 
 // ============================================================
+// Area Definitions
+// ============================================================
+const AREAS = {
+  'tokyo-23': {
+    name: '東京23区',
+    lat: 35.6762,
+    lng: 139.6503,
+    radius: 15000,
+  },
+  'tokyo-outside': {
+    name: '東京（23区外）',
+    lat: 35.7141,
+    lng: 139.3627,
+    radius: 20000,
+  },
+  'yokohama-kawasaki': {
+    name: '横浜・川崎',
+    lat: 35.4437,
+    lng: 139.6380,
+    radius: 15000,
+  },
+  'kanagawa-other': {
+    name: '神奈川（横浜・川崎以外）',
+    lat: 35.3387,
+    lng: 139.2779,
+    radius: 25000,
+  },
+};
+
+// ============================================================
 // Cuisine Data
-// count and lastUpdated are updated weekly by GitHub Actions (update-counts.js)
+// counts per area are updated weekly by GitHub Actions (update-counts.js)
 // ============================================================
 const CUISINES = [
-  { id: 'thai',       flagCode: 'th', name: 'タイ料理',       count: 328,  lastUpdated: '2026-02-21', query: 'thai restaurant',      menuItems: ['トムヤムクン', 'ガパオライス', 'パッタイ'] },
-  { id: 'vietnamese', flagCode: 'vn', name: 'ベトナム料理',   count: 214,  lastUpdated: '2026-02-21', query: 'vietnamese restaurant', menuItems: ['フォー', 'バインミー', '生春巻き'] },
-  { id: 'korean',     flagCode: 'kr', name: '韓国料理',       count: 486,  lastUpdated: '2026-02-21', query: 'korean restaurant',     menuItems: ['サムギョプサル', 'ビビンバ', 'チヂミ'] },
-  { id: 'indian',     flagCode: 'in', name: 'インド料理',     count: 301,  lastUpdated: '2026-02-21', query: 'indian restaurant',     menuItems: ['バターチキンカレー', 'ナン', 'タンドリーチキン'] },
-  { id: 'mexican',    flagCode: 'mx', name: 'メキシコ料理',   count: 97,   lastUpdated: '2026-02-21', query: 'mexican restaurant',    menuItems: ['タコス', 'ブリトー', 'ナチョス'] },
-  { id: 'italian',    flagCode: 'it', name: 'イタリア料理',   count: 612,  lastUpdated: '2026-02-21', query: 'italian restaurant',    menuItems: ['マルゲリータ', 'カルボナーラ', 'ティラミス'] },
-  { id: 'french',     flagCode: 'fr', name: 'フランス料理',   count: 278,  lastUpdated: '2026-02-21', query: 'french restaurant',     menuItems: ['キッシュ', 'ガレット', 'ラタトゥイユ'] },
-  { id: 'chinese',    flagCode: 'cn', name: '中国料理',       count: 731,  lastUpdated: '2026-02-21', query: 'chinese restaurant',    menuItems: ['麻婆豆腐', 'チャーハン', '小籠包'] },
-  { id: 'greek',      flagCode: 'gr', name: 'ギリシャ料理',   count: 54,   lastUpdated: '2026-02-21', query: 'greek restaurant',      menuItems: ['ムサカ', 'スブラキ', 'ギリシャサラダ'] },
-  { id: 'ethiopian',  flagCode: 'et', name: 'エチオピア料理', count: 23,   lastUpdated: '2026-02-21', query: 'ethiopian restaurant',  menuItems: ['インジェラ', 'ドロワット', 'ティブス'] },
-  { id: 'peruvian',   flagCode: 'pe', name: 'ペルー料理',     count: 41,   lastUpdated: '2026-02-21', query: 'peruvian restaurant',   menuItems: ['セビーチェ', 'ロモサルタード', 'アンティクーチョ'] },
-  { id: 'lebanese',   flagCode: 'lb', name: 'レバノン料理',   count: 68,   lastUpdated: '2026-02-21', query: 'lebanese restaurant',   menuItems: ['フムス', 'ファラフェル', 'タブーレ'] },
-  { id: 'turkish',    flagCode: 'tr', name: 'トルコ料理',     count: 89,   lastUpdated: '2026-02-21', query: 'turkish restaurant',    menuItems: ['ケバブ', 'メゼ', 'バクラヴァ'] },
-  { id: 'spanish',    flagCode: 'es', name: 'スペイン料理',   count: 143,  lastUpdated: '2026-02-21', query: 'spanish restaurant',    menuItems: ['パエリア', 'タパス', 'ガスパチョ'] },
-  { id: 'brazilian',  flagCode: 'br', name: 'ブラジル料理',   count: 62,   lastUpdated: '2026-02-21', query: 'brazilian restaurant',  menuItems: ['シュラスコ', 'フェジョアーダ', 'ポンデケージョ'] },
-  { id: 'japanese',   flagCode: 'jp', name: '日本料理',       count: 924,  lastUpdated: '2026-02-21', query: 'japanese restaurant',   menuItems: ['ラーメン', '寿司', '天ぷら'] },
-  { id: 'russian',    flagCode: 'ru', name: 'ロシア料理',     count: 76,   lastUpdated: '2026-02-21', query: 'russian restaurant',    menuItems: ['ボルシチ', 'ピロシキ', 'ビーフストロガノフ'] },
-  { id: 'moroccan',   flagCode: 'ma', name: 'モロッコ料理',   count: 35,   lastUpdated: '2026-02-21', query: 'moroccan restaurant',   menuItems: ['タジン', 'クスクス', 'ハリラ'] },
+  { id: 'thai',       flagCode: 'th', name: 'タイ料理',       counts: { 'tokyo-23': 328, 'tokyo-outside': 49, 'yokohama-kawasaki': 82, 'kanagawa-other': 26 }, lastUpdated: '2026-02-21', query: 'thai restaurant',      menuItems: ['トムヤムクン', 'ガパオライス', 'パッタイ'] },
+  { id: 'vietnamese', flagCode: 'vn', name: 'ベトナム料理',   counts: { 'tokyo-23': 214, 'tokyo-outside': 32, 'yokohama-kawasaki': 54, 'kanagawa-other': 17 }, lastUpdated: '2026-02-21', query: 'vietnamese restaurant', menuItems: ['フォー', 'バインミー', '生春巻き'] },
+  { id: 'korean',     flagCode: 'kr', name: '韓国料理',       counts: { 'tokyo-23': 486, 'tokyo-outside': 73, 'yokohama-kawasaki': 122, 'kanagawa-other': 39 }, lastUpdated: '2026-02-21', query: 'korean restaurant',     menuItems: ['サムギョプサル', 'ビビンバ', 'チヂミ'] },
+  { id: 'indian',     flagCode: 'in', name: 'インド料理',     counts: { 'tokyo-23': 301, 'tokyo-outside': 45, 'yokohama-kawasaki': 75, 'kanagawa-other': 24 }, lastUpdated: '2026-02-21', query: 'indian restaurant',     menuItems: ['バターチキンカレー', 'ナン', 'タンドリーチキン'] },
+  { id: 'mexican',    flagCode: 'mx', name: 'メキシコ料理',   counts: { 'tokyo-23': 97, 'tokyo-outside': 15, 'yokohama-kawasaki': 24, 'kanagawa-other': 8 }, lastUpdated: '2026-02-21', query: 'mexican restaurant',    menuItems: ['タコス', 'ブリトー', 'ナチョス'] },
+  { id: 'italian',    flagCode: 'it', name: 'イタリア料理',   counts: { 'tokyo-23': 612, 'tokyo-outside': 92, 'yokohama-kawasaki': 153, 'kanagawa-other': 49 }, lastUpdated: '2026-02-21', query: 'italian restaurant',    menuItems: ['マルゲリータ', 'カルボナーラ', 'ティラミス'] },
+  { id: 'french',     flagCode: 'fr', name: 'フランス料理',   counts: { 'tokyo-23': 278, 'tokyo-outside': 42, 'yokohama-kawasaki': 70, 'kanagawa-other': 22 }, lastUpdated: '2026-02-21', query: 'french restaurant',     menuItems: ['キッシュ', 'ガレット', 'ラタトゥイユ'] },
+  { id: 'chinese',    flagCode: 'cn', name: '中国料理',       counts: { 'tokyo-23': 731, 'tokyo-outside': 110, 'yokohama-kawasaki': 183, 'kanagawa-other': 59 }, lastUpdated: '2026-02-21', query: 'chinese restaurant',    menuItems: ['麻婆豆腐', 'チャーハン', '小籠包'] },
+  { id: 'greek',      flagCode: 'gr', name: 'ギリシャ料理',   counts: { 'tokyo-23': 54, 'tokyo-outside': 8, 'yokohama-kawasaki': 14, 'kanagawa-other': 4 }, lastUpdated: '2026-02-21', query: 'greek restaurant',      menuItems: ['ムサカ', 'スブラキ', 'ギリシャサラダ'] },
+  { id: 'ethiopian',  flagCode: 'et', name: 'エチオピア料理', counts: { 'tokyo-23': 23, 'tokyo-outside': 3, 'yokohama-kawasaki': 6, 'kanagawa-other': 2 }, lastUpdated: '2026-02-21', query: 'ethiopian restaurant',  menuItems: ['インジェラ', 'ドロワット', 'ティブス'] },
+  { id: 'peruvian',   flagCode: 'pe', name: 'ペルー料理',     counts: { 'tokyo-23': 41, 'tokyo-outside': 6, 'yokohama-kawasaki': 10, 'kanagawa-other': 3 }, lastUpdated: '2026-02-21', query: 'peruvian restaurant',   menuItems: ['セビーチェ', 'ロモサルタード', 'アンティクーチョ'] },
+  { id: 'lebanese',   flagCode: 'lb', name: 'レバノン料理',   counts: { 'tokyo-23': 68, 'tokyo-outside': 10, 'yokohama-kawasaki': 17, 'kanagawa-other': 5 }, lastUpdated: '2026-02-21', query: 'lebanese restaurant',   menuItems: ['フムス', 'ファラフェル', 'タブーレ'] },
+  { id: 'turkish',    flagCode: 'tr', name: 'トルコ料理',     counts: { 'tokyo-23': 89, 'tokyo-outside': 13, 'yokohama-kawasaki': 22, 'kanagawa-other': 7 }, lastUpdated: '2026-02-21', query: 'turkish restaurant',    menuItems: ['ケバブ', 'メゼ', 'バクラヴァ'] },
+  { id: 'spanish',    flagCode: 'es', name: 'スペイン料理',   counts: { 'tokyo-23': 143, 'tokyo-outside': 21, 'yokohama-kawasaki': 36, 'kanagawa-other': 11 }, lastUpdated: '2026-02-21', query: 'spanish restaurant',    menuItems: ['パエリア', 'タパス', 'ガスパチョ'] },
+  { id: 'brazilian',  flagCode: 'br', name: 'ブラジル料理',   counts: { 'tokyo-23': 62, 'tokyo-outside': 9, 'yokohama-kawasaki': 16, 'kanagawa-other': 5 }, lastUpdated: '2026-02-21', query: 'brazilian restaurant',  menuItems: ['シュラスコ', 'フェジョアーダ', 'ポンデケージョ'] },
+  { id: 'japanese',   flagCode: 'jp', name: '日本料理',       counts: { 'tokyo-23': 924, 'tokyo-outside': 139, 'yokohama-kawasaki': 231, 'kanagawa-other': 74 }, lastUpdated: '2026-02-21', query: 'japanese restaurant',   menuItems: ['ラーメン', '寿司', '天ぷら'] },
+  { id: 'russian',    flagCode: 'ru', name: 'ロシア料理',     counts: { 'tokyo-23': 76, 'tokyo-outside': 11, 'yokohama-kawasaki': 19, 'kanagawa-other': 6 }, lastUpdated: '2026-02-21', query: 'russian restaurant',    menuItems: ['ボルシチ', 'ピロシキ', 'ビーフストロガノフ'] },
+  { id: 'moroccan',   flagCode: 'ma', name: 'モロッコ料理',   counts: { 'tokyo-23': 35, 'tokyo-outside': 5, 'yokohama-kawasaki': 9, 'kanagawa-other': 3 }, lastUpdated: '2026-02-21', query: 'moroccan restaurant',   menuItems: ['タジン', 'クスクス', 'ハリラ'] },
 ];
 
 // ============================================================
-// Region Data
-// Multipliers relative to Tokyo baseline (dummy data)
+// Last updated date — rewritten weekly by update-counts.js
 // ============================================================
-const REGION_MULTIPLIERS = {
-  tokyo:   1.00,
-  osaka:   0.72,
-  nagoya:  0.44,
-  fukuoka: 0.37,
-  sapporo: 0.29,
-};
+const LAST_UPDATED = '2026-02-21';
 
-let currentRegion = 'tokyo';
-
-function getRegionCuisines(region) {
-  const multiplier = REGION_MULTIPLIERS[region] ?? 1.0;
-  return CUISINES.map((c) => ({
-    ...c,
-    count: Math.max(1, Math.round(c.count * multiplier)),
-  }));
-}
+// ============================================================
+// Current area state
+// ============================================================
+let currentArea = 'tokyo-23';
 
 // ============================================================
 // Utility: format store count with locale separator
@@ -55,13 +73,22 @@ function formatCount(n) {
 }
 
 // ============================================================
+// Utility: format ISO date (YYYY-MM-DD) to Japanese display
+// ============================================================
+function formatJapaneseDate(isoDate) {
+  const [y, m, d] = isoDate.split('-');
+  return `${parseInt(y)}年${parseInt(m)}月${parseInt(d)}日`;
+}
+
+// ============================================================
 // Render: build a single card element
 // ============================================================
 function createCuisineCard(cuisine) {
+  const count = cuisine.counts[currentArea] ?? 0;
   const card = document.createElement('a');
   card.className = 'cuisine-card';
-  card.href = `detail.html?cuisine=${cuisine.id}&name=${encodeURIComponent(cuisine.name)}`;
-  card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(cuisine.count)}店舗`);
+  card.href = `detail.html?cuisine=${cuisine.id}&name=${encodeURIComponent(cuisine.name)}&area=${currentArea}`;
+  card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(count)}店舗`);
   card.dataset.id = cuisine.id;
 
   card.innerHTML = `
@@ -70,7 +97,7 @@ function createCuisineCard(cuisine) {
          class="cuisine-flag">
     <div class="cuisine-name">${cuisine.name}</div>
     <div class="cuisine-menu-preview">${cuisine.menuItems.join('・')}</div>
-    <div class="cuisine-count">${formatCount(cuisine.count)}</div>
+    <div class="cuisine-count">${formatCount(count)}</div>
     <div class="cuisine-label">店舗</div>
   `;
 
@@ -85,27 +112,28 @@ function createCuisineCard(cuisine) {
 // ============================================================
 // Render: populate grid with skeleton → real cards
 // ============================================================
-function renderGrid(cuisines) {
+function renderGrid() {
   const grid = document.getElementById('cuisine-grid');
   const countEl = document.getElementById('genre-count');
+  if (!grid) return;
 
   // Show skeleton placeholders first
   grid.innerHTML = '';
-  for (let i = 0; i < cuisines.length; i++) {
+  for (let i = 0; i < CUISINES.length; i++) {
     const skeleton = document.createElement('div');
     skeleton.className = 'card-skeleton';
     grid.appendChild(skeleton);
   }
 
-  // Render real cards after a brief delay (simulates async data fetch)
+  // Render real cards after a brief delay
   requestAnimationFrame(() => {
     setTimeout(() => {
       grid.innerHTML = '';
-      cuisines.forEach((cuisine) => {
+      CUISINES.forEach((cuisine) => {
         grid.appendChild(createCuisineCard(cuisine));
       });
       if (countEl) {
-        countEl.textContent = `${cuisines.length}ジャンル`;
+        countEl.textContent = `${CUISINES.length}ジャンル`;
       }
     }, 300);
   });
@@ -115,42 +143,43 @@ function renderGrid(cuisines) {
 // Handler: cuisine card selected — navigate to detail page
 // ============================================================
 function handleCuisineSelect(cuisine) {
-  const url = `detail.html?cuisine=${cuisine.id}&name=${encodeURIComponent(cuisine.name)}&region=${currentRegion}`;
+  const url = `detail.html?cuisine=${cuisine.id}&name=${encodeURIComponent(cuisine.name)}&area=${currentArea}`;
   window.location.href = url;
 }
 
 // ============================================================
-// Handler: region changed
+// Handler: area changed
 // ============================================================
-function handleRegionChange(region) {
-  currentRegion = region;
-  renderGrid(getRegionCuisines(region));
-}
-
-// ============================================================
-// Last updated date — rewritten weekly by update-counts.js
-// ============================================================
-const LAST_UPDATED = '2026-02-21';
-
-// ============================================================
-// Utility: format ISO date (YYYY-MM-DD) to Japanese display
-// ============================================================
-function formatJapaneseDate(isoDate) {
-  const [y, m, d] = isoDate.split('-');
-  return `${parseInt(y)}年${parseInt(m)}月${parseInt(d)}日`;
+function handleAreaChange(area) {
+  if (!AREAS[area]) return;
+  currentArea = area;
+  // Reflect selection in URL without page reload
+  const url = new URL(window.location.href);
+  url.searchParams.set('area', area);
+  window.history.replaceState({}, '', url);
+  renderGrid();
 }
 
 // ============================================================
 // Init
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
-  const regionSelect = document.getElementById('region-select');
-  if (regionSelect) {
-    regionSelect.addEventListener('change', (e) => {
-      handleRegionChange(e.target.value);
+  // Restore area from URL param (e.g. when navigating back from detail page)
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlArea = urlParams.get('area');
+  if (urlArea && AREAS[urlArea]) {
+    currentArea = urlArea;
+  }
+
+  const areaSelect = document.getElementById('area-select');
+  if (areaSelect) {
+    areaSelect.value = currentArea;
+    areaSelect.addEventListener('change', (e) => {
+      handleAreaChange(e.target.value);
     });
   }
-  renderGrid(getRegionCuisines(currentRegion));
+
+  renderGrid();
 
   const updateInfoEl = document.getElementById('update-info');
   if (updateInfoEl) {

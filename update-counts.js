@@ -2,7 +2,7 @@
 'use strict';
 
 // update-counts.js
-// Fetches restaurant counts from Google Places API (New) and updates app.js
+// Fetches per-area restaurant counts from Google Places API (New) and updates app.js
 // Requires Node.js 18+ (uses global fetch)
 // Usage: GOOGLE_MAPS_API_KEY=your_key node update-counts.js
 
@@ -15,8 +15,33 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// Tokyo center coordinates
-const TOKYO = { lat: 35.6762, lng: 139.6503 };
+// Area definitions — must match AREAS in app.js
+const AREAS = {
+  'tokyo-23': {
+    name: '東京23区',
+    lat: 35.6762,
+    lng: 139.6503,
+    radius: 15000,
+  },
+  'tokyo-outside': {
+    name: '東京（23区外）',
+    lat: 35.7141,
+    lng: 139.3627,
+    radius: 20000,
+  },
+  'yokohama-kawasaki': {
+    name: '横浜・川崎',
+    lat: 35.4437,
+    lng: 139.6380,
+    radius: 15000,
+  },
+  'kanagawa-other': {
+    name: '神奈川（横浜・川崎以外）',
+    lat: 35.3387,
+    lng: 139.2779,
+    radius: 25000,
+  },
+};
 
 // Cuisines to update — must match ids in app.js CUISINES array
 const CUISINES = [
@@ -41,19 +66,19 @@ const CUISINES = [
 ];
 
 // ============================================================
-// Fetch the number of results for one cuisine from Places API
+// Fetch the number of results for one cuisine + area
 // Note: Places API (New) returns at most 20 results per call.
-// The count reflects stores found within 10km of Tokyo center.
+// The count reflects stores found within the area's radius.
 // ============================================================
-async function fetchCount(cuisine) {
+async function fetchCount(cuisine, areaId, area) {
   const body = {
-    textQuery: `${cuisine.query} 東京`,
+    textQuery: `${cuisine.query} ${area.name}`,
     languageCode: 'ja',
     maxResultCount: 20,
     locationBias: {
       circle: {
-        center: { latitude: TOKYO.lat, longitude: TOKYO.lng },
-        radius: 10000.0,
+        center: { latitude: area.lat, longitude: area.lng },
+        radius: area.radius,
       },
     },
   };
@@ -61,8 +86,8 @@ async function fetchCount(cuisine) {
   const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
     method: 'POST',
     headers: {
-      'Content-Type':    'application/json',
-      'X-Goog-Api-Key':  API_KEY,
+      'Content-Type':     'application/json',
+      'X-Goog-Api-Key':   API_KEY,
       'X-Goog-FieldMask': 'places.id',
     },
     body: JSON.stringify(body),
@@ -93,7 +118,7 @@ function formatDate(date) {
 // ============================================================
 async function main() {
   console.log('=== update-counts.js ===');
-  console.log('Fetching restaurant counts from Places API...\n');
+  console.log(`Fetching counts for ${Object.keys(AREAS).length} areas × ${CUISINES.length} cuisines...\n`);
 
   const appJsPath = path.join(__dirname, 'app.js');
   let content;
@@ -105,40 +130,45 @@ async function main() {
   }
 
   const today = formatDate(new Date());
-  let updatedCount = 0;
+  let totalUpdated = 0;
+  let totalFailed  = 0;
 
-  for (const cuisine of CUISINES) {
-    let count;
-    try {
-      count = await fetchCount(cuisine);
-      console.log(`  ✓ ${cuisine.id}: ${count} stores`);
-    } catch (err) {
-      console.warn(`  ⚠ ${cuisine.id}: API call failed — ${err.message}`);
-      console.warn(`    Keeping existing count.`);
-      // Skip update for this cuisine; do not change content
-      // Small delay before next request
-      await new Promise(r => setTimeout(r, 300));
-      continue;
+  // Iterate area-by-area, cuisine-by-cuisine
+  for (const [areaId, area] of Object.entries(AREAS)) {
+    console.log(`\n📍 ${area.name} (${areaId})`);
+
+    for (const cuisine of CUISINES) {
+      let count;
+      try {
+        count = await fetchCount(cuisine, areaId, area);
+        console.log(`  ✓ ${cuisine.id}: ${count} stores`);
+      } catch (err) {
+        console.warn(`  ⚠ ${cuisine.id}: API call failed — ${err.message}`);
+        console.warn(`    Keeping existing count.`);
+        totalFailed++;
+        await new Promise(r => setTimeout(r, 300));
+        continue;
+      }
+
+      // Update the count for this area on the cuisine's line in app.js
+      // Line format: { id: 'thai', ..., counts: { 'tokyo-23': 328, ... }, ...
+      const regex = new RegExp(`(id:\\s*'${cuisine.id}'[^\\n]*'${areaId}':\\s*)\\d+`);
+      if (regex.test(content)) {
+        content = content.replace(regex, `$1${count}`);
+        totalUpdated++;
+      } else {
+        console.warn(`  ⚠ ${cuisine.id}: could not locate '${areaId}' in app.js`);
+      }
+
+      // Update lastUpdated for this cuisine (only if area succeeded)
+      const dateRegex = new RegExp(`(id:\\s*'${cuisine.id}'[^\\n]*lastUpdated:\\s*)'[^']*'`);
+      if (dateRegex.test(content)) {
+        content = content.replace(dateRegex, `$1'${today}'`);
+      }
+
+      // 200ms delay between API requests to avoid rate limiting
+      await new Promise(r => setTimeout(r, 200));
     }
-
-    // Update count on the cuisine's line
-    const countRegex = new RegExp(`(id: '${cuisine.id}'[^\\n]*count:)\\s*\\d+`);
-    if (countRegex.test(content)) {
-      content = content.replace(countRegex, `$1 ${count}`);
-    } else {
-      console.warn(`  ⚠ ${cuisine.id}: could not locate 'count' field in app.js`);
-    }
-
-    // Update lastUpdated on the cuisine's line
-    const dateRegex = new RegExp(`(id: '${cuisine.id}'[^\\n]*lastUpdated:)\\s*'[^']*'`);
-    if (dateRegex.test(content)) {
-      content = content.replace(dateRegex, `$1 '${today}'`);
-    }
-
-    updatedCount++;
-
-    // Small delay to avoid rate limiting (200ms between requests)
-    await new Promise(r => setTimeout(r, 200));
   }
 
   // Update global LAST_UPDATED constant
@@ -146,7 +176,7 @@ async function main() {
   if (luRegex.test(content)) {
     content = content.replace(luRegex, `const LAST_UPDATED = '${today}';`);
   } else {
-    console.warn(`  ⚠ LAST_UPDATED constant not found in app.js`);
+    console.warn('\n⚠ LAST_UPDATED constant not found in app.js');
   }
 
   try {
@@ -156,7 +186,8 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`\n✅ Done. Updated ${updatedCount}/${CUISINES.length} cuisines for ${today}`);
+  const total = Object.keys(AREAS).length * CUISINES.length;
+  console.log(`\n✅ Done. Updated ${totalUpdated}/${total} entries (${totalFailed} failed) for ${today}`);
 }
 
 main().catch((err) => {
