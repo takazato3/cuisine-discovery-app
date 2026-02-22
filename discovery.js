@@ -2,7 +2,7 @@
 
 // ============================================================
 // discovery.js
-// Loads discoveries.json and renders the Discovery section
+// Loads discoveries.json and renders the Discovery ticker
 // on the top page, filtered by the currently selected area.
 // ============================================================
 
@@ -17,7 +17,7 @@ function getDiscoveryMapUrl(restaurant) {
 }
 
 // ============================================================
-// Render: populate discovery list for the selected area
+// Render: populate ticker for the selected area
 // ============================================================
 async function loadDiscoveries() {
   try {
@@ -33,58 +33,42 @@ async function loadDiscoveries() {
     const areaSelect   = document.getElementById('area-select');
     const selectedArea = areaSelect ? areaSelect.value : 'tokyo-23';
 
-    const listEl = document.getElementById('discovery-list');
-    if (!listEl) return;
-    listEl.innerHTML = '';
+    const itemsEl = document.getElementById('discovery-items');
+    if (!itemsEl) return;
+    itemsEl.innerHTML = '';
 
-    // Render one item per cuisine that has results in the selected area
+    // For each discovery, render up to 2 restaurants from the selected area
     (data.discoveries || []).forEach((discovery) => {
       const areaData = discovery.byArea[selectedArea];
       if (!areaData || areaData.count === 0) return;
 
-      const item = document.createElement('div');
-      item.className = 'discovery-item';
+      (areaData.restaurants || []).slice(0, 2).forEach((restaurant) => {
+        const mapUrl  = getDiscoveryMapUrl(restaurant);
+        const areaLabel = restaurant.area ? `(${restaurant.area})` : '';
 
-      // Restaurant links (up to 3)
-      const restaurantLinks = (areaData.restaurants || [])
-        .slice(0, 3)
-        .map((r) => {
-          const mapUrl = getDiscoveryMapUrl(r);
-          const areaLabel = r.area ? `<span class="location">(${r.area})</span>` : '';
-          return `
-            <a href="${mapUrl}"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="restaurant-link">
-              ▸ ${r.name} ${areaLabel}
-            </a>`;
-        })
-        .join('');
-
-      // "+N more" badge
-      const remaining = areaData.count > 3
-        ? `<span class="more-count">+ 他${areaData.count - 3}店舗</span>`
-        : '';
-
-      item.innerHTML = `
-        <div class="discovery-cuisine">
+        const item    = document.createElement('a');
+        item.href     = mapUrl;
+        item.target   = '_blank';
+        item.rel      = 'noopener noreferrer';
+        item.className = 'discovery-item';
+        item.innerHTML = `
           <span class="flag">${discovery.flag}</span>
-          <span class="name">${discovery.cuisineName}</span>
-          <span class="count">${areaData.count}店舗</span>
-        </div>
-        <div class="discovery-restaurants">
-          ${restaurantLinks}
-          ${remaining}
-        </div>
-      `;
+          <span class="cuisine">${discovery.cuisineName}:</span>
+          <span class="restaurant">${restaurant.name}</span>
+          <span class="area">${areaLabel}</span>
+          <span class="arrow">→</span>
+        `;
 
-      listEl.appendChild(item);
+        itemsEl.appendChild(item);
+      });
     });
 
     // Show message when no rare cuisines in the selected area
-    if (listEl.children.length === 0) {
-      listEl.innerHTML =
-        '<p class="no-discoveries">このエリアに珍しい料理は見つかりませんでした</p>';
+    if (itemsEl.children.length === 0) {
+      const msg = document.createElement('span');
+      msg.className   = 'no-discoveries';
+      msg.textContent = 'このエリアに珍しい料理は見つかりませんでした';
+      itemsEl.appendChild(msg);
     }
   } catch (error) {
     console.error('Discovery data load failed:', error);
