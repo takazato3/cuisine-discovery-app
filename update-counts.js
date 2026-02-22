@@ -66,9 +66,10 @@ const CUISINES = [
 ];
 
 // ============================================================
-// Fetch the number of results for one cuisine + area
-// Note: Places API (New) returns at most 20 results per call.
-// The count reflects stores found within the area's radius.
+// Fetch the count for one cuisine + area from Places API (New)
+// Returns '60+' if the API limit (20) is hit (meaning ≥20 stores exist),
+// otherwise returns the exact count as a string.
+// Note: Places API (New) Text Search returns at most 20 results per call.
 // ============================================================
 async function fetchCount(cuisine, areaId, area) {
   const body = {
@@ -100,7 +101,9 @@ async function fetchCount(cuisine, areaId, area) {
   const json = await res.json();
   if (json.error) throw new Error(json.error.message || 'API error');
 
-  return (json.places || []).length;
+  const count = (json.places || []).length;
+  // 20 is the API maximum — means there are ≥20 stores (exact total unknown)
+  return count >= 20 ? '60+' : String(count);
 }
 
 // ============================================================
@@ -151,10 +154,11 @@ async function main() {
       }
 
       // Update the count for this area on the cuisine's line in app.js
-      // Line format: { id: 'thai', ..., counts: { 'tokyo-23': 328, ... }, ...
-      const regex = new RegExp(`(id:\\s*'${cuisine.id}'[^\\n]*'${areaId}':\\s*)\\d+`);
+      // Line format: { id: 'thai', ..., counts: { 'tokyo-23': '60+', ... }, ...
+      // Matches either a quoted string ('60+', '45') or a legacy plain number
+      const regex = new RegExp(`(id:\\s*'${cuisine.id}'[^\\n]*'${areaId}':\\s*)(?:'[^']*'|\\d+)`);
       if (regex.test(content)) {
-        content = content.replace(regex, `$1${count}`);
+        content = content.replace(regex, `$1'${count}'`);
         totalUpdated++;
       } else {
         console.warn(`  ⚠ ${cuisine.id}: could not locate '${areaId}' in app.js`);
