@@ -35,41 +35,28 @@ async function loadDiscoveries() {
 
     const itemsEl = document.getElementById('discovery-items');
     if (!itemsEl) return;
-    itemsEl.innerHTML = '';
 
-    // For each discovery, render up to 2 restaurants from the selected area
+    // Build HTML strings for each item
+    const items = [];
     (data.discoveries || []).forEach((discovery) => {
       const areaData = discovery.byArea[selectedArea];
       if (!areaData || areaData.count === 0) return;
 
       (areaData.restaurants || []).slice(0, 2).forEach((restaurant) => {
-        const mapUrl  = getDiscoveryMapUrl(restaurant);
+        const mapUrl    = getDiscoveryMapUrl(restaurant);
         const areaLabel = restaurant.area ? `(${restaurant.area})` : '';
-
-        const item    = document.createElement('a');
-        item.href     = mapUrl;
-        item.target   = '_blank';
-        item.rel      = 'noopener noreferrer';
-        item.className = 'discovery-item';
-        item.innerHTML = `
-          <span class="flag">${discovery.flag}</span>
-          <span class="cuisine">${discovery.cuisineName}:</span>
-          <span class="restaurant">${restaurant.name}</span>
-          <span class="area">${areaLabel}</span>
-          <span class="arrow">→</span>
-        `;
-
-        itemsEl.appendChild(item);
+        items.push(`<a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="discovery-item"><span class="flag">${discovery.flag}</span><span class="cuisine">${discovery.cuisineName}:</span><span class="restaurant">${restaurant.name}</span><span class="area">${areaLabel}</span><span class="arrow">→</span></a>`);
       });
     });
 
     // Show message when no rare cuisines in the selected area
-    if (itemsEl.children.length === 0) {
-      const msg = document.createElement('span');
-      msg.className   = 'no-discoveries';
-      msg.textContent = 'このエリアに珍しい料理は見つかりませんでした';
-      itemsEl.appendChild(msg);
+    if (items.length === 0) {
+      itemsEl.innerHTML = '<span class="no-discoveries">このエリアに珍しい料理は見つかりませんでした</span>';
+      return;
     }
+
+    // Duplicate content for seamless infinite scroll loop
+    itemsEl.innerHTML = items.join('') + items.join('');
   } catch (error) {
     console.error('Discovery data load failed:', error);
     // Hide the section silently on error
