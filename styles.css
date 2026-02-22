@@ -708,6 +708,133 @@ a.restaurant-card {
 }
 
 /* ========================================
+   Discovery Section
+======================================== */
+.discovery-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
+.discovery-header {
+  margin-bottom: 16px;
+}
+
+.discovery-header h2 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.discovery-subtitle {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.discovery-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.discovery-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 16px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.discovery-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.discovery-cuisine {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.discovery-cuisine .flag {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.discovery-cuisine .name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.discovery-cuisine .count {
+  margin-left: auto;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.discovery-restaurants {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.restaurant-link {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 4px 0;
+  display: block;
+  transition: transform 0.2s;
+}
+
+.restaurant-link:hover {
+  transform: translateX(4px);
+  text-decoration: underline;
+}
+
+.location {
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+.more-count {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 4px;
+  display: block;
+}
+
+.discovery-note {
+  margin-top: 16px;
+  font-size: 11px;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.no-discoveries {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .discovery-section {
+    padding: 16px;
+  }
+
+  .discovery-cuisine .flag {
+    font-size: 24px;
+  }
+}
+
+/* ========================================
    Loading state (skeleton)
 ======================================== */
 @keyframes shimmer {
