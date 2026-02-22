@@ -52,7 +52,12 @@ const CUISINES = [
   { id: 'turkish',        flagCode: 'tr',         name: 'トルコ料理',         counts: { 'tokyo-23': '60+', 'tokyo-outside': '13', 'yokohama-kawasaki': '22', 'kanagawa-other': '7'  }, lastUpdated: '2026-02-21', query: 'turkish restaurant',                                                 menuItems: ['ケバブ', 'バクラヴァ', 'メゼ'] },
   { id: 'spanish',        flagCode: 'es',         name: 'スペイン料理',       counts: { 'tokyo-23': '60+', 'tokyo-outside': '21', 'yokohama-kawasaki': '36', 'kanagawa-other': '11' }, lastUpdated: '2026-02-21', query: 'spanish restaurant',                                                 menuItems: ['パエリア', 'タパス', 'ガスパチョ'] },
   { id: 'brazilian',      flagCode: 'br',         name: 'ブラジル料理',       counts: { 'tokyo-23': '60+', 'tokyo-outside': '9',  'yokohama-kawasaki': '16', 'kanagawa-other': '5'  }, lastUpdated: '2026-02-21', query: 'brazilian restaurant',                                               menuItems: ['シュラスコ', 'フェジョアーダ', 'ポンデケージョ'] },
-  { id: 'african',        flagCode: 'africa',     name: 'アフリカ料理',       counts: { 'tokyo-23': '30', 'tokyo-outside': '5',  'yokohama-kawasaki': '8',  'kanagawa-other': '3'  }, lastUpdated: '2026-02-21', query: 'african restaurant OR ethiopian restaurant OR moroccan restaurant', menuItems: ['インジェラ', 'タジン', 'クスクス'] },
+  { id: 'african',        flagCode: 'africa',     name: 'アフリカ料理',         counts: { 'tokyo-23': '30', 'tokyo-outside': '5',  'yokohama-kawasaki': '8',  'kanagawa-other': '3'  }, lastUpdated: '2026-02-22', query: 'african restaurant OR ethiopian restaurant OR moroccan restaurant', menuItems: ['インジェラ', 'タジン', 'クスクス'] },
+  { id: 'sri-lankan',    flagCode: 'lk',         name: 'スリランカ料理',       counts: { 'tokyo-23': '10', 'tokyo-outside': '3',  'yokohama-kawasaki': '5',  'kanagawa-other': '2'  }, lastUpdated: '2026-02-22', query: 'sri lankan restaurant',                                                   menuItems: ['カレー', 'ホッパー', 'コットゥ'] },
+  { id: 'mongolian',     flagCode: 'mn',         name: 'モンゴル料理',         counts: { 'tokyo-23': '5',  'tokyo-outside': '2',  'yokohama-kawasaki': '3',  'kanagawa-other': '1'  }, lastUpdated: '2026-02-22', query: 'mongolian restaurant',                                                    menuItems: ['ホーショール', 'ボーズ', '羊肉'] },
+  { id: 'singaporean',   flagCode: 'sg',         name: 'シンガポール料理',     counts: { 'tokyo-23': '20', 'tokyo-outside': '5',  'yokohama-kawasaki': '8',  'kanagawa-other': '3'  }, lastUpdated: '2026-02-22', query: 'singaporean restaurant',                                                  menuItems: ['チキンライス', 'ラクサ', 'バクテー'] },
+  { id: 'uzbek',         flagCode: 'uz',         name: 'ウズベキスタン料理',   counts: { 'tokyo-23': '8',  'tokyo-outside': '2',  'yokohama-kawasaki': '3',  'kanagawa-other': '1'  }, lastUpdated: '2026-02-22', query: 'uzbek restaurant',                                                        menuItems: ['プロフ', 'シャシリク', 'サムサ'] },
+  { id: 'british',       flagCode: 'gb',         name: 'イギリス料理',         counts: { 'tokyo-23': '15', 'tokyo-outside': '5',  'yokohama-kawasaki': '8',  'kanagawa-other': '3'  }, lastUpdated: '2026-02-22', query: 'british restaurant',                                                      menuItems: ['フィッシュ&チップス', 'ローストビーフ', 'スコーン'] },
 ];
 
 // ============================================================
@@ -105,13 +110,12 @@ function createCuisineCard(cuisine) {
   card.href = `detail.html?cuisine=${cuisine.id}&name=${encodeURIComponent(cuisine.name)}&area=${currentArea}`;
   card.setAttribute('aria-label', `${cuisine.name} — ${formatCount(count)}店舗`);
   card.dataset.id = cuisine.id;
+  card.dataset.representative = cuisine.menuItems.join('・');
 
   card.innerHTML = `
     ${getFlagDisplay(cuisine.flagCode, cuisine.name)}
     <div class="cuisine-name">${cuisine.name}</div>
-    <div class="representative-menu">${cuisine.menuItems.join('・')}</div>
     <div class="cuisine-count">${formatCount(count)}</div>
-    <div class="cuisine-label">店舗</div>
   `;
 
   card.addEventListener('click', (e) => {

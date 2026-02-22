@@ -63,6 +63,11 @@ const CUISINES = [
   { id: 'spanish',        query: 'spanish restaurant' },
   { id: 'brazilian',      query: 'brazilian restaurant' },
   { id: 'african',        query: 'african restaurant OR ethiopian restaurant OR moroccan restaurant' },
+  { id: 'sri-lankan',    query: 'sri lankan restaurant' },
+  { id: 'mongolian',     query: 'mongolian restaurant' },
+  { id: 'singaporean',   query: 'singaporean restaurant' },
+  { id: 'uzbek',         query: 'uzbek restaurant' },
+  { id: 'british',       query: 'british restaurant' },
 ];
 
 // ============================================================
