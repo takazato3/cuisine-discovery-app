@@ -24,6 +24,8 @@ jobs:
           node-version: '20'
 
       - name: Run update-counts.js
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: node update-counts.js
 
       - name: Commit and push if changed
