@@ -247,6 +247,7 @@ async function fetchFromPlacesAPI(queryCuisineName, queryArea) {
     textQuery: `${queryCuisineName} ${queryArea.name}`,
     languageCode: 'ja',
     maxResultCount: 20,
+    includedType: 'restaurant',
     locationBias: {
       circle: {
         center: { latitude: queryArea.lat, longitude: queryArea.lng },
@@ -290,6 +291,8 @@ async function fetchFromPlacesAPI(queryCuisineName, queryArea) {
       distance:    lat != null && lng != null
         ? calcDistance(queryArea.lat, queryArea.lng, lat, lng)
         : null,
+      lat:         lat ?? null,
+      lng:         lng ?? null,
       menuItems:   [],
       photoName:   place.photos?.[0]?.name || null,
       openNow:     place.currentOpeningHours?.openNow ?? null,
@@ -371,6 +374,22 @@ function renderHoursRow(r) {
 const PAGE_SIZE = 10;
 let currentPage = 0;
 let allRestaurants = [];
+let mapIframe = null;
+
+// ============================================================
+// Utility: build Google Maps URL (works on PC / iPhone / Android)
+// ============================================================
+function getGoogleMapsUrl(placeId) {
+  return `https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${placeId}`;
+}
+
+// ============================================================
+// Utility: update map iframe to center on given coordinates
+// ============================================================
+function updateMapCenter(lat, lng) {
+  if (!mapIframe || lat == null || lng == null) return;
+  mapIframe.src = `https://maps.google.com/maps?q=${lat},${lng}&output=embed&hl=ja&z=15`;
+}
 
 // ============================================================
 // Render: skeleton placeholders while data loads
@@ -396,7 +415,7 @@ function createRestaurantCard(r) {
   card.className = 'restaurant-card';
 
   if (r.placeId) {
-    card.href   = `https://www.google.com/maps/place/?q=place_id:${r.placeId}`;
+    card.href   = getGoogleMapsUrl(r.placeId);
     card.target = '_blank';
     card.rel    = 'noopener noreferrer';
   }
@@ -514,13 +533,6 @@ function renderRestaurantCards(restaurants, isLive = false) {
   allRestaurants = restaurants;
   currentPage    = 0;
 
-  const noteEl = document.getElementById('dummy-note');
-  if (noteEl) {
-    noteEl.textContent = isLive
-      ? '※ Google Places APIの実データを表示しています。'
-      : '※ 現在はダミーデータを表示しています。Google Places API連携後に実データに切り替わります。';
-  }
-
   renderPagedCards(0);
 }
 
@@ -564,11 +576,8 @@ function initMap(query, displayName) {
     }
   });
 
+  mapIframe = iframe;
   container.appendChild(iframe);
-
-  if (note) {
-    note.textContent = '※ 地図はGoogle Maps埋め込み（参考表示）です。Google Places APIキー設定後に店舗ピンが表示されます。';
-  }
 }
 
 // ============================================================
@@ -620,6 +629,7 @@ async function init() {
       if (results.length === 0) throw new Error('検索結果が0件でした');
       setCache(cacheKey, results);
       renderRestaurantCards(results, true);
+      updateMapCenter(results[0].lat, results[0].lng);
     } catch (err) {
       console.error('Places API error:', err);
       showApiError();

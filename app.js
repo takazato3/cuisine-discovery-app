@@ -109,7 +109,7 @@ function createCuisineCard(cuisine) {
   card.innerHTML = `
     ${getFlagDisplay(cuisine.flagCode, cuisine.name)}
     <div class="cuisine-name">${cuisine.name}</div>
-    <div class="cuisine-menu-preview">${cuisine.menuItems.join('・')}</div>
+    <div class="representative-menu">${cuisine.menuItems.join('・')}</div>
     <div class="cuisine-count">${formatCount(count)}</div>
     <div class="cuisine-label">店舗</div>
   `;
