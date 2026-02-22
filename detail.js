@@ -4,7 +4,7 @@
 // URL Parameter Parsing
 // ============================================================
 const params = new URLSearchParams(window.location.search);
-const cuisineId   = params.get('cuisine') || 'japanese';
+const cuisineId   = params.get('cuisine') || 'thai';
 const cuisineName = params.get('name')    || '料理ジャンル';
 const area        = params.get('area')    || 'tokyo-23';
 
@@ -45,24 +45,24 @@ const areaName  = areaData.name;
 // Representative Menu Items per Cuisine Genre
 // ============================================================
 const CUISINE_REPRESENTATIVE_MENUS = {
-  thai:       'トムヤムクン・ガパオライス・パッタイ',
-  vietnamese: 'フォー・バインミー・生春巻き',
-  korean:     'サムギョプサル・ビビンバ・チヂミ',
-  indian:     'バターチキンカレー・ナン・タンドリーチキン',
-  mexican:    'タコス・ブリトー・ナチョス',
-  italian:    'マルゲリータ・カルボナーラ・ティラミス',
-  french:     'キッシュ・ガレット・ラタトゥイユ',
-  chinese:    '麻婆豆腐・チャーハン・小籠包',
-  greek:      'ムサカ・スブラキ・ギリシャサラダ',
-  ethiopian:  'インジェラ・ドロワット・ティブス',
-  peruvian:   'セビーチェ・ロモサルタード・アンティクーチョ',
-  lebanese:   'フムス・ファラフェル・タブーレ',
-  turkish:    'ケバブ・メゼ・バクラヴァ',
-  spanish:    'パエリア・タパス・ガスパチョ',
-  brazilian:  'シュラスコ・フェジョアーダ・ポンデケージョ',
-  japanese:   'ラーメン・寿司・天ぷら',
-  russian:    'ボルシチ・ピロシキ・ビーフストロガノフ',
-  moroccan:   'タジン・クスクス・ハリラ',
+  thai:            'トムヤムクン・ガパオライス・パッタイ',
+  vietnamese:      'フォー・バインミー・生春巻き',
+  korean:          'サムギョプサル・ビビンバ・チヂミ',
+  'indian-nepali': 'バターチキンカレー・ナン・モモ',
+  'south-indian':  'ミールス・ドーサ・イドゥリ',
+  'machi-chuka':   'ラーメン・チャーハン・餃子',
+  'honkaku-chuka': '麻婆豆腐・小籠包・北京ダック',
+  taiwanese:       '魯肉飯・小籠包・タピオカティー',
+  mexican:         'タコス・ブリトー・ナチョス',
+  italian:         'マルゲリータ・カルボナーラ・ティラミス',
+  french:          'キッシュ・ラタトゥイユ・ガレット',
+  greek:           'ムサカ・スブラキ・ギリシャサラダ',
+  'middle-eastern': 'フムス・ファラフェル・シャワルマ',
+  peruvian:        'セビーチェ・ロモサルタード・アンティクーチョ',
+  turkish:         'ケバブ・バクラヴァ・メゼ',
+  spanish:         'パエリア・タパス・ガスパチョ',
+  brazilian:       'シュラスコ・フェジョアーダ・ポンデケージョ',
+  african:         'インジェラ・タジン・クスクス',
 };
 
 // ============================================================
@@ -93,12 +93,40 @@ const DUMMY_RESTAURANTS = {
     { name: 'チキン&ビール ON',           rating: 4.2, ratingCount: 156, address: '東京都中央区銀座8-4-3',      distance: 1100, menuItems: ['ヤンニョムチキン', 'フライドチキン', 'ビビンバ'],     placeId: null },
     { name: 'チヂミ食堂 恵比寿',          rating: 3.9, ratingCount: 67,  address: '東京都渋谷区恵比寿1-23-8',  distance: 1350, menuItems: ['チヂミ', 'サムギョプサル', '冷麺'],                   placeId: null },
   ],
-  indian: [
-    { name: 'スパイス&カレー ムンバイ',   rating: 4.4, ratingCount: 189, address: '東京都渋谷区神南1-4-8',      distance: 390,  menuItems: ['バターチキンカレー', 'ナン', 'タンドリーチキン'],     placeId: null },
+  'indian-nepali': [
+    { name: 'スパイス&カレー ムンバイ',   rating: 4.4, ratingCount: 189, address: '東京都渋谷区神南1-4-8',      distance: 390,  menuItems: ['バターチキンカレー', 'ナン', 'モモ'],                 placeId: null },
     { name: 'デリーキッチン 新宿',        rating: 4.2, ratingCount: 134, address: '東京都新宿区西新宿1-13-12',  distance: 620,  menuItems: ['ナン', 'バターチキンカレー', 'サモサ'],               placeId: null },
-    { name: 'タンドール 赤坂',            rating: 4.5, ratingCount: 301, address: '東京都港区赤坂5-2-20',       distance: 780,  menuItems: ['タンドリーチキン', 'ビリヤニ', 'ナン'],               placeId: null },
+    { name: 'ネパール食堂 ヒマラヤ 大久保', rating: 4.5, ratingCount: 208, address: '東京都新宿区大久保2-4-3', distance: 780,  menuItems: ['モモ', 'ダルバート', 'チキンカレー'],                 placeId: null },
     { name: 'ガンジー 銀座店',            rating: 4.0, ratingCount: 78,  address: '東京都中央区銀座6-10-1',     distance: 1020, menuItems: ['ビリヤニ', 'バターチキンカレー', 'サモサ'],           placeId: null },
-    { name: 'ビリヤニ&カレー コルカタ',   rating: 4.3, ratingCount: 215, address: '東京都豊島区池袋1-25-3',     distance: 1290, menuItems: ['ビリヤニ', 'タンドリーチキン', 'ナン'],               placeId: null },
+    { name: 'ビリヤニ&モモ コルカタ',     rating: 4.3, ratingCount: 215, address: '東京都豊島区池袋1-25-3',     distance: 1290, menuItems: ['ビリヤニ', 'モモ', 'ナン'],                           placeId: null },
+  ],
+  'south-indian': [
+    { name: 'ミールス食堂 チェンナイ',    rating: 4.5, ratingCount: 89,  address: '東京都新宿区大久保1-3-10',   distance: 450,  menuItems: ['ミールス', 'ドーサ', 'サンバル'],                     placeId: null },
+    { name: 'ドーサ&イドゥリ バンガロール', rating: 4.3, ratingCount: 67, address: '東京都豊島区池袋2-15-3',  distance: 720,  menuItems: ['ドーサ', 'イドゥリ', 'チャトニ'],                     placeId: null },
+    { name: '南インド食堂 ケーララ',      rating: 4.4, ratingCount: 78,  address: '東京都渋谷区神宮前5-1-10',  distance: 980,  menuItems: ['ミールス', 'フィッシュカレー', 'パパダム'],           placeId: null },
+    { name: 'チェッティナード 神田',      rating: 4.1, ratingCount: 52,  address: '東京都千代田区神田神保町1-4', distance: 1240, menuItems: ['ビリヤニ', 'チェッティナードチキン', 'ドーサ'],     placeId: null },
+    { name: 'ラッサム&サンバル カーフェ', rating: 4.2, ratingCount: 61,  address: '東京都港区赤坂4-7-20',      distance: 1510, menuItems: ['ラッサム', 'ミールス', 'イドゥリ'],                   placeId: null },
+  ],
+  'machi-chuka': [
+    { name: '大衆中華 龍ちゃん',          rating: 4.1, ratingCount: 156, address: '東京都台東区浅草橋3-5-2',   distance: 280,  menuItems: ['ラーメン', 'チャーハン', '餃子'],                     placeId: null },
+    { name: '町の中華屋 幸来',            rating: 4.0, ratingCount: 98,  address: '東京都葛飾区亀有1-12-3',    distance: 650,  menuItems: ['焼餃子', 'タンメン', '八宝菜'],                       placeId: null },
+    { name: '中華食堂 一番',              rating: 4.2, ratingCount: 213, address: '東京都新宿区高田馬場2-8-5',  distance: 870,  menuItems: ['チャーハン', 'ラーメン', '餃子'],                     placeId: null },
+    { name: '昭和中華 みんみん',          rating: 4.3, ratingCount: 178, address: '東京都足立区北千住1-3-7',    distance: 1100, menuItems: ['餃子', 'チャーハン', 'タンメン'],                     placeId: null },
+    { name: 'ラーメン&餃子 金龍',         rating: 3.9, ratingCount: 77,  address: '東京都江東区砂町4-2-10',    distance: 1380, menuItems: ['ラーメン', '餃子', '炒め物'],                         placeId: null },
+  ],
+  'honkaku-chuka': [
+    { name: '四川料理 天府',              rating: 4.5, ratingCount: 412, address: '東京都新宿区新宿2-1-14',     distance: 300,  menuItems: ['麻婆豆腐', '担担麺', '北京ダック'],                   placeId: null },
+    { name: '北京ダック専門店 全聚徳',    rating: 4.4, ratingCount: 338, address: '東京都中央区銀座4-2-15',     distance: 550,  menuItems: ['北京ダック', '小籠包', 'チャーハン'],                 placeId: null },
+    { name: '広東料理 龍宮',              rating: 4.0, ratingCount: 93,  address: '東京都台東区上野4-8-7',      distance: 720,  menuItems: ['北京ダック', '広東炒麺', '小籠包'],                   placeId: null },
+    { name: '飲茶・点心 桃園',            rating: 4.1, ratingCount: 156, address: '東京都港区赤坂3-19-8',       distance: 960,  menuItems: ['小籠包', '点心', 'チャーハン'],                       placeId: null },
+    { name: '上海小籠包 蟹家',            rating: 4.2, ratingCount: 201, address: '東京都豊島区池袋2-3-8',      distance: 1180, menuItems: ['小籠包', '蟹みそ', '麻婆豆腐'],                       placeId: null },
+  ],
+  taiwanese: [
+    { name: '台湾料理 魯肉飯 台北亭',    rating: 4.3, ratingCount: 142, address: '東京都新宿区新宿3-12-8',     distance: 340,  menuItems: ['魯肉飯', '台湾ラーメン', 'タピオカ'],                 placeId: null },
+    { name: '小籠包&台湾点心 鼎泰豊',    rating: 4.6, ratingCount: 521, address: '東京都渋谷区代官山町12-3',   distance: 620,  menuItems: ['小籠包', '魯肉飯', '腸詰'],                           placeId: null },
+    { name: '台湾夜市 FORMOSA',           rating: 4.1, ratingCount: 88,  address: '東京都豊島区池袋1-34-7',     distance: 890,  menuItems: ['臭豆腐', '牡蠣オムレツ', 'タピオカ'],                 placeId: null },
+    { name: '台湾家庭料理 高雄',          rating: 4.2, ratingCount: 113, address: '東京都中野区中野3-34-15',    distance: 1150, menuItems: ['魯肉飯', '排骨飯', '貢丸スープ'],                     placeId: null },
+    { name: 'タピオカ&台湾スイーツ 春水堂', rating: 4.4, ratingCount: 267, address: '東京都港区南青山5-11-1', distance: 1420, menuItems: ['タピオカティー', '豆花', '仙草ゼリー'],               placeId: null },
   ],
   mexican: [
     { name: 'タコス&バリート MESA',       rating: 4.1, ratingCount: 76,  address: '東京都渋谷区神宮前5-10-1',  distance: 450,  menuItems: ['タコス', 'ブリトー', 'ナチョス'],                     placeId: null },
@@ -122,27 +150,12 @@ const DUMMY_RESTAURANTS = {
     { name: 'ビストロ NABE',              rating: 4.2, ratingCount: 87,  address: '東京都渋谷区恵比寿西1-4-1',  distance: 980,  menuItems: ['ブイヤベース', 'クロワッサン', 'フォアグラ'],         placeId: null },
     { name: 'カフェ・ド・フロール 表参道', rating: 4.0, ratingCount: 124, address: '東京都渋谷区神宮前4-9-3',  distance: 1210, menuItems: ['クロワッサン', 'ラタトゥイユ', 'クレームブリュレ'],   placeId: null },
   ],
-  chinese: [
-    { name: '横浜中華街 老上海',          rating: 4.3, ratingCount: 267, address: '東京都渋谷区道玄坂2-2-1',   distance: 300,  menuItems: ['小龍包', 'チャーハン', '麻婆豆腐'],                   placeId: null },
-    { name: '四川料理 天府',              rating: 4.5, ratingCount: 412, address: '東京都新宿区新宿2-1-14',     distance: 550,  menuItems: ['麻婆豆腐', '担担麺', '北京ダック'],                   placeId: null },
-    { name: '北京ダック専門店 全聚徳',    rating: 4.4, ratingCount: 338, address: '東京都中央区銀座4-2-15',     distance: 720,  menuItems: ['北京ダック', '小龍包', 'チャーハン'],                 placeId: null },
-    { name: '飲茶・点心 桃園',            rating: 4.1, ratingCount: 156, address: '東京都港区赤坂3-19-8',       distance: 960,  menuItems: ['小龍包', '点心', 'チャーハン'],                       placeId: null },
-    { name: '上海小龍包 蟹家',            rating: 4.2, ratingCount: 201, address: '東京都豊島区池袋2-3-8',      distance: 1180, menuItems: ['小龍包', '蟹みそ', 'チャーハン'],                     placeId: null },
-    { name: '広東料理 龍宮',              rating: 4.0, ratingCount: 93,  address: '東京都台東区上野4-8-7',      distance: 1420, menuItems: ['北京ダック', '広東炒麺', '小龍包'],                   placeId: null },
-  ],
   greek: [
     { name: 'オーパ！ギリシャ料理',      rating: 4.2, ratingCount: 68,  address: '東京都港区南青山3-16-6',     distance: 480,  menuItems: ['ムサカ', 'スブラキ', 'タラモサラタ'],                 placeId: null },
     { name: 'タベルナ・エレフシナ',       rating: 4.4, ratingCount: 95,  address: '東京都渋谷区神宮前1-11-6',  distance: 730,  menuItems: ['ギロス', 'スパナコピタ', 'ムサカ'],                   placeId: null },
     { name: 'ムサカ&ギロス DELPHI',      rating: 4.0, ratingCount: 51,  address: '東京都中央区銀座1-8-19',     distance: 1010, menuItems: ['ムサカ', 'ギロス', 'スブラキ'],                       placeId: null },
     { name: 'ギリシャキッチン アクロポリス', rating: 3.9, ratingCount: 37, address: '東京都新宿区四谷2-12-3', distance: 1280, menuItems: ['スブラキ', 'タラモサラタ', 'ギロス'],                 placeId: null },
     { name: 'オリーブ&フェタ SANTORINI', rating: 4.3, ratingCount: 82,  address: '東京都目黒区自由が丘2-9-4', distance: 1590, menuItems: ['タラモサラタ', 'スパナコピタ', 'ムサカ'],             placeId: null },
-  ],
-  ethiopian: [
-    { name: 'アフリカンキッチン ADDIS',   rating: 4.3, ratingCount: 47,  address: '東京都新宿区百人町2-3-10',  distance: 620,  menuItems: ['インジェラ', 'ドロワット', 'シロ'],                   placeId: null },
-    { name: 'エチオピアン・カフェ ハベシャ', rating: 4.5, ratingCount: 89, address: '東京都港区六本木5-18-20', distance: 890,  menuItems: ['インジェラ', 'キトフォ', 'ティブス'],                 placeId: null },
-    { name: 'インジェラ食堂 ABYSSINIA',   rating: 4.1, ratingCount: 33,  address: '東京都豊島区西池袋5-14-2',  distance: 1150, menuItems: ['インジェラ', 'シロ', 'ドロワット'],                   placeId: null },
-    { name: 'エチオピア料理 ルーシー',    rating: 4.0, ratingCount: 28,  address: '東京都渋谷区幡ヶ谷1-6-3',  distance: 1440, menuItems: ['ドロワット', 'ティブス', 'インジェラ'],               placeId: null },
-    { name: 'カフア・コーヒー&エチオピアン', rating: 4.2, ratingCount: 61, address: '東京都台東区蔵前2-11-5', distance: 1780, menuItems: ['インジェラ', 'シロ', 'キトフォ'],                     placeId: null },
   ],
   peruvian: [
     { name: 'セビーチェ&ペルー料理 LIMA', rating: 4.4, ratingCount: 73,  address: '東京都港区南青山5-4-41',    distance: 540,  menuItems: ['セビーチェ', 'ロモサルタード', 'ピカロン'],           placeId: null },
@@ -151,12 +164,12 @@ const DUMMY_RESTAURANTS = {
     { name: 'ラ・マル・ペルー',           rating: 4.5, ratingCount: 108, address: '東京都中央区銀座5-7-10',    distance: 1320, menuItems: ['セビーチェ', 'ロモサルタード', 'ピカロン'],           placeId: null },
     { name: 'チチャ&ロモ サルタード',     rating: 3.9, ratingCount: 31,  address: '東京都目黒区中目黒4-1-7',   distance: 1640, menuItems: ['ロモサルタード', 'チチャロン', 'セビーチェ'],         placeId: null },
   ],
-  lebanese: [
-    { name: 'アラビア料理 BEIRUT',        rating: 4.3, ratingCount: 84,  address: '東京都港区元麻布3-1-5',     distance: 490,  menuItems: ['フムス', 'ファラフェル', 'タブレ'],                   placeId: null },
+  'middle-eastern': [
+    { name: '中東料理 BEIRUT',            rating: 4.3, ratingCount: 84,  address: '東京都港区元麻布3-1-5',     distance: 490,  menuItems: ['フムス', 'ファラフェル', 'シャワルマ'],               placeId: null },
     { name: 'ファラフェル&フムス レバント', rating: 4.1, ratingCount: 62, address: '東京都渋谷区富ヶ谷1-30-2', distance: 760, menuItems: ['ファラフェル', 'フムス', 'バクラバ'],                  placeId: null },
-    { name: 'レバノン家庭料理 TYRE',      rating: 4.4, ratingCount: 97,  address: '東京都新宿区市谷砂土原町2-2', distance: 1000, menuItems: ['キッベ', 'フムス', 'タブレ'],                       placeId: null },
-    { name: 'シーダー・レストラン',       rating: 4.0, ratingCount: 48,  address: '東京都千代田区九段北4-1-8', distance: 1270, menuItems: ['タブレ', 'ファラフェル', 'キッベ'],                   placeId: null },
-    { name: 'キッベ&タブレ SIDON',        rating: 3.8, ratingCount: 29,  address: '東京都豊島区目白3-4-18',    distance: 1560, menuItems: ['キッベ', 'タブレ', 'フムス'],                         placeId: null },
+    { name: '中東家庭料理 TYRE',          rating: 4.4, ratingCount: 97,  address: '東京都新宿区市谷砂土原町2-2', distance: 1000, menuItems: ['シャワルマ', 'フムス', 'ファラフェル'],             placeId: null },
+    { name: 'シーダー・レストラン',       rating: 4.0, ratingCount: 48,  address: '東京都千代田区九段北4-1-8', distance: 1270, menuItems: ['ファラフェル', 'シャワルマ', 'フムス'],               placeId: null },
+    { name: 'アラブキッチン MEDINA',      rating: 3.8, ratingCount: 29,  address: '東京都豊島区目白3-4-18',    distance: 1560, menuItems: ['フムス', 'ファラフェル', 'シャワルマ'],               placeId: null },
   ],
   turkish: [
     { name: 'イスタンブール・サライ',     rating: 4.3, ratingCount: 116, address: '東京都港区六本木6-2-31',    distance: 380,  menuItems: ['ドネルケバブ', 'バクラバ', 'ムサカ'],                 placeId: null },
@@ -179,27 +192,12 @@ const DUMMY_RESTAURANTS = {
     { name: 'チュラスカリア COPACABANA',  rating: 4.5, ratingCount: 271, address: '東京都千代田区丸の内3-4-1', distance: 1180, menuItems: ['シュラスコ', 'ピカーニャ', 'コシーニャ'],             placeId: null },
     { name: 'アマゾン・グリル',           rating: 3.9, ratingCount: 44,  address: '東京都品川区大崎1-2-12',    distance: 1490, menuItems: ['シュラスコ', 'フェイジョアーダ', 'ピカーニャ'],       placeId: null },
   ],
-  japanese: [
-    { name: '鮨 はた中 銀座',             rating: 4.7, ratingCount: 534, address: '東京都中央区銀座6-7-6',     distance: 250,  menuItems: ['寿司', '刺身', 'おまかせ'],                           placeId: null },
-    { name: '懐石料理 嵐山',              rating: 4.6, ratingCount: 312, address: '東京都港区南青山4-18-11',   distance: 490,  menuItems: ['懐石料理', '天ぷら', 'お造り'],                       placeId: null },
-    { name: '天ぷら みかわ',              rating: 4.5, ratingCount: 428, address: '東京都江東区福住1-3-1',     distance: 740,  menuItems: ['天ぷら', '天丼', '刺身'],                             placeId: null },
-    { name: '焼鳥 とりいち 恵比寿',       rating: 4.3, ratingCount: 187, address: '東京都渋谷区恵比寿4-27-2',  distance: 960,  menuItems: ['焼鳥', 'つくね', 'もつ焼き'],                         placeId: null },
-    { name: 'しゃぶしゃぶ すき焼き 木曽路', rating: 4.2, ratingCount: 143, address: '東京都新宿区新宿3-26-1', distance: 1200, menuItems: ['しゃぶしゃぶ', 'すき焼き', '牛タン'],                 placeId: null },
-    { name: 'うどん 丸亀製麺 渋谷',       rating: 4.0, ratingCount: 356, address: '東京都渋谷区渋谷2-11-5',   distance: 1450, menuItems: ['うどん', '天ぷら', 'かけうどん'],                     placeId: null },
-  ],
-  russian: [
-    { name: 'ロシア料理 サラファン',      rating: 4.3, ratingCount: 79,  address: '東京都港区六本木4-10-10',   distance: 560,  menuItems: ['ボルシチ', 'ピロシキ', 'ペリメニ'],                   placeId: null },
-    { name: 'ボルシチの店 モスクワ',      rating: 4.1, ratingCount: 54,  address: '東京都新宿区新宿7-4-3',     distance: 810,  menuItems: ['ボルシチ', 'ブリヌイ', 'オリヴィエサラダ'],           placeId: null },
-    { name: 'ピロシキ&ブリヌイ バイカル', rating: 4.2, ratingCount: 66,  address: '東京都渋谷区富ヶ谷2-22-10', distance: 1060, menuItems: ['ピロシキ', 'ブリヌイ', 'ボルシチ'],                   placeId: null },
-    { name: 'カフェ・ロシア',             rating: 3.9, ratingCount: 38,  address: '東京都文京区本郷3-7-4',     distance: 1290, menuItems: ['ブリヌイ', 'オリヴィエサラダ', 'ボルシチ'],           placeId: null },
-    { name: 'スラブ料理 ペテルブルク',    rating: 4.0, ratingCount: 47,  address: '東京都台東区上野桜木2-5-3', distance: 1540, menuItems: ['ペリメニ', 'ボルシチ', 'ブリヌイ'],                   placeId: null },
-  ],
-  moroccan: [
-    { name: 'タジン専門店 マラケシュ',    rating: 4.4, ratingCount: 88,  address: '東京都港区南青山3-5-10',    distance: 510,  menuItems: ['タジン', 'クスクス', 'ハリラスープ'],                 placeId: null },
-    { name: 'クスクス&タジン FEZZY',      rating: 4.2, ratingCount: 67,  address: '東京都渋谷区神宮前1-23-2',  distance: 760,  menuItems: ['クスクス', 'タジン', 'ミントティー'],                 placeId: null },
-    { name: 'モロッコ料理 カサブランカ',  rating: 4.3, ratingCount: 94,  address: '東京都新宿区市谷本村町2-4',  distance: 1010, menuItems: ['タジン', 'バスティラ', 'クスクス'],                   placeId: null },
-    { name: 'ミントティー&タジン サハラ', rating: 4.0, ratingCount: 51,  address: '東京都目黒区駒場1-22-4',   distance: 1290, menuItems: ['ミントティー', 'タジン', 'クスクス'],                 placeId: null },
-    { name: 'アルガン・キッチン フェズ',  rating: 3.8, ratingCount: 34,  address: '東京都世田谷区三軒茶屋1-8-3', distance: 1610, menuItems: ['クスクス', 'タジン', 'ハリラスープ'],               placeId: null },
+  african: [
+    { name: 'アフリカンキッチン ADDIS',   rating: 4.3, ratingCount: 47,  address: '東京都新宿区百人町2-3-10',  distance: 490,  menuItems: ['インジェラ', 'ドロワット', 'シロ'],                   placeId: null },
+    { name: 'エチオピアン・カフェ ハベシャ', rating: 4.5, ratingCount: 89, address: '東京都港区六本木5-18-20', distance: 760,  menuItems: ['インジェラ', 'キトフォ', 'ティブス'],                 placeId: null },
+    { name: 'タジン専門店 マラケシュ',    rating: 4.4, ratingCount: 88,  address: '東京都港区南青山3-5-10',    distance: 1000, menuItems: ['タジン', 'クスクス', 'ハリラスープ'],                 placeId: null },
+    { name: 'クスクス&タジン FEZZY',      rating: 4.2, ratingCount: 67,  address: '東京都渋谷区神宮前1-23-2',  distance: 1250, menuItems: ['クスクス', 'タジン', 'ミントティー'],                 placeId: null },
+    { name: 'インジェラ食堂 ABYSSINIA',   rating: 4.1, ratingCount: 33,  address: '東京都豊島区西池袋5-14-2',  distance: 1530, menuItems: ['インジェラ', 'シロ', 'クスクス'],                     placeId: null },
   ],
 };
 
@@ -600,7 +598,7 @@ async function init() {
 
   // ---- Restaurant data loading ----
   const cacheKey = `places_${cuisineId}_${area}`;
-  const fallback = DUMMY_RESTAURANTS[cuisineId] || DUMMY_RESTAURANTS['japanese'];
+  const fallback = DUMMY_RESTAURANTS[cuisineId] || DUMMY_RESTAURANTS['thai'];
 
   showSkeletons();
 
