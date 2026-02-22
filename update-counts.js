@@ -2,20 +2,22 @@
 'use strict';
 
 // update-counts.js
-// Fetches per-area restaurant counts from Google Places API (New) and updates app.js
+// Fetches per-area restaurant counts from Overpass API (OpenStreetMap data).
+// - No API key required
+// - No result-count cap (unlike Google Places API which maxes out at 20)
+// - Data source: crowd-sourced OSM — actual store counts may be higher
+//   than reported if a restaurant is not yet registered on OSM.
 // Requires Node.js 18+ (uses global fetch)
-// Usage: GOOGLE_MAPS_API_KEY=your_key node update-counts.js
+// Usage: node update-counts.js
 
 const fs   = require('fs');
 const path = require('path');
 
-const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
-if (!API_KEY) {
-  console.error('Error: GOOGLE_MAPS_API_KEY environment variable is not set.');
-  process.exit(1);
-}
+const OVERPASS_URL = 'https://overpass-api.de/api/interpreter';
 
-// Area definitions — must match AREAS in app.js
+// ============================================================
+// Area Definitions — must match AREAS in app.js
+// ============================================================
 const AREAS = {
   'tokyo-23': {
     name: '東京23区',
@@ -43,54 +45,123 @@ const AREAS = {
   },
 };
 
-// Cuisines to update — must match ids in app.js CUISINES array
+// ============================================================
+// Cuisine → OSM cuisine tag mapping
+//
+// OSM uses [amenity=restaurant][cuisine=<value>].
+// Multiple tags are matched via regex OR (e.g. "thai|japanese").
+// Reference: https://wiki.openstreetmap.org/wiki/Key:cuisine
+// ============================================================
 const CUISINES = [
-  { id: 'thai',       query: 'thai restaurant' },
-  { id: 'vietnamese', query: 'vietnamese restaurant' },
-  { id: 'korean',     query: 'korean restaurant' },
-  { id: 'indian',     query: 'indian restaurant' },
-  { id: 'mexican',    query: 'mexican restaurant' },
-  { id: 'italian',    query: 'italian restaurant' },
-  { id: 'french',     query: 'french restaurant' },
-  { id: 'chinese',    query: 'chinese restaurant' },
-  { id: 'greek',      query: 'greek restaurant' },
-  { id: 'ethiopian',  query: 'ethiopian restaurant' },
-  { id: 'peruvian',   query: 'peruvian restaurant' },
-  { id: 'lebanese',   query: 'lebanese restaurant' },
-  { id: 'turkish',    query: 'turkish restaurant' },
-  { id: 'spanish',    query: 'spanish restaurant' },
-  { id: 'brazilian',  query: 'brazilian restaurant' },
-  { id: 'japanese',   query: 'japanese restaurant' },
-  { id: 'russian',    query: 'russian restaurant' },
-  { id: 'moroccan',   query: 'moroccan restaurant' },
+  {
+    id: 'thai',
+    osmTags: ['thai'],
+  },
+  {
+    id: 'vietnamese',
+    osmTags: ['vietnamese'],
+  },
+  {
+    id: 'korean',
+    osmTags: ['korean'],
+  },
+  {
+    id: 'indian',
+    // north_indian / south_indian are common sub-tags
+    osmTags: ['indian', 'north_indian', 'south_indian'],
+  },
+  {
+    id: 'mexican',
+    osmTags: ['mexican'],
+  },
+  {
+    id: 'italian',
+    osmTags: ['italian', 'pizza', 'pasta'],
+  },
+  {
+    id: 'french',
+    osmTags: ['french'],
+  },
+  {
+    id: 'chinese',
+    // Regional styles mapped here; taiwanese kept under chinese for app grouping
+    osmTags: ['chinese', 'dim_sum', 'cantonese', 'sichuan', 'shanghainese', 'taiwanese'],
+  },
+  {
+    id: 'greek',
+    osmTags: ['greek'],
+  },
+  {
+    id: 'ethiopian',
+    osmTags: ['ethiopian'],
+  },
+  {
+    id: 'peruvian',
+    osmTags: ['peruvian'],
+  },
+  {
+    id: 'lebanese',
+    osmTags: ['lebanese'],
+  },
+  {
+    id: 'turkish',
+    osmTags: ['turkish', 'kebab'],
+  },
+  {
+    id: 'spanish',
+    osmTags: ['spanish'],
+  },
+  {
+    id: 'brazilian',
+    osmTags: ['brazilian', 'churrasco'],
+  },
+  {
+    id: 'japanese',
+    // Cover major Japanese sub-genres tagged separately in OSM
+    osmTags: ['japanese', 'sushi', 'ramen', 'tempura', 'udon', 'soba',
+              'yakitori', 'tonkatsu', 'izakaya', 'kaiseki'],
+  },
+  {
+    id: 'russian',
+    osmTags: ['russian'],
+  },
+  {
+    id: 'moroccan',
+    osmTags: ['moroccan'],
+  },
 ];
 
 // ============================================================
-// Fetch the number of results for one cuisine + area
-// Note: Places API (New) returns at most 20 results per call.
-// The count reflects stores found within the area's radius.
+// Build and execute an Overpass QL query that counts
+// amenity=restaurant nodes+ways matching any of the given
+// cuisine tags within a circular area.
+//
+// out count; returns a single element like:
+//   { "type":"count", "tags":{ "nodes":"42","ways":"3","total":"45" } }
 // ============================================================
-async function fetchCount(cuisine, areaId, area) {
-  const body = {
-    textQuery: `${cuisine.query} ${area.name}`,
-    languageCode: 'ja',
-    maxResultCount: 20,
-    locationBias: {
-      circle: {
-        center: { latitude: area.lat, longitude: area.lng },
-        radius: area.radius,
-      },
-    },
-  };
+async function fetchCount(cuisine, area) {
+  // Escape special regex characters in tag values (all are plain words here,
+  // but guard against future entries with hyphens etc.)
+  const pattern = cuisine.osmTags
+    .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('|');
 
-  const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
+  // around:radius,lat,lon  (Overpass uses lon, not lng)
+  const around = `around:${area.radius},${area.lat},${area.lng}`;
+
+  const query = [
+    '[out:json][timeout:60];',
+    '(',
+    `  node(${around})[amenity=restaurant][cuisine~"^(${pattern})$",i];`,
+    `  way(${around})[amenity=restaurant][cuisine~"^(${pattern})$",i];`,
+    ');',
+    'out count;',
+  ].join('\n');
+
+  const res = await fetch(OVERPASS_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type':     'application/json',
-      'X-Goog-Api-Key':   API_KEY,
-      'X-Goog-FieldMask': 'places.id',
-    },
-    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `data=${encodeURIComponent(query)}`,
   });
 
   if (!res.ok) {
@@ -98,9 +169,16 @@ async function fetchCount(cuisine, areaId, area) {
   }
 
   const json = await res.json();
-  if (json.error) throw new Error(json.error.message || 'API error');
+  if (json.remark && /runtime error|timeout/.test(json.remark)) {
+    throw new Error(`Overpass remark: ${json.remark}`);
+  }
 
-  return (json.places || []).length;
+  const total = json.elements?.[0]?.tags?.total;
+  if (total === undefined) {
+    throw new Error('Unexpected response shape: ' + JSON.stringify(json).slice(0, 200));
+  }
+
+  return parseInt(total, 10);
 }
 
 // ============================================================
@@ -117,8 +195,10 @@ function formatDate(date) {
 // Main
 // ============================================================
 async function main() {
-  console.log('=== update-counts.js ===');
+  console.log('=== update-counts.js (Overpass / OpenStreetMap) ===');
   console.log(`Fetching counts for ${Object.keys(AREAS).length} areas × ${CUISINES.length} cuisines...\n`);
+  console.log('Note: counts reflect restaurants registered on OpenStreetMap.');
+  console.log('      Actual store counts may be higher due to incomplete OSM coverage.\n');
 
   const appJsPath = path.join(__dirname, 'app.js');
   let content;
@@ -133,25 +213,25 @@ async function main() {
   let totalUpdated = 0;
   let totalFailed  = 0;
 
-  // Iterate area-by-area, cuisine-by-cuisine
   for (const [areaId, area] of Object.entries(AREAS)) {
     console.log(`\n📍 ${area.name} (${areaId})`);
 
     for (const cuisine of CUISINES) {
       let count;
       try {
-        count = await fetchCount(cuisine, areaId, area);
+        count = await fetchCount(cuisine, area);
         console.log(`  ✓ ${cuisine.id}: ${count} stores`);
       } catch (err) {
         console.warn(`  ⚠ ${cuisine.id}: API call failed — ${err.message}`);
         console.warn(`    Keeping existing count.`);
         totalFailed++;
-        await new Promise(r => setTimeout(r, 300));
+        // Longer back-off on error to avoid hammering the server
+        await new Promise(r => setTimeout(r, 3000));
         continue;
       }
 
-      // Update the count for this area on the cuisine's line in app.js
-      // Line format: { id: 'thai', ..., counts: { 'tokyo-23': 328, ... }, ...
+      // Update count in app.js
+      // Line format: { id: 'thai', ..., counts: { 'tokyo-23': 328, ...
       const regex = new RegExp(`(id:\\s*'${cuisine.id}'[^\\n]*'${areaId}':\\s*)\\d+`);
       if (regex.test(content)) {
         content = content.replace(regex, `$1${count}`);
@@ -160,14 +240,14 @@ async function main() {
         console.warn(`  ⚠ ${cuisine.id}: could not locate '${areaId}' in app.js`);
       }
 
-      // Update lastUpdated for this cuisine (only if area succeeded)
+      // Update lastUpdated for this cuisine
       const dateRegex = new RegExp(`(id:\\s*'${cuisine.id}'[^\\n]*lastUpdated:\\s*)'[^']*'`);
       if (dateRegex.test(content)) {
         content = content.replace(dateRegex, `$1'${today}'`);
       }
 
-      // 200ms delay between API requests to avoid rate limiting
-      await new Promise(r => setTimeout(r, 200));
+      // 2 s delay between requests — Overpass fair-use policy
+      await new Promise(r => setTimeout(r, 2000));
     }
   }
 
@@ -192,6 +272,5 @@ async function main() {
 
 main().catch((err) => {
   console.error('Unexpected error:', err);
-  // Exit 0 so the workflow is treated as successful (retry next week)
   process.exit(0);
 });
