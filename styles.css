@@ -261,10 +261,22 @@ body {
 }
 
 /* Representative menu items (index card) */
-.cuisine-menu-preview {
-  font-size: 0.72rem;
-  color: #999;
+.representative-menu {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
   line-height: 1.4;
+}
+
+/* Emoji flag for special regions (africa / middleeast) */
+.cuisine-flag--emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
 }
 
 /* Store count */
@@ -292,6 +304,13 @@ body {
   .cuisine-flag {
     width: 48px;
     height: 48px;
+    margin-bottom: 8px;
+  }
+
+  .cuisine-flag--emoji {
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
     margin-bottom: 8px;
   }
 
