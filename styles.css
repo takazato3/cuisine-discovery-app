@@ -708,129 +708,123 @@ a.restaurant-card {
 }
 
 /* ========================================
-   Discovery Section
+   Discovery Section (ticker style)
 ======================================== */
 .discovery-section {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 24px;
+  padding: 16px 24px;
   border-radius: 12px;
   margin-bottom: 32px;
 }
 
-.discovery-header {
-  margin-bottom: 16px;
-}
-
-.discovery-header h2 {
-  margin: 0 0 4px 0;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.discovery-subtitle {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.discovery-list {
+.discovery-container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.discovery-title {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 280px;
+}
+
+.discovery-ticker {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
+}
+
+.discovery-ticker::-webkit-scrollbar {
+  display: none;               /* Chrome/Safari */
+}
+
+.discovery-items {
+  display: flex;
   gap: 12px;
+  padding: 4px 0;
 }
 
 .discovery-item {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 16px;
-  border-radius: 8px;
-  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+  font-size: 14px;
 }
 
 .discovery-item:hover {
   background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-.discovery-cuisine {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.discovery-cuisine .flag {
-  font-size: 28px;
+.discovery-item .flag {
+  font-size: 20px;
   line-height: 1;
 }
 
-.discovery-cuisine .name {
-  font-size: 16px;
+.discovery-item .cuisine {
   font-weight: 600;
 }
 
-.discovery-cuisine .count {
-  margin-left: auto;
-  font-size: 13px;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 4px 8px;
-  border-radius: 12px;
-  white-space: nowrap;
+.discovery-item .restaurant {
+  font-weight: 500;
 }
 
-.discovery-restaurants {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.restaurant-link {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 4px 0;
-  display: block;
-  transition: transform 0.2s;
-}
-
-.restaurant-link:hover {
-  transform: translateX(4px);
-  text-decoration: underline;
-}
-
-.location {
-  opacity: 0.7;
-  font-size: 12px;
-}
-
-.more-count {
-  font-size: 12px;
+.discovery-item .area {
   opacity: 0.8;
-  margin-top: 4px;
-  display: block;
+  font-size: 13px;
+}
+
+.discovery-item .arrow {
+  opacity: 0.6;
+  margin-left: 4px;
 }
 
 .discovery-note {
-  margin-top: 16px;
+  margin-top: 8px;
   font-size: 11px;
   opacity: 0.7;
   text-align: right;
 }
 
 .no-discoveries {
-  text-align: center;
-  padding: 20px;
+  padding: 8px 16px;
   opacity: 0.8;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
   .discovery-section {
-    padding: 16px;
+    padding: 12px 16px;
   }
 
-  .discovery-cuisine .flag {
-    font-size: 24px;
+  .discovery-title {
+    min-width: auto;
+    font-size: 12px;
+  }
+
+  .discovery-item {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .discovery-item .flag {
+    font-size: 18px;
   }
 }
 
