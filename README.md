@@ -81,12 +81,44 @@ Places APIのレスポンスは `localStorage` にキャッシュされます:
 
 | ファイル | 説明 |
 |----------|------|
-| `index.html` | トップページ（料理ジャンル一覧） |
+| `index.html` | トップページ（料理ジャンル一覧 + Discovery） |
 | `detail.html` | 詳細ページ（店舗一覧・地図） |
 | `app.js` | トップページのロジック |
 | `detail.js` | 詳細ページのロジック（Places API連携・キャッシュ） |
+| `discovery.js` | Discovery セクションのロジック |
 | `styles.css` | 全ページ共通スタイル |
 | `config.js` | **APIキー設定（Gitignore済み・要作成）** |
+| `update-counts.js` | 店舗数を更新する Node.js スクリプト（GitHub Actions 用） |
+| `update-discoveries.js` | Discovery データを更新する Node.js スクリプト（GitHub Actions 用） |
+| `discoveries.json` | Discovery データ（GitHub Actions が週次更新） |
+
+---
+
+## Discovery機能
+
+週1回、首都圏で **1〜10店舗程度しかない珍しい料理** を自動検出し、トップページに表示します。
+
+| 項目 | 内容 |
+|------|------|
+| **データソース** | Google Places API (New) |
+| **更新頻度** | 毎週月曜 0時（UTC）= 日本時間 月曜 9時 |
+| **表示** | 選択中のエリアに該当する珍しい料理のみ |
+| **判定基準** | そのエリアで 1〜10 件の検索結果が出る料理 |
+
+**対象料理（15ジャンル）**:
+エチオピア、ジョージア、イラン、モロッコ、ウクライナ、
+ポーランド、フィリピン、インドネシア、マレーシア、スリランカ、
+アルゼンチン、ポルトガル、ドイツ、ロシア、ネパール
+
+### API呼び出しコスト（月間試算）
+
+| 処理 | 呼び出し回数 | 費用目安 |
+|------|------------|---------|
+| メインジャンル（18×4エリア×週1回）| 72回/週 = 288回/月 | 約$9.22/月 |
+| Discovery（15×4エリア×週1回）| 60回/週 = 240回/月 | 約$7.68/月 |
+| **合計** | **528回/月** | **約$16.90/月** |
+
+無料枠 $200 の範囲内で十分収まります。
 
 ---
 
@@ -111,24 +143,19 @@ Places APIのレスポンスは `localStorage` にキャッシュされます:
 GOOGLE_MAPS_API_KEY=your_api_key npm run update-counts
 ```
 
-### 仕組みと費用
-
-| 項目 | 内容 |
-|------|------|
-| 実行頻度 | 週1回（月曜）+ 手動実行 |
-| API呼び出し数 | 18回/週（ジャンル数分） |
-| 月間呼び出し数 | 約72回 |
-| 概算コスト | 約$2.30/月（72回 × $0.032） |
-
-> **注意**: Places API (New) の Text Search は1回につき最大20件の結果を返します。
-> 表示される店舗数は「東京中心部10km圏内で見つかった件数」を示します。
-
 ### 更新スクリプトの動作
 
-- `update-counts.js` が各ジャンルに対してPlaces API Text Searchを呼び出す
+**update-counts.js**
+- 各ジャンル（18種）× 各エリア（4箇所）でPlaces API Text Searchを呼び出す（最大3ページ = 60件）
+- 60件以上なら `'60+'`、未満は実数を記録
 - API呼び出しに失敗した場合は既存の値を維持し、警告をログに出力
-- `app.js` の `count`・`lastUpdated`・`LAST_UPDATED` を書き換える
-- 変更がある場合のみ `chore: update restaurant counts [YYYY-MM-DD]` でコミット・プッシュ
+- `app.js` の `counts`・`lastUpdated`・`LAST_UPDATED` を書き換える
+
+**update-discoveries.js**
+- 珍しい料理（15種）× 各エリア（4箇所）でPlaces API Text Searchを実行
+- 1〜10件のエリアのみ「Discovery」として記録
+- 店舗名・住所・placeId を取得し `discoveries.json` に保存
+- 変更がある場合のみ `chore: update counts and discoveries [YYYY-MM-DD] [skip ci]` でコミット・プッシュ
 
 ---
 

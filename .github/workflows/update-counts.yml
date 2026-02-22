@@ -1,4 +1,4 @@
-name: Update Restaurant Counts
+name: Update Restaurant Counts and Discoveries
 
 on:
   # 毎週月曜 0:00 UTC（日本時間 月曜 9:00）
@@ -23,20 +23,25 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Run update-counts.js
+      - name: Update restaurant counts
         env:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
         run: node update-counts.js
+
+      - name: Update discoveries
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: node update-discoveries.js
 
       - name: Commit and push if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add app.js
+          git add app.js discoveries.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
             DATE=$(date -u +%Y-%m-%d)
-            git commit -m "chore: update restaurant counts [${DATE}]"
+            git commit -m "chore: update counts and discoveries [${DATE}] [skip ci]"
             git push origin main
           fi
