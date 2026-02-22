@@ -45,65 +45,78 @@ const AREAS = {
 
 // Cuisines to update — must match ids in app.js CUISINES array
 const CUISINES = [
-  { id: 'thai',       query: 'thai restaurant' },
-  { id: 'vietnamese', query: 'vietnamese restaurant' },
-  { id: 'korean',     query: 'korean restaurant' },
-  { id: 'indian',     query: 'indian restaurant' },
-  { id: 'mexican',    query: 'mexican restaurant' },
-  { id: 'italian',    query: 'italian restaurant' },
-  { id: 'french',     query: 'french restaurant' },
-  { id: 'chinese',    query: 'chinese restaurant' },
-  { id: 'greek',      query: 'greek restaurant' },
-  { id: 'ethiopian',  query: 'ethiopian restaurant' },
-  { id: 'peruvian',   query: 'peruvian restaurant' },
-  { id: 'lebanese',   query: 'lebanese restaurant' },
-  { id: 'turkish',    query: 'turkish restaurant' },
-  { id: 'spanish',    query: 'spanish restaurant' },
-  { id: 'brazilian',  query: 'brazilian restaurant' },
-  { id: 'japanese',   query: 'japanese restaurant' },
-  { id: 'russian',    query: 'russian restaurant' },
-  { id: 'moroccan',   query: 'moroccan restaurant' },
+  { id: 'thai',           query: 'thai restaurant' },
+  { id: 'vietnamese',     query: 'vietnamese restaurant' },
+  { id: 'korean',         query: 'korean restaurant' },
+  { id: 'indian-nepali',  query: 'indian restaurant OR nepali restaurant' },
+  { id: 'south-indian',   query: 'south indian restaurant OR ミールス OR ドーサ' },
+  { id: 'machi-chuka',    query: '中華料理 OR ラーメン OR 餃子' },
+  { id: 'honkaku-chuka',  query: '本格中華 OR 四川料理 OR 広東料理 OR 上海料理' },
+  { id: 'taiwanese',      query: '台湾料理 OR 魯肉飯' },
+  { id: 'mexican',        query: 'mexican restaurant' },
+  { id: 'italian',        query: 'italian restaurant' },
+  { id: 'french',         query: 'french restaurant' },
+  { id: 'greek',          query: 'greek restaurant' },
+  { id: 'middle-eastern', query: 'middle eastern restaurant OR lebanese restaurant' },
+  { id: 'peruvian',       query: 'peruvian restaurant' },
+  { id: 'turkish',        query: 'turkish restaurant' },
+  { id: 'spanish',        query: 'spanish restaurant' },
+  { id: 'brazilian',      query: 'brazilian restaurant' },
+  { id: 'african',        query: 'african restaurant OR ethiopian restaurant OR moroccan restaurant' },
 ];
 
 // ============================================================
 // Fetch the count for one cuisine + area from Places API (New)
-// Returns '60+' if the API limit (20) is hit (meaning ≥20 stores exist),
-// otherwise returns the exact count as a string.
-// Note: Places API (New) Text Search returns at most 20 results per call.
+// Makes up to 3 paginated requests (max 20 results each = 60 total).
+// Returns '60+' if total reaches 60, otherwise returns exact count as string.
 // ============================================================
 async function fetchCount(cuisine, areaId, area) {
-  const body = {
-    textQuery: `${cuisine.query} ${area.name}`,
-    languageCode: 'ja',
-    maxResultCount: 20,
-    locationBias: {
-      circle: {
-        center: { latitude: area.lat, longitude: area.lng },
-        radius: area.radius,
+  let totalCount = 0;
+  let pageToken  = undefined;
+
+  for (let page = 0; page < 3; page++) {
+    const body = {
+      textQuery: `${cuisine.query} ${area.name}`,
+      languageCode: 'ja',
+      maxResultCount: 20,
+      locationBias: {
+        circle: {
+          center: { latitude: area.lat, longitude: area.lng },
+          radius: area.radius,
+        },
       },
-    },
-  };
+    };
+    if (pageToken) body.pageToken = pageToken;
 
-  const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
-    method: 'POST',
-    headers: {
-      'Content-Type':     'application/json',
-      'X-Goog-Api-Key':   API_KEY,
-      'X-Goog-FieldMask': 'places.id',
-    },
-    body: JSON.stringify(body),
-  });
+    const res = await fetch('https://places.googleapis.com/v1/places:searchText', {
+      method: 'POST',
+      headers: {
+        'Content-Type':     'application/json',
+        'X-Goog-Api-Key':   API_KEY,
+        'X-Goog-FieldMask': 'places.id,nextPageToken',
+      },
+      body: JSON.stringify(body),
+    });
 
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status}: ${await res.text()}`);
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}: ${await res.text()}`);
+    }
+
+    const json = await res.json();
+    if (json.error) throw new Error(json.error.message || 'API error');
+
+    const places = json.places || [];
+    totalCount += places.length;
+
+    if (totalCount >= 60) return '60+';
+    if (places.length < 20 || !json.nextPageToken) break;
+
+    pageToken = json.nextPageToken;
+    // Brief pause between paginated requests to avoid rate limiting
+    await new Promise(r => setTimeout(r, 300));
   }
 
-  const json = await res.json();
-  if (json.error) throw new Error(json.error.message || 'API error');
-
-  const count = (json.places || []).length;
-  // 20 is the API maximum — means there are ≥20 stores (exact total unknown)
-  return count >= 20 ? '60+' : String(count);
+  return totalCount >= 60 ? '60+' : String(totalCount);
 }
 
 // ============================================================
