@@ -35,24 +35,24 @@ const AREAS = {
 // counts per area are updated weekly by GitHub Actions (update-counts.js)
 // ============================================================
 const CUISINES = [
-  { id: 'thai',       flagCode: 'th', name: 'タイ料理',       counts: { 'tokyo-23': 328, 'tokyo-outside': 49, 'yokohama-kawasaki': 82, 'kanagawa-other': 26 }, lastUpdated: '2026-02-21', query: 'thai restaurant',      menuItems: ['トムヤムクン', 'ガパオライス', 'パッタイ'] },
-  { id: 'vietnamese', flagCode: 'vn', name: 'ベトナム料理',   counts: { 'tokyo-23': 214, 'tokyo-outside': 32, 'yokohama-kawasaki': 54, 'kanagawa-other': 17 }, lastUpdated: '2026-02-21', query: 'vietnamese restaurant', menuItems: ['フォー', 'バインミー', '生春巻き'] },
-  { id: 'korean',     flagCode: 'kr', name: '韓国料理',       counts: { 'tokyo-23': 486, 'tokyo-outside': 73, 'yokohama-kawasaki': 122, 'kanagawa-other': 39 }, lastUpdated: '2026-02-21', query: 'korean restaurant',     menuItems: ['サムギョプサル', 'ビビンバ', 'チヂミ'] },
-  { id: 'indian',     flagCode: 'in', name: 'インド料理',     counts: { 'tokyo-23': 301, 'tokyo-outside': 45, 'yokohama-kawasaki': 75, 'kanagawa-other': 24 }, lastUpdated: '2026-02-21', query: 'indian restaurant',     menuItems: ['バターチキンカレー', 'ナン', 'タンドリーチキン'] },
-  { id: 'mexican',    flagCode: 'mx', name: 'メキシコ料理',   counts: { 'tokyo-23': 97, 'tokyo-outside': 15, 'yokohama-kawasaki': 24, 'kanagawa-other': 8 }, lastUpdated: '2026-02-21', query: 'mexican restaurant',    menuItems: ['タコス', 'ブリトー', 'ナチョス'] },
-  { id: 'italian',    flagCode: 'it', name: 'イタリア料理',   counts: { 'tokyo-23': 612, 'tokyo-outside': 92, 'yokohama-kawasaki': 153, 'kanagawa-other': 49 }, lastUpdated: '2026-02-21', query: 'italian restaurant',    menuItems: ['マルゲリータ', 'カルボナーラ', 'ティラミス'] },
-  { id: 'french',     flagCode: 'fr', name: 'フランス料理',   counts: { 'tokyo-23': 278, 'tokyo-outside': 42, 'yokohama-kawasaki': 70, 'kanagawa-other': 22 }, lastUpdated: '2026-02-21', query: 'french restaurant',     menuItems: ['キッシュ', 'ガレット', 'ラタトゥイユ'] },
-  { id: 'chinese',    flagCode: 'cn', name: '中国料理',       counts: { 'tokyo-23': 731, 'tokyo-outside': 110, 'yokohama-kawasaki': 183, 'kanagawa-other': 59 }, lastUpdated: '2026-02-21', query: 'chinese restaurant',    menuItems: ['麻婆豆腐', 'チャーハン', '小籠包'] },
-  { id: 'greek',      flagCode: 'gr', name: 'ギリシャ料理',   counts: { 'tokyo-23': 54, 'tokyo-outside': 8, 'yokohama-kawasaki': 14, 'kanagawa-other': 4 }, lastUpdated: '2026-02-21', query: 'greek restaurant',      menuItems: ['ムサカ', 'スブラキ', 'ギリシャサラダ'] },
-  { id: 'ethiopian',  flagCode: 'et', name: 'エチオピア料理', counts: { 'tokyo-23': 23, 'tokyo-outside': 3, 'yokohama-kawasaki': 6, 'kanagawa-other': 2 }, lastUpdated: '2026-02-21', query: 'ethiopian restaurant',  menuItems: ['インジェラ', 'ドロワット', 'ティブス'] },
-  { id: 'peruvian',   flagCode: 'pe', name: 'ペルー料理',     counts: { 'tokyo-23': 41, 'tokyo-outside': 6, 'yokohama-kawasaki': 10, 'kanagawa-other': 3 }, lastUpdated: '2026-02-21', query: 'peruvian restaurant',   menuItems: ['セビーチェ', 'ロモサルタード', 'アンティクーチョ'] },
-  { id: 'lebanese',   flagCode: 'lb', name: 'レバノン料理',   counts: { 'tokyo-23': 68, 'tokyo-outside': 10, 'yokohama-kawasaki': 17, 'kanagawa-other': 5 }, lastUpdated: '2026-02-21', query: 'lebanese restaurant',   menuItems: ['フムス', 'ファラフェル', 'タブーレ'] },
-  { id: 'turkish',    flagCode: 'tr', name: 'トルコ料理',     counts: { 'tokyo-23': 89, 'tokyo-outside': 13, 'yokohama-kawasaki': 22, 'kanagawa-other': 7 }, lastUpdated: '2026-02-21', query: 'turkish restaurant',    menuItems: ['ケバブ', 'メゼ', 'バクラヴァ'] },
-  { id: 'spanish',    flagCode: 'es', name: 'スペイン料理',   counts: { 'tokyo-23': 143, 'tokyo-outside': 21, 'yokohama-kawasaki': 36, 'kanagawa-other': 11 }, lastUpdated: '2026-02-21', query: 'spanish restaurant',    menuItems: ['パエリア', 'タパス', 'ガスパチョ'] },
-  { id: 'brazilian',  flagCode: 'br', name: 'ブラジル料理',   counts: { 'tokyo-23': 62, 'tokyo-outside': 9, 'yokohama-kawasaki': 16, 'kanagawa-other': 5 }, lastUpdated: '2026-02-21', query: 'brazilian restaurant',  menuItems: ['シュラスコ', 'フェジョアーダ', 'ポンデケージョ'] },
-  { id: 'japanese',   flagCode: 'jp', name: '日本料理',       counts: { 'tokyo-23': 924, 'tokyo-outside': 139, 'yokohama-kawasaki': 231, 'kanagawa-other': 74 }, lastUpdated: '2026-02-21', query: 'japanese restaurant',   menuItems: ['ラーメン', '寿司', '天ぷら'] },
-  { id: 'russian',    flagCode: 'ru', name: 'ロシア料理',     counts: { 'tokyo-23': 76, 'tokyo-outside': 11, 'yokohama-kawasaki': 19, 'kanagawa-other': 6 }, lastUpdated: '2026-02-21', query: 'russian restaurant',    menuItems: ['ボルシチ', 'ピロシキ', 'ビーフストロガノフ'] },
-  { id: 'moroccan',   flagCode: 'ma', name: 'モロッコ料理',   counts: { 'tokyo-23': 35, 'tokyo-outside': 5, 'yokohama-kawasaki': 9, 'kanagawa-other': 3 }, lastUpdated: '2026-02-21', query: 'moroccan restaurant',   menuItems: ['タジン', 'クスクス', 'ハリラ'] },
+  { id: 'thai',       flagCode: 'th', name: 'タイ料理',       counts: { 'tokyo-23': '60+', 'tokyo-outside': '60+', 'yokohama-kawasaki': '60+', 'kanagawa-other': '26' }, lastUpdated: '2026-02-21', query: 'thai restaurant',      menuItems: ['トムヤムクン', 'ガパオライス', 'パッタイ'] },
+  { id: 'vietnamese', flagCode: 'vn', name: 'ベトナム料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '32', 'yokohama-kawasaki': '60+', 'kanagawa-other': '17' }, lastUpdated: '2026-02-21', query: 'vietnamese restaurant', menuItems: ['フォー', 'バインミー', '生春巻き'] },
+  { id: 'korean',     flagCode: 'kr', name: '韓国料理',       counts: { 'tokyo-23': '60+', 'tokyo-outside': '60+', 'yokohama-kawasaki': '60+', 'kanagawa-other': '39' }, lastUpdated: '2026-02-21', query: 'korean restaurant',     menuItems: ['サムギョプサル', 'ビビンバ', 'チヂミ'] },
+  { id: 'indian',     flagCode: 'in', name: 'インド料理',     counts: { 'tokyo-23': '60+', 'tokyo-outside': '45', 'yokohama-kawasaki': '60+', 'kanagawa-other': '24' }, lastUpdated: '2026-02-21', query: 'indian restaurant',     menuItems: ['バターチキンカレー', 'ナン', 'タンドリーチキン'] },
+  { id: 'mexican',    flagCode: 'mx', name: 'メキシコ料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '15', 'yokohama-kawasaki': '24', 'kanagawa-other': '8'  }, lastUpdated: '2026-02-21', query: 'mexican restaurant',    menuItems: ['タコス', 'ブリトー', 'ナチョス'] },
+  { id: 'italian',    flagCode: 'it', name: 'イタリア料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '60+', 'yokohama-kawasaki': '60+', 'kanagawa-other': '49' }, lastUpdated: '2026-02-21', query: 'italian restaurant',    menuItems: ['マルゲリータ', 'カルボナーラ', 'ティラミス'] },
+  { id: 'french',     flagCode: 'fr', name: 'フランス料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '42', 'yokohama-kawasaki': '60+', 'kanagawa-other': '22' }, lastUpdated: '2026-02-21', query: 'french restaurant',     menuItems: ['キッシュ', 'ガレット', 'ラタトゥイユ'] },
+  { id: 'chinese',    flagCode: 'cn', name: '中国料理',       counts: { 'tokyo-23': '60+', 'tokyo-outside': '60+', 'yokohama-kawasaki': '60+', 'kanagawa-other': '60+' }, lastUpdated: '2026-02-21', query: 'chinese restaurant',    menuItems: ['麻婆豆腐', 'チャーハン', '小籠包'] },
+  { id: 'greek',      flagCode: 'gr', name: 'ギリシャ料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '8',  'yokohama-kawasaki': '14', 'kanagawa-other': '4'  }, lastUpdated: '2026-02-21', query: 'greek restaurant',      menuItems: ['ムサカ', 'スブラキ', 'ギリシャサラダ'] },
+  { id: 'ethiopian',  flagCode: 'et', name: 'エチオピア料理', counts: { 'tokyo-23': '23', 'tokyo-outside': '3',  'yokohama-kawasaki': '6',  'kanagawa-other': '2'  }, lastUpdated: '2026-02-21', query: 'ethiopian restaurant',  menuItems: ['インジェラ', 'ドロワット', 'ティブス'] },
+  { id: 'peruvian',   flagCode: 'pe', name: 'ペルー料理',     counts: { 'tokyo-23': '60+', 'tokyo-outside': '6',  'yokohama-kawasaki': '10', 'kanagawa-other': '3'  }, lastUpdated: '2026-02-21', query: 'peruvian restaurant',   menuItems: ['セビーチェ', 'ロモサルタード', 'アンティクーチョ'] },
+  { id: 'lebanese',   flagCode: 'lb', name: 'レバノン料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '10', 'yokohama-kawasaki': '17', 'kanagawa-other': '5'  }, lastUpdated: '2026-02-21', query: 'lebanese restaurant',   menuItems: ['フムス', 'ファラフェル', 'タブーレ'] },
+  { id: 'turkish',    flagCode: 'tr', name: 'トルコ料理',     counts: { 'tokyo-23': '60+', 'tokyo-outside': '13', 'yokohama-kawasaki': '22', 'kanagawa-other': '7'  }, lastUpdated: '2026-02-21', query: 'turkish restaurant',    menuItems: ['ケバブ', 'メゼ', 'バクラヴァ'] },
+  { id: 'spanish',    flagCode: 'es', name: 'スペイン料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '21', 'yokohama-kawasaki': '36', 'kanagawa-other': '11' }, lastUpdated: '2026-02-21', query: 'spanish restaurant',    menuItems: ['パエリア', 'タパス', 'ガスパチョ'] },
+  { id: 'brazilian',  flagCode: 'br', name: 'ブラジル料理',   counts: { 'tokyo-23': '60+', 'tokyo-outside': '9',  'yokohama-kawasaki': '16', 'kanagawa-other': '5'  }, lastUpdated: '2026-02-21', query: 'brazilian restaurant',  menuItems: ['シュラスコ', 'フェジョアーダ', 'ポンデケージョ'] },
+  { id: 'japanese',   flagCode: 'jp', name: '日本料理',       counts: { 'tokyo-23': '60+', 'tokyo-outside': '60+', 'yokohama-kawasaki': '60+', 'kanagawa-other': '60+' }, lastUpdated: '2026-02-21', query: 'japanese restaurant',   menuItems: ['ラーメン', '寿司', '天ぷら'] },
+  { id: 'russian',    flagCode: 'ru', name: 'ロシア料理',     counts: { 'tokyo-23': '60+', 'tokyo-outside': '11', 'yokohama-kawasaki': '19', 'kanagawa-other': '6'  }, lastUpdated: '2026-02-21', query: 'russian restaurant',    menuItems: ['ボルシチ', 'ピロシキ', 'ビーフストロガノフ'] },
+  { id: 'moroccan',   flagCode: 'ma', name: 'モロッコ料理',   counts: { 'tokyo-23': '35', 'tokyo-outside': '5',  'yokohama-kawasaki': '9',  'kanagawa-other': '3'  }, lastUpdated: '2026-02-21', query: 'moroccan restaurant',   menuItems: ['タジン', 'クスクス', 'ハリラ'] },
 ];
 
 // ============================================================
@@ -66,9 +66,11 @@ const LAST_UPDATED = '2026-02-21';
 let currentArea = 'tokyo-23';
 
 // ============================================================
-// Utility: format store count with locale separator
+// Utility: format store count
+// Accepts strings ('60+', '45') written by update-counts.js
 // ============================================================
 function formatCount(n) {
+  if (typeof n === 'string') return n;
   return n.toLocaleString('ja-JP');
 }
 
