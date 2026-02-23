@@ -1,8 +1,7 @@
 {
   "lastUpdated": "2026-02-23",
   "data": {
-    "thai": {
-      "name": "タイ料理",
+    "タイ料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -20,8 +19,7 @@
         "restaurants": []
       }
     },
-    "vietnamese": {
-      "name": "ベトナム料理",
+    "ベトナム料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -39,8 +37,7 @@
         "restaurants": []
       }
     },
-    "korean": {
-      "name": "韓国料理",
+    "韓国料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -58,8 +55,7 @@
         "restaurants": []
       }
     },
-    "indian-nepali": {
-      "name": "インド・ネパール料理",
+    "インド・ネパール料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -77,8 +73,7 @@
         "restaurants": []
       }
     },
-    "south-indian": {
-      "name": "南インド料理",
+    "南インド料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -96,8 +91,7 @@
         "restaurants": []
       }
     },
-    "machi-chuka": {
-      "name": "町中華",
+    "町中華": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -115,8 +109,7 @@
         "restaurants": []
       }
     },
-    "honkaku-chuka": {
-      "name": "本格中華",
+    "本格中華": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -134,8 +127,7 @@
         "restaurants": []
       }
     },
-    "taiwanese": {
-      "name": "台湾料理",
+    "台湾料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -153,8 +145,7 @@
         "restaurants": []
       }
     },
-    "mexican": {
-      "name": "メキシコ料理",
+    "メキシコ料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -172,8 +163,7 @@
         "restaurants": []
       }
     },
-    "italian": {
-      "name": "イタリア料理",
+    "イタリア料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -191,8 +181,7 @@
         "restaurants": []
       }
     },
-    "french": {
-      "name": "フランス料理",
+    "フランス料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -210,8 +199,7 @@
         "restaurants": []
       }
     },
-    "greek": {
-      "name": "ギリシャ料理",
+    "ギリシャ料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -229,8 +217,7 @@
         "restaurants": []
       }
     },
-    "middle-eastern": {
-      "name": "中東料理",
+    "中東料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -248,8 +235,7 @@
         "restaurants": []
       }
     },
-    "peruvian": {
-      "name": "ペルー料理",
+    "ペルー料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -267,8 +253,7 @@
         "restaurants": []
       }
     },
-    "turkish": {
-      "name": "トルコ料理",
+    "トルコ料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -286,8 +271,7 @@
         "restaurants": []
       }
     },
-    "spanish": {
-      "name": "スペイン料理",
+    "スペイン料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -305,8 +289,7 @@
         "restaurants": []
       }
     },
-    "brazilian": {
-      "name": "ブラジル料理",
+    "ブラジル料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -324,8 +307,7 @@
         "restaurants": []
       }
     },
-    "african": {
-      "name": "アフリカ料理",
+    "アフリカ料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -343,8 +325,7 @@
         "restaurants": []
       }
     },
-    "sri-lankan": {
-      "name": "スリランカ料理",
+    "スリランカ料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -362,8 +343,7 @@
         "restaurants": []
       }
     },
-    "mongolian": {
-      "name": "モンゴル料理",
+    "モンゴル料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -381,8 +361,7 @@
         "restaurants": []
       }
     },
-    "singaporean": {
-      "name": "シンガポール料理",
+    "シンガポール料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -400,8 +379,7 @@
         "restaurants": []
       }
     },
-    "uzbek": {
-      "name": "ウズベキスタン料理",
+    "ウズベキスタン料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
@@ -419,8 +397,7 @@
         "restaurants": []
       }
     },
-    "british": {
-      "name": "イギリス料理",
+    "イギリス料理": {
       "tokyo-23": {
         "count": 0,
         "restaurants": []
