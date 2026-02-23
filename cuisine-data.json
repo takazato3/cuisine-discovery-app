@@ -1,4 +1,442 @@
 {
-  "lastUpdated": null,
-  "data": {}
+  "lastUpdated": "2026-02-23",
+  "data": {
+    "thai": {
+      "name": "タイ料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "vietnamese": {
+      "name": "ベトナム料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "korean": {
+      "name": "韓国料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "indian-nepali": {
+      "name": "インド・ネパール料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "south-indian": {
+      "name": "南インド料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "machi-chuka": {
+      "name": "町中華",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "honkaku-chuka": {
+      "name": "本格中華",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "taiwanese": {
+      "name": "台湾料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "mexican": {
+      "name": "メキシコ料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "italian": {
+      "name": "イタリア料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "french": {
+      "name": "フランス料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "greek": {
+      "name": "ギリシャ料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "middle-eastern": {
+      "name": "中東料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "peruvian": {
+      "name": "ペルー料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "turkish": {
+      "name": "トルコ料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "spanish": {
+      "name": "スペイン料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "brazilian": {
+      "name": "ブラジル料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "african": {
+      "name": "アフリカ料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "sri-lankan": {
+      "name": "スリランカ料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "mongolian": {
+      "name": "モンゴル料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "singaporean": {
+      "name": "シンガポール料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "uzbek": {
+      "name": "ウズベキスタン料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    },
+    "british": {
+      "name": "イギリス料理",
+      "tokyo-23": {
+        "count": 0,
+        "restaurants": []
+      },
+      "tokyo-outside": {
+        "count": 0,
+        "restaurants": []
+      },
+      "yokohama-kawasaki": {
+        "count": 0,
+        "restaurants": []
+      },
+      "kanagawa-other": {
+        "count": 0,
+        "restaurants": []
+      }
+    }
+  }
 }
