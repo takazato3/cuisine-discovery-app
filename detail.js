@@ -456,7 +456,7 @@ async function init() {
       lastUpdatedEl.textContent = data.lastUpdated || '—';
     }
 
-    const cuisineEntry = data.data?.[cuisineId];
+    const cuisineEntry = data.data?.[cuisineName];
     const areaEntry    = cuisineEntry?.[area];
     const restaurants  = areaEntry?.restaurants;
 
