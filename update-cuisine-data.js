@@ -181,6 +181,7 @@ function formatDate(date) {
 // ============================================================
 async function main() {
   console.log('=== update-cuisine-data.js ===');
+  console.log(`API Key: ${process.env.GOOGLE_MAPS_API_KEY ? 'Set' : 'Missing'}`);
   console.log(`${CUISINES.length} cuisines × ${Object.keys(AREAS).length} areas\n`);
 
   const today  = formatDate(new Date());
@@ -190,14 +191,17 @@ async function main() {
   let totalFail = 0;
 
   for (const cuisine of CUISINES) {
-    result.data[cuisine.id] = { name: cuisine.name };
+    result.data[cuisine.name] = {};
     console.log(`\n🍽️  ${cuisine.name}`);
 
     for (const [areaId, area] of Object.entries(AREAS)) {
+      console.log(`  Area: ${areaId}`);
       let restaurants = [];
       try {
         const raw = await fetchRestaurants(cuisine, areaId, area);
+        console.log(`  Found ${raw.length} restaurants`);
         restaurants = filterByArea(raw, areaId);
+        console.log(`  After filtering: ${restaurants.length} restaurants`);
         console.log(`  ✓ ${areaId}: ${raw.length}件取得 → ${restaurants.length}件（住所フィルタ後）`);
         totalOk++;
       } catch (err) {
@@ -205,7 +209,7 @@ async function main() {
         totalFail++;
       }
 
-      result.data[cuisine.id][areaId] = {
+      result.data[cuisine.name][areaId] = {
         count:       restaurants.length,
         restaurants,
       };
@@ -232,7 +236,7 @@ async function main() {
 
   for (const cuisine of CUISINES) {
     for (const areaId of Object.keys(AREAS)) {
-      const count    = result.data[cuisine.id]?.[areaId]?.count ?? 0;
+      const count    = result.data[cuisine.name]?.[areaId]?.count ?? 0;
       const countStr = String(count);
       const regex    = new RegExp(
         `(id:\\s*'${cuisine.id}'[^\\n]*'${areaId}':\\s*)(?:'[^']*'|\\d+)`
