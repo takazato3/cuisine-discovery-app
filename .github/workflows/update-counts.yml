@@ -23,10 +23,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Update restaurant counts
+      - name: Update cuisine data (restaurant details + counts)
         env:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
-        run: node update-counts.js
+        run: node update-cuisine-data.js
 
       - name: Update discoveries
         env:
@@ -37,11 +37,11 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add app.js discoveries.json
+          git add app.js cuisine-data.json discoveries.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
             DATE=$(date -u +%Y-%m-%d)
-            git commit -m "chore: update counts and discoveries [${DATE}] [skip ci]"
+            git commit -m "chore: update restaurant data and discoveries [${DATE}] [skip ci]"
             git push origin main
           fi

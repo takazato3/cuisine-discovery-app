@@ -198,8 +198,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderGrid();
 
-  const updateInfoEl = document.getElementById('update-info');
-  if (updateInfoEl) {
-    updateInfoEl.textContent = `店舗数更新日: ${formatJapaneseDate(LAST_UPDATED)}`;
+  // Show last-updated date from cuisine-data.json (falls back to LAST_UPDATED in app.js)
+  const lastUpdatedEl = document.getElementById('last-updated');
+  if (lastUpdatedEl) {
+    fetch('cuisine-data.json')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        const date = data?.lastUpdated || LAST_UPDATED;
+        lastUpdatedEl.textContent = date ? formatJapaneseDate(date) : '—';
+      })
+      .catch(() => {
+        lastUpdatedEl.textContent = formatJapaneseDate(LAST_UPDATED);
+      });
   }
 });
