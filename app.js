@@ -63,7 +63,7 @@ const CUISINES = [
 // ============================================================
 // Last updated date — rewritten weekly by update-counts.js
 // ============================================================
-const LAST_UPDATED = '2026-02-21';
+const LAST_UPDATED = '2026-02-23';
 
 // ============================================================
 // Current area state
