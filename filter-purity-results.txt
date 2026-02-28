@@ -1,5 +1,5 @@
 === Google Places API 2次フィルタ純度検証 ===
-実行日時: 2026-02-28T07:34:36.887Z
+実行日時: 2026-02-28T07:46:00.494Z
 エリア: 東京23区中心 (lat: 35.6762, lng: 139.6503, radius: 12000m)
 クエリ数: 12件
 
@@ -22,7 +22,7 @@
    types: argentinian_restaurant, south_american_restaurant
 2. Casa de Eduardo チリ料理 新中野
    primaryType: chilean_restaurant
-   types: chilean_restaurant, japanese_izakaya_restaurant, latin_american_restaurant, barbecue_restaurant, japanese_restaurant
+   types: chilean_restaurant, barbecue_restaurant, latin_american_restaurant, japanese_izakaya_restaurant, japanese_restaurant
 
 【フィルタ後の店舗（最大10件）】
 1. Lima Grill
@@ -48,7 +48,7 @@
    types: peruvian_restaurant
 8. ペルー料理 ミラフローレス 渋谷桜ヶ丘店
    primaryType: peruvian_restaurant
-   types: peruvian_restaurant, japanese_izakaya_restaurant, latin_american_restaurant, japanese_restaurant, south_american_restaurant
+   types: peruvian_restaurant, latin_american_restaurant, south_american_restaurant, japanese_izakaya_restaurant, japanese_restaurant
 9. ペルー料理 マリネラ
    primaryType: peruvian_restaurant
    types: peruvian_restaurant
@@ -87,10 +87,10 @@
    types: hamburger_restaurant, american_restaurant
 5. 代官山CarneSio
    primaryType: italian_restaurant
-   types: italian_restaurant, bistro, steak_house
+   types: italian_restaurant, steak_house, bistro
 6. Latina PARRILLA（ラティーナ パリージャ）
    primaryType: steak_house
-   types: steak_house, yakiniku_restaurant, barbecue_restaurant, japanese_restaurant
+   types: steak_house, barbecue_restaurant, yakiniku_restaurant, japanese_restaurant
 7. Restaurante Bar Porteno(リストランテバル・ポルテーニョ)
    primaryType: bar_and_grill
    types: bar_and_grill, bar
@@ -119,7 +119,7 @@
    types: argentinian_restaurant, steak_house, south_american_restaurant
 5. La Nostalgia
    primaryType: restaurant
-   types: cafe, argentinian_restaurant, south_american_restaurant, deli, food_store, store
+   types: deli, cafe, argentinian_restaurant, south_american_restaurant, food_store, store
 6. AREVA（ステーキ＆BAR）
    primaryType: bar_and_grill
    types: bar_and_grill, steak_house, karaoke, argentinian_restaurant, south_american_restaurant, night_club, bar
@@ -146,7 +146,7 @@
 【除外された店舗（最大10件）】
 1. Kebab Chef ケバブ シェフ レストラン 下北沢
    primaryType: restaurant
-   types: kebab_shop, yakiniku_restaurant, japanese_restaurant, meal_takeaway
+   types: yakiniku_restaurant, kebab_shop, meal_takeaway, japanese_restaurant
 2. ザクロ
    primaryType: middle_eastern_restaurant
    types: middle_eastern_restaurant, asian_restaurant
@@ -267,7 +267,7 @@
    types: indian_restaurant
 2. サウスパーク浅草 ケララの味
    primaryType: indian_restaurant
-   types: indian_restaurant, fine_dining_restaurant, halal_restaurant, diner, asian_restaurant
+   types: indian_restaurant, halal_restaurant, diner, asian_restaurant, fine_dining_restaurant
 
 【フィルタ後の店舗（最大10件）】
 1. エリックサウス 八重洲店
@@ -281,19 +281,19 @@
    types: south_indian_restaurant, indian_restaurant
 4. マサラバイツ
    primaryType: vegan_restaurant
-   types: vegan_restaurant, vegetarian_restaurant, south_indian_restaurant, pakistani_restaurant, north_indian_restaurant, indian_restaurant
+   types: vegan_restaurant, south_indian_restaurant, vegetarian_restaurant, pakistani_restaurant, north_indian_restaurant, indian_restaurant
 5. ナンディニ 虎ノ門店
    primaryType: south_indian_restaurant
    types: south_indian_restaurant, indian_restaurant
 6. アーンドラ・ダイニング 渋谷
    primaryType: indian_restaurant
    types: indian_restaurant, south_indian_restaurant
-7. Uneeda Curry
-   primaryType: south_indian_restaurant
-   types: south_indian_restaurant, indian_restaurant
-8. SOUTH INDIAN DHABA
+7. SOUTH INDIAN DHABA
    primaryType: south_indian_restaurant
    types: south_indian_restaurant, halal_restaurant, indian_restaurant
+8. Uneeda Curry
+   primaryType: south_indian_restaurant
+   types: south_indian_restaurant, indian_restaurant
 9. ケララキッチン
    primaryType: indian_restaurant
    types: indian_restaurant, south_indian_restaurant
@@ -335,19 +335,19 @@
    types: indian_restaurant
 6. アナム 銀座店
    primaryType: indian_restaurant
-   types: indian_restaurant, vegan_restaurant, halal_restaurant, vegetarian_restaurant, pakistani_restaurant, asian_restaurant
+   types: indian_restaurant, halal_restaurant, vegan_restaurant, vegetarian_restaurant, asian_restaurant, pakistani_restaurant
 7. ミラン 下高井戸店
    primaryType: indian_restaurant
    types: indian_restaurant
 8. インド料理パトワール 新宿店
    primaryType: indian_restaurant
-   types: indian_restaurant, japanese_curry_restaurant, meal_delivery, meal_takeaway, food_delivery, japanese_restaurant
+   types: indian_restaurant, japanese_curry_restaurant, meal_takeaway, meal_delivery, food_delivery, japanese_restaurant
 9. TOMBOY 渋谷106道玄坂店｜ランチ ディナー｜宴会 飲み放題 安い
    primaryType: japanese_restaurant
-   types: japanese_curry_restaurant, banquet_hall, japanese_izakaya_restaurant, brunch_restaurant, thai_restaurant, cafe, meal_takeaway, japanese_restaurant, indian_restaurant, event_venue
+   types: banquet_hall, japanese_curry_restaurant, thai_restaurant, japanese_izakaya_restaurant, brunch_restaurant, cafe, meal_takeaway, japanese_restaurant, indian_restaurant, event_venue
 10. インド料理 ミラン・ナタラジ 渋谷店
    primaryType: indian_restaurant
-   types: indian_restaurant, japanese_curry_restaurant, vegan_restaurant, buffet_restaurant, vegetarian_restaurant, japanese_restaurant
+   types: indian_restaurant, vegan_restaurant, vegetarian_restaurant, japanese_curry_restaurant, buffet_restaurant, japanese_restaurant
 
 【判定】
 ✅ 優秀（純度100.0%）
@@ -368,22 +368,22 @@
 【除外された店舗（最大10件）】
 1. SINGAPORE HOLIC LAKSA
    primaryType: restaurant
-   types: thai_restaurant, asian_restaurant, vietnamese_restaurant
+   types: asian_restaurant, thai_restaurant, vietnamese_restaurant
 2. SINGAPORE CUISINE SINKIES（シンガポールキュイジーヌシンキーズ）
    primaryType: restaurant
    types: 
 3. 獅天鶏飯
    primaryType: restaurant
-   types: japanese_izakaya_restaurant, chinese_restaurant, asian_restaurant, japanese_restaurant
+   types: japanese_izakaya_restaurant, asian_restaurant, chinese_restaurant, japanese_restaurant
 4. SLOWJAM GARAGE Singaporean Cuisine
    primaryType: restaurant
-   types: thai_restaurant, japanese_izakaya_restaurant, japanese_curry_restaurant, ramen_restaurant, chinese_restaurant, indonesian_restaurant, japanese_restaurant
+   types: japanese_curry_restaurant, japanese_izakaya_restaurant, ramen_restaurant, thai_restaurant, chinese_restaurant, indonesian_restaurant, japanese_restaurant
 5. Rayard Mityashita Park Singapore Chicken Rice
    primaryType: chicken_restaurant
    types: chicken_restaurant
 6. 海南鶏飯食堂 渋谷 MIYASHITA PARK
    primaryType: restaurant
-   types: japanese_izakaya_restaurant, cafe, asian_restaurant, snack_bar, meal_takeaway, japanese_restaurant
+   types: snack_bar, japanese_izakaya_restaurant, asian_restaurant, meal_takeaway, cafe, japanese_restaurant
 7. オリエンタル カフェ&レストラン
    primaryType: restaurant
    types: 
@@ -431,7 +431,7 @@
    types: mongolian_barbecue_restaurant, asian_restaurant
 5. モンゴル料理老綏元
    primaryType: asian_restaurant
-   types: asian_restaurant, japanese_izakaya_restaurant, hot_pot_restaurant, chinese_restaurant, yakiniku_restaurant, japanese_restaurant, banquet_hall, event_venue
+   types: asian_restaurant, banquet_hall, yakiniku_restaurant, hot_pot_restaurant, japanese_izakaya_restaurant, japanese_restaurant, chinese_restaurant, event_venue
 6. モンゴル料理ウランバートル
    primaryType: restaurant
    types: 
@@ -440,7 +440,7 @@
    types: mongolian_barbecue_restaurant
 8. 青空
    primaryType: asian_restaurant
-   types: asian_restaurant, japanese_izakaya_restaurant, mongolian_barbecue_restaurant, japanese_restaurant
+   types: asian_restaurant, mongolian_barbecue_restaurant, japanese_izakaya_restaurant, japanese_restaurant
 9. ヤマダモンゴル
    primaryType: restaurant
    types: 
@@ -491,7 +491,7 @@
    types: irish_pub, pub, bar
 8. The Rising Sun
    primaryType: pub
-   types: pub, japanese_izakaya_restaurant, bar_and_grill, japanese_restaurant, bar
+   types: pub, bar_and_grill, japanese_izakaya_restaurant, bar, japanese_restaurant
 9. Publion パブリオン
    primaryType: irish_pub
    types: irish_pub, sports_bar, pub, bar
@@ -502,31 +502,31 @@
 【フィルタ後の店舗（最大10件）】
 1. The Old Arrow オールドアロウ
    primaryType: pub
-   types: pub, gastropub, bar, british_restaurant
+   types: pub, gastropub, british_restaurant, bar
 2. スワン＆ライオン
    primaryType: japanese_izakaya_restaurant
-   types: japanese_izakaya_restaurant, pub, japanese_restaurant, bar, british_restaurant
+   types: japanese_izakaya_restaurant, pub, british_restaurant, bar, japanese_restaurant
 3. BESPOQUE | ビスポーク
    primaryType: british_restaurant
-   types: gastropub, bar, british_restaurant
+   types: gastropub, british_restaurant, bar
 4. THE R.C.ARMS 有楽町店
    primaryType: restaurant
-   types: fish_and_chips_restaurant, pub, bar, british_restaurant
+   types: fish_and_chips_restaurant, pub, british_restaurant, bar
 5. 銀座アームス
    primaryType: pub
-   types: pub, lounge_bar, bistro, bar_and_grill, french_restaurant, night_club, bar, italian_restaurant, german_restaurant, european_restaurant, british_restaurant
+   types: pub, bar_and_grill, lounge_bar, night_club, bistro, british_restaurant, bar, italian_restaurant, french_restaurant, german_restaurant, european_restaurant
 6. THE R.C. GATE 神田店
    primaryType: pub
-   types: pub, bar, british_restaurant
+   types: pub, british_restaurant, bar
 7. THE GRAFTON
    primaryType: gastropub
-   types: gastropub, brewpub, irish_pub, sports_bar, pub, bar, british_restaurant
+   types: gastropub, brewpub, sports_bar, irish_pub, pub, british_restaurant, bar
 8. THE R.C. ARMS 新橋店
    primaryType: bar
-   types: pub, bar, british_restaurant
+   types: pub, british_restaurant, bar
 9. Lighthouse Tokyo
    primaryType: dutch_restaurant
-   types: dutch_restaurant, pub, bar, british_restaurant
+   types: dutch_restaurant, pub, british_restaurant, bar
 
 【判定】
 ❌ 使用不可（純度45.0%）
@@ -612,7 +612,7 @@
    types: ramen_restaurant, halal_restaurant, vegetarian_restaurant, japanese_restaurant
 3. 95YOOYA (၉၅ရိုးရာ)
    primaryType: burmese_restaurant
-   types: burmese_restaurant, tapas_restaurant, halal_restaurant, breakfast_restaurant, chinese_restaurant, vegan_restaurant, vegetarian_restaurant
+   types: burmese_restaurant, tapas_restaurant, halal_restaurant, breakfast_restaurant, vegan_restaurant, vegetarian_restaurant, chinese_restaurant
 4. SINGAPORE HOLIC LAKSA
    primaryType: restaurant
    types: thai_restaurant, asian_restaurant, vietnamese_restaurant
@@ -635,7 +635,7 @@
    types: malaysian_restaurant
 4. マレーカンポンコピティアム（Malaysia Halal Cafe restaurant）水道橋店
    primaryType: cafe
-   types: cafe, halal_restaurant, malaysian_restaurant
+   types: cafe, malaysian_restaurant, halal_restaurant
 5. ペナン レストラン
    primaryType: malaysian_restaurant
    types: malaysian_restaurant
@@ -644,7 +644,7 @@
    types: malaysian_restaurant
 7. マレーシア屋台食堂ちりばり malaysian restaurant Chilibali
    primaryType: malaysian_restaurant
-   types: malaysian_restaurant, halal_restaurant, thai_restaurant, japanese_izakaya_restaurant, japanese_curry_restaurant, asian_restaurant, vietnamese_restaurant, japanese_restaurant
+   types: malaysian_restaurant, thai_restaurant, halal_restaurant, japanese_izakaya_restaurant, asian_restaurant, japanese_curry_restaurant, vietnamese_restaurant, japanese_restaurant
 8. 馬来西亜マレー
    primaryType: malaysian_restaurant
    types: malaysian_restaurant, asian_restaurant
@@ -686,10 +686,10 @@
    types: 
 5. MBハラール和牛ラーメン 大久保
    primaryType: restaurant
-   types: ramen_restaurant, halal_restaurant, japanese_restaurant, indonesian_restaurant
+   types: halal_restaurant, ramen_restaurant, indonesian_restaurant, japanese_restaurant
 6. アロヒディン 日本橋店
    primaryType: restaurant
-   types: asian_restaurant, turkish_restaurant, wine_bar, kebab_shop, bar, meal_takeaway
+   types: kebab_shop, wine_bar, turkish_restaurant, asian_restaurant, meal_takeaway, bar
 7. サライケバブ東新宿店
    primaryType: turkish_restaurant
    types: turkish_restaurant
