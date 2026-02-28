@@ -1,19 +1,66 @@
 {
-  "lastUpdated": "2026-02-23",
+  "lastUpdated": "2026-02-28",
   "discoveries": [
     {
       "cuisineName": "エチオピア料理",
       "flag": "🇪🇹",
-      "totalCount": 4,
+      "totalCount": 12,
       "byArea": {
+        "yokohama-kawasaki": {
+          "count": 6,
+          "restaurants": [
+            {
+              "name": "DUNA TAPARI",
+              "address": "日本、〒210-0023 神奈川県川崎市川崎区小川町１３−５",
+              "placeId": "ChIJoYG-SNFhGGARQeFABa2AkUU",
+              "area": "川崎市川崎区小川町"
+            },
+            {
+              "name": "Little Ethiopia Restaurant & Bar Yotsugi እንቅፋት リトルエチオピア レストラン バー",
+              "address": "日本、〒124-0014 東京都葛飾区東四つ木３丁目２３−６",
+              "placeId": "ChIJ0SzxlUGPGGARaH1rxMypVoo",
+              "area": "葛飾区"
+            },
+            {
+              "name": "ARCO IRIS アルコイリス 川崎店",
+              "address": "日本、〒212-0012 神奈川県川崎市幸区中幸町３丁目32−４ アネックス・プラザ 川崎 １F",
+              "placeId": "ChIJuRfSYJ5gGGARX1Ui2ncf5Cc",
+              "area": "川崎市幸区中幸町"
+            },
+            {
+              "name": "ヒマラヤ",
+              "address": "日本、〒210-0005 神奈川県川崎市川崎区東田町８ 1F",
+              "placeId": "ChIJ00oF-bxgGGARlrooeiMrHmk",
+              "area": "川崎市川崎区東田町"
+            },
+            {
+              "name": "クィーン シーバ",
+              "address": "日本、〒153-0043 東京都目黒区東山１丁目３−１",
+              "placeId": "ChIJb0-8gU2LGGARwdHutY8JjXM",
+              "area": "目黒区"
+            },
+            {
+              "name": "レストラン アディス(Addis 都立大学)",
+              "address": "日本、〒152-0031 東京都目黒区中根２丁目３−１５ Kiビル 2F",
+              "placeId": "ChIJmV1o69j0GGARYO92uosFTIk",
+              "area": "目黒区"
+            }
+          ]
+        },
         "kanagawa-other": {
-          "count": 4,
+          "count": 6,
           "restaurants": [
             {
               "name": "Little Ethiopia Restaurant & Bar Yotsugi እንቅፋት リトルエチオピア レストラン バー",
               "address": "日本、〒124-0014 東京都葛飾区東四つ木３丁目２３−６",
               "placeId": "ChIJ0SzxlUGPGGARaH1rxMypVoo",
               "area": "葛飾区"
+            },
+            {
+              "name": "CARVAAN BAY YOKOHAMA",
+              "address": "日本、〒231-0062 神奈川県横浜市中区桜木町１丁目１−７",
+              "placeId": "ChIJySFMRG1dGGARXN7p-2eOCc4",
+              "area": "横浜市中区桜木町"
             },
             {
               "name": "クィーン シーバ",
@@ -32,6 +79,12 @@
               "address": "日本、〒231-0023 神奈川県横浜市中区山下町８２ 徳永ビル 1F",
               "placeId": "ChIJPVAHVJVdGGARzasUu2-BEBI",
               "area": "横浜市中区山下町"
+            },
+            {
+              "name": "マンゴツリーキッチン横浜ジョイナス",
+              "address": "日本、〒220-0005 神奈川県横浜市西区南幸１丁目５−１ ジョイナス B1F",
+              "placeId": "ChIJS2heIxJcGGARYWxzrDAHPu0",
+              "area": "横浜市西区"
             }
           ]
         }
@@ -40,10 +93,10 @@
     {
       "cuisineName": "ジョージア料理",
       "flag": "🇬🇪",
-      "totalCount": 8,
+      "totalCount": 6,
       "byArea": {
         "tokyo-outside": {
-          "count": 3,
+          "count": 2,
           "restaurants": [
             {
               "name": "Georgian Bistro and Wine Bar Ajika",
@@ -56,29 +109,17 @@
               "address": "日本、〒160-0022 東京都新宿区新宿３丁目２１−６ 新宿龍生堂ビル B1",
               "placeId": "ChIJKxsG8tmMGGARVZdRDZCeFTk",
               "area": "新宿区"
-            },
-            {
-              "name": "GoodTime東京赤坂",
-              "address": "日本、〒107-0052 東京都港区赤坂７丁目９−６ MIMARU東京赤坂 １F",
-              "placeId": "ChIJ_wwe6dCLGGARs54w-FZGxx4",
-              "area": "港区"
             }
           ]
         },
         "kanagawa-other": {
-          "count": 5,
+          "count": 4,
           "restaurants": [
             {
-              "name": "Deli＆Restaurant Bar Maachin",
-              "address": "日本、〒231-0023 神奈川県横浜市中区山下町８２ 徳永ビル 1F",
-              "placeId": "ChIJPVAHVJVdGGARzasUu2-BEBI",
-              "area": "横浜市中区山下町"
-            },
-            {
-              "name": "Georgian Bistro and Wine Bar Ajika",
-              "address": "神楽坂センタービル ANNEX1階, 3-6 袋町 新宿区 東京都 162-0828 日本",
-              "placeId": "ChIJrUJE9FeNGGARBBFZBwCxHvs",
-              "area": "袋町"
+              "name": "カサ・デ・フジモリ 関内店",
+              "address": "日本、〒231-0012 神奈川県横浜市中区相生町２丁目４１",
+              "placeId": "ChIJyV9GZABdGGARkUcuHMY-81w",
+              "area": "横浜市中区相生町"
             },
             {
               "name": "ARCO IRIS アルコイリス 川崎店",
@@ -87,16 +128,16 @@
               "area": "川崎市幸区中幸町"
             },
             {
-              "name": "ノスタルジー",
-              "address": "日本、〒153-0051 東京都目黒区上目黒２丁目２１−９",
-              "placeId": "ChIJS_N6ITaLGGARzuXhd-xi-Rk",
-              "area": "目黒区"
+              "name": "Deli＆Restaurant Bar Maachin",
+              "address": "日本、〒231-0023 神奈川県横浜市中区山下町８２ 徳永ビル 1F",
+              "placeId": "ChIJPVAHVJVdGGARzasUu2-BEBI",
+              "area": "横浜市中区山下町"
             },
             {
-              "name": "横濱元町 霧笛楼",
-              "address": "日本、〒231-0861 神奈川県横浜市中区元町２丁目９６",
-              "placeId": "ChIJed_pv-FcGGARRWJ5GBKepSg",
-              "area": "横浜市中区元町"
+              "name": "ミゲルフアニ 横浜店",
+              "address": "日本、〒231-0001 神奈川県横浜市中区新港１丁目３−１ MARINE & WALK YOKOHAMA B棟 2F",
+              "placeId": "ChIJE49iqFdcGGAR69-81P-Fi-o",
+              "area": "横浜市中区"
             }
           ]
         }
@@ -105,10 +146,63 @@
     {
       "cuisineName": "イラン料理",
       "flag": "🇮🇷",
-      "totalCount": 3,
+      "totalCount": 12,
       "byArea": {
+        "yokohama-kawasaki": {
+          "count": 8,
+          "restaurants": [
+            {
+              "name": "Caspian",
+              "address": "日本、〒230-0077 神奈川県横浜市鶴見区東寺尾４丁目７−１４ ペルシャビル １F",
+              "placeId": "ChIJ-UvK_ndeGGARiZ_7_nFaB1Q",
+              "area": "横浜市鶴見区"
+            },
+            {
+              "name": "ワルンヌサデゥア",
+              "address": "4F, 11-8 東田町 川崎区 川崎市 神奈川県 210-0005 日本",
+              "placeId": "ChIJP5B41RVhGGARtUv-9pXopJo",
+              "area": "東田町"
+            },
+            {
+              "name": "アラビアン ビリヤニハウス",
+              "address": "日本、〒212-0016 神奈川県川崎市幸区南幸町２丁目２０−８",
+              "placeId": "ChIJXURwp6phGGARH2nbweQn9Kk",
+              "area": "川崎市幸区南幸町"
+            },
+            {
+              "name": "REY ペルー料理レストラン",
+              "address": "日本、〒211-0064 神奈川県川崎市中原区今井南町１９−２",
+              "placeId": "ChIJnwDMMBr1GGARwE7lR0cZovY",
+              "area": "川崎市中原区今井南町"
+            },
+            {
+              "name": "イラン料理レストラン アラジン",
+              "address": "日本、〒150-0012 東京都渋谷区広尾５丁目１４−１４",
+              "placeId": "ChIJgfxbRHeLGGAR8Z--GxaqT0Y",
+              "area": "渋谷区"
+            },
+            {
+              "name": "J's STORE",
+              "address": "日本、〒231-0055 神奈川県横浜市中区末吉町１丁目２３ 1F",
+              "placeId": "ChIJofowh4xcGGARnjgLPF1q7Ig",
+              "area": "横浜市中区末吉町"
+            },
+            {
+              "name": "WARUNG NUSA DUA HANEDA",
+              "address": "日本、〒144-0043 東京都大田区羽田４丁目４−１６",
+              "placeId": "ChIJI4eybL9hGGARcd0HpfKsslo",
+              "area": "大田区"
+            },
+            {
+              "name": "DUNA TAPARI",
+              "address": "日本、〒210-0023 神奈川県川崎市川崎区小川町１３−５",
+              "placeId": "ChIJoYG-SNFhGGARQeFABa2AkUU",
+              "area": "川崎市川崎区小川町"
+            }
+          ]
+        },
         "kanagawa-other": {
-          "count": 3,
+          "count": 4,
           "restaurants": [
             {
               "name": "Caspian",
@@ -123,6 +217,12 @@
               "area": "長者町"
             },
             {
+              "name": "CARVAAN BAY YOKOHAMA",
+              "address": "日本、〒231-0062 神奈川県横浜市中区桜木町１丁目１−７",
+              "placeId": "ChIJySFMRG1dGGARXN7p-2eOCc4",
+              "area": "横浜市中区桜木町"
+            },
+            {
               "name": "キッチンローズ",
               "address": "日本、〒240-0065 神奈川県横浜市保土ケ谷区和田１丁目１２−２１ 青木店舗 3",
               "placeId": "ChIJxZ2exMRbGGARD0986ChA_zs",
@@ -135,10 +235,10 @@
     {
       "cuisineName": "モロッコ料理",
       "flag": "🇲🇦",
-      "totalCount": 7,
+      "totalCount": 5,
       "byArea": {
         "kanagawa-other": {
-          "count": 7,
+          "count": 5,
           "restaurants": [
             {
               "name": "CARVAAN BAY YOKOHAMA",
@@ -165,18 +265,6 @@
               "area": "横浜市西区"
             },
             {
-              "name": "Mira! たまプラーザ",
-              "address": "日本、〒225-0002 神奈川県横浜市青葉区美しが丘１丁目１２−３ 102",
-              "placeId": "ChIJV4vEwBb3GGAR5_DVQFiCFFw",
-              "area": "横浜市青葉区"
-            },
-            {
-              "name": "Deli＆Restaurant Bar Maachin",
-              "address": "日本、〒231-0023 神奈川県横浜市中区山下町８２ 徳永ビル 1F",
-              "placeId": "ChIJPVAHVJVdGGARzasUu2-BEBI",
-              "area": "横浜市中区山下町"
-            },
-            {
               "name": "ル·マグレブ",
               "address": "日本、〒158-0094 東京都世田谷区玉川３丁目１０−１１ 1F",
               "placeId": "ChIJl_XGyxX0GGARp0pNHPYFbWk",
@@ -189,57 +277,10 @@
     {
       "cuisineName": "ウクライナ料理",
       "flag": "🇺🇦",
-      "totalCount": 13,
+      "totalCount": 6,
       "byArea": {
-        "tokyo-outside": {
-          "count": 7,
-          "restaurants": [
-            {
-              "name": "DOMIVKA Ukrainian Soul Tokyo",
-              "address": "日本、〒135-0021 東京都江東区白河１丁目３−１ 2FBeeslow内",
-              "placeId": "ChIJP9TnQACJGGARy0IOWcD4D14",
-              "area": "江東区"
-            },
-            {
-              "name": "ウクライナカフェ クラヤヌィ",
-              "address": "日本、〒180-0013 東京都武蔵野市西久保３丁目２−５",
-              "placeId": "ChIJ37uu0fzvGGARzQxs1UHikt0",
-              "area": "武蔵野市"
-            },
-            {
-              "name": "Babusya REY",
-              "address": "日本、〒180-0004 東京都武蔵野市吉祥寺本町１丁目２５−４ 吉祥ビル ２F",
-              "placeId": "ChIJXWWebDTvGGARpY9pksQMOeM",
-              "area": "武蔵野市吉祥寺本町"
-            },
-            {
-              "name": "スメターナ",
-              "address": "日本、〒186-0002 東京都国立市東１丁目７−５ 弥生ビル B1",
-              "placeId": "ChIJJxGWDAfkGGARrAmY5vpu1rk",
-              "area": "国立市"
-            },
-            {
-              "name": "ベトラーヴ ビストロ ジロー",
-              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目１０−５ パークサイドコグレ １F",
-              "placeId": "ChIJcXrIy0zzGGAREN3UO3KMPaY",
-              "area": "渋谷区"
-            },
-            {
-              "name": "Cafe RUSSIA カフェロシア Кафе РОССИЯ",
-              "address": "日本、〒180-0004 東京都武蔵野市吉祥寺本町１丁目４−１０ ナインビル B1F",
-              "placeId": "ChIJpZYnxjnuGGARaEgFH5nrqu0",
-              "area": "武蔵野市吉祥寺本町"
-            },
-            {
-              "name": "GoodTime東京赤坂",
-              "address": "日本、〒107-0052 東京都港区赤坂７丁目９−６ MIMARU東京赤坂 １F",
-              "placeId": "ChIJ_wwe6dCLGGARs54w-FZGxx4",
-              "area": "港区"
-            }
-          ]
-        },
         "yokohama-kawasaki": {
-          "count": 5,
+          "count": 4,
           "restaurants": [
             {
               "name": "うくるてぃえ Укрытие",
@@ -264,23 +305,23 @@
               "address": "日本、〒210-0014 神奈川県川崎市川崎区貝塚１丁目４−１６ ライオンズマンション川崎貝塚 １F",
               "placeId": "ChIJSQYHyKRgGGARi4wg7CEQNpo",
               "area": "川崎市川崎区"
-            },
-            {
-              "name": "アラビアン ビリヤニハウス",
-              "address": "日本、〒212-0016 神奈川県川崎市幸区南幸町２丁目２０−８",
-              "placeId": "ChIJXURwp6phGGARH2nbweQn9Kk",
-              "area": "川崎市幸区南幸町"
             }
           ]
         },
         "kanagawa-other": {
-          "count": 1,
+          "count": 2,
           "restaurants": [
             {
               "name": "うくるてぃえ Укрытие",
               "address": "日本、〒231-0064 神奈川県横浜市中区野毛町３丁目１２２ 野毛HAG内",
               "placeId": "ChIJEyg6QixdGGARrTpHeCppww0",
               "area": "横浜市中区野毛町"
+            },
+            {
+              "name": "CARVAAN BAY YOKOHAMA",
+              "address": "日本、〒231-0062 神奈川県横浜市中区桜木町１丁目１−７",
+              "placeId": "ChIJySFMRG1dGGARXN7p-2eOCc4",
+              "area": "横浜市中区桜木町"
             }
           ]
         }
@@ -289,17 +330,11 @@
     {
       "cuisineName": "ポーランド料理",
       "flag": "🇵🇱",
-      "totalCount": 21,
+      "totalCount": 12,
       "byArea": {
         "tokyo-23": {
-          "count": 6,
+          "count": 5,
           "restaurants": [
-            {
-              "name": "Ani Mru Mru",
-              "address": "日本、〒102-0093 東京都千代田区平河町２丁目５−３ MIDORI.so NAGATACHO 1F",
-              "placeId": "ChIJOz8IxWSNGGARXZ9wrUnuq1k",
-              "area": "千代田区平河町"
-            },
             {
               "name": "ピルニー ピヤーク トウキョウ",
               "address": "日本、〒108-0074 東京都港区高輪２丁目１６−４７ エスセナーリオ高輪 1階",
@@ -350,78 +385,30 @@
           ]
         },
         "yokohama-kawasaki": {
-          "count": 9,
+          "count": 2,
           "restaurants": [
+            {
+              "name": "ワルンヌサデゥア",
+              "address": "4F, 11-8 東田町 川崎区 川崎市 神奈川県 210-0005 日本",
+              "placeId": "ChIJP5B41RVhGGARtUv-9pXopJo",
+              "area": "東田町"
+            },
             {
               "name": "CHEGA+MAIS シェーガマイス",
               "address": "日本、〒210-0014 神奈川県川崎市川崎区貝塚１丁目４−１６ ライオンズマンション川崎貝塚 １F",
               "placeId": "ChIJSQYHyKRgGGARi4wg7CEQNpo",
               "area": "川崎市川崎区"
-            },
-            {
-              "name": "OISHARAPフィリピンレストラン",
-              "address": "日本、〒210-0005 神奈川県川崎市川崎区東田町３−１６ 末広・川一屋共同ビル １階",
-              "placeId": "ChIJ6ebitLxgGGARzFRs2LnWXPc",
-              "area": "川崎市川崎区東田町"
-            },
-            {
-              "name": "フィリピンレストラン パミリア",
-              "address": "日本、〒210-0005 神奈川県川崎市川崎区東田町１０−１２ 福永本店ビル",
-              "placeId": "ChIJX57W6rxgGGARhl8PQWjQkd8",
-              "area": "川崎市川崎区東田町"
-            },
-            {
-              "name": "Cafe&Rotisserie LA COCORICO ホテルメトロポリタン川崎店",
-              "address": "日本、〒212-0014 神奈川県川崎市幸区大宮町１−５ ホテルメトロポリタン川崎 別棟 2F",
-              "placeId": "ChIJ8eYDewBhGGARSV3cljKAmUs",
-              "area": "川崎市幸区大宮町"
-            },
-            {
-              "name": "ARCO IRIS アルコイリス 川崎店",
-              "address": "日本、〒212-0012 神奈川県川崎市幸区中幸町３丁目32−４ アネックス・プラザ 川崎 １F",
-              "placeId": "ChIJuRfSYJ5gGGARX1Ui2ncf5Cc",
-              "area": "川崎市幸区中幸町"
-            },
-            {
-              "name": "ナポリの下町食堂 川崎店",
-              "address": "日本、〒212-0014 神奈川県川崎市幸区大宮町１−５ JR川崎タワー 商業棟 2F",
-              "placeId": "ChIJGzzKVyNhGGARthbbPWvHh_k",
-              "area": "川崎市幸区大宮町"
-            },
-            {
-              "name": "カフェ・ド・ラペ",
-              "address": "日本、〒231-0023 神奈川県横浜市中区山下町２ 産業貿易センタ 2F",
-              "placeId": "ChIJ2zCbh_xcGGARfXksmM5_EAQ",
-              "area": "横浜市中区山下町"
-            },
-            {
-              "name": "Max1921 book cafe",
-              "address": "日本、〒606-8383 京都府京都市左京区新先斗町１３６−１",
-              "placeId": "ChIJlXYhVuoJAWAR7RMbLXEkJag",
-              "area": "市左京区新先斗町"
-            },
-            {
-              "name": "Eggs 'n Things ラゾーナ川崎店",
-              "address": "日本、〒212-8576 神奈川県川崎市幸区堀川町72−１ ラゾーナ川崎プラザ 4F",
-              "placeId": "ChIJqdV30Z5gGGARbwdlwe6BbrE",
-              "area": "川崎市幸区堀川町"
             }
           ]
         },
         "kanagawa-other": {
-          "count": 4,
+          "count": 3,
           "restaurants": [
             {
-              "name": "スカンディヤ",
-              "address": "日本、〒231-0002 神奈川県横浜市中区海岸通１丁目１ ｢横浜貿易協会ビル ｣",
-              "placeId": "ChIJXXVI-vtcGGAR6havnsxnigo",
-              "area": "横浜市中区"
-            },
-            {
-              "name": "サンアロハ みなとみらい山下公園本店",
-              "address": "日本、〒231-0002 神奈川県横浜市中区海岸通１丁目１",
-              "placeId": "ChIJXXVI-vtcGGARbAuTpoNda-A",
-              "area": "横浜市中区"
+              "name": "シズラー ランドマークプラザ店",
+              "address": "日本、〒220-0012 神奈川県横浜市西区みなとみらい２丁目２−１ 1F",
+              "placeId": "ChIJj9L3dF1cGGARqmJfLVIGzmM",
+              "area": "横浜市西区"
             },
             {
               "name": "Deli＆Restaurant Bar Maachin",
@@ -430,10 +417,10 @@
               "area": "横浜市中区山下町"
             },
             {
-              "name": "シズラー ランドマークプラザ店",
-              "address": "日本、〒220-0012 神奈川県横浜市西区みなとみらい２丁目２−１ 1F",
-              "placeId": "ChIJj9L3dF1cGGARqmJfLVIGzmM",
-              "area": "横浜市西区"
+              "name": "カサ・デ・フジモリ 関内店",
+              "address": "日本、〒231-0012 神奈川県横浜市中区相生町２丁目４１",
+              "placeId": "ChIJyV9GZABdGGARkUcuHMY-81w",
+              "area": "横浜市中区相生町"
             }
           ]
         }
@@ -442,7 +429,7 @@
     {
       "cuisineName": "インドネシア料理",
       "flag": "🇮🇩",
-      "totalCount": 12,
+      "totalCount": 8,
       "byArea": {
         "yokohama-kawasaki": {
           "count": 4,
@@ -474,8 +461,14 @@
           ]
         },
         "kanagawa-other": {
-          "count": 8,
+          "count": 4,
           "restaurants": [
+            {
+              "name": "ワルンヌサデゥア",
+              "address": "4F, 11-8 東田町 川崎区 川崎市 神奈川県 210-0005 日本",
+              "placeId": "ChIJP5B41RVhGGARtUv-9pXopJo",
+              "area": "東田町"
+            },
             {
               "name": "チンタ ジャワ カフェ横浜関内店",
               "address": "2F, １丁目-1 住吉町 中区 横浜市 神奈川県 231-0013 日本",
@@ -489,40 +482,10 @@
               "area": "反町"
             },
             {
-              "name": "ワルンヌサデゥア",
-              "address": "4F, 11-8 東田町 川崎区 川崎市 神奈川県 210-0005 日本",
-              "placeId": "ChIJP5B41RVhGGARtUv-9pXopJo",
-              "area": "東田町"
-            },
-            {
               "name": "Warung ＪＪＳ食堂",
               "address": "日本、〒231-0056 神奈川県横浜市中区若葉町３丁目５４",
               "placeId": "ChIJu9e9lI5dGGARIAzxyp2MEsk",
               "area": "横浜市中区若葉町"
-            },
-            {
-              "name": "チンタジャワ・カフェ",
-              "address": "日本、〒254-0042 神奈川県平塚市明石町１丁目１−３３番地",
-              "placeId": "ChIJfQttUyGtGWARnBW9ltd5ek0",
-              "area": "平塚市明石町"
-            },
-            {
-              "name": "LOMBOK RESTO & BAR INDONESIAN FOOD",
-              "address": "日本、〒254-0043 神奈川県平塚市紅谷町１７−１５",
-              "placeId": "ChIJDUtXj4qtGWARqFYMSIeq39k",
-              "area": "平塚市紅谷町"
-            },
-            {
-              "name": "AMANAH MANDE PADANG RESTAURANT",
-              "address": "日本、〒243-0014 神奈川県厚木市旭町４丁目１１−２７ １階",
-              "placeId": "ChIJ07PpHkJVGGARoz90w4dEAGs",
-              "area": "厚木市旭町"
-            },
-            {
-              "name": "ニー インタン カフェ",
-              "address": "日本、〒240-0003 神奈川県横浜市保土ケ谷区天王町１丁目２−７",
-              "placeId": "ChIJQXiLRgtbGGARiooubMclSzc",
-              "area": "横浜市保土ケ谷区天王町"
             }
           ]
         }
@@ -531,17 +494,11 @@
     {
       "cuisineName": "アルゼンチン料理",
       "flag": "🇦🇷",
-      "totalCount": 9,
+      "totalCount": 14,
       "byArea": {
         "tokyo-23": {
           "count": 9,
           "restaurants": [
-            {
-              "name": "アルゼンチングリル",
-              "address": "日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５",
-              "placeId": "ChIJi_nZBp6NGGARtnSwv20YJkk",
-              "area": "新宿区"
-            },
             {
               "name": "コスタ・ラティーナ",
               "address": "日本、〒153-0041 東京都目黒区駒場１丁目１６−１２",
@@ -549,16 +506,22 @@
               "area": "目黒区"
             },
             {
-              "name": "Don Gaucho",
-              "address": "日本、〒102-0073 東京都千代田区九段北１丁目１０−５ ２階",
-              "placeId": "ChIJyYK7lmqMGGARrod2NNXX-h0",
-              "area": "千代田区"
+              "name": "アルゼンチングリル",
+              "address": "日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５",
+              "placeId": "ChIJi_nZBp6NGGARtnSwv20YJkk",
+              "area": "新宿区"
             },
             {
               "name": "ミ・チョリパン",
               "address": "日本、〒151-0064 東京都渋谷区上原２丁目４−８",
               "placeId": "ChIJtzu14UjzGGARIOKWezetu5Q",
               "area": "渋谷区"
+            },
+            {
+              "name": "Don Gaucho",
+              "address": "日本、〒102-0073 東京都千代田区九段北１丁目１０−５ ２階",
+              "placeId": "ChIJyYK7lmqMGGARrod2NNXX-h0",
+              "area": "千代田区"
             },
             {
               "name": "Latina PARRILLA（ラティーナ パリージャ）",
@@ -591,13 +554,48 @@
               "area": "港区"
             }
           ]
+        },
+        "tokyo-outside": {
+          "count": 5,
+          "restaurants": [
+            {
+              "name": "コスタ・ラティーナ",
+              "address": "日本、〒153-0041 東京都目黒区駒場１丁目１６−１２",
+              "placeId": "ChIJm6DVnVXzGGARDUc8I-cBo2c",
+              "area": "目黒区"
+            },
+            {
+              "name": "Don Gaucho",
+              "address": "日本、〒102-0073 東京都千代田区九段北１丁目１０−５ ２階",
+              "placeId": "ChIJyYK7lmqMGGARrod2NNXX-h0",
+              "area": "千代田区"
+            },
+            {
+              "name": "アルゼンチングリル",
+              "address": "日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５",
+              "placeId": "ChIJi_nZBp6NGGARtnSwv20YJkk",
+              "area": "新宿区"
+            },
+            {
+              "name": "ミ・チョリパン",
+              "address": "日本、〒151-0064 東京都渋谷区上原２丁目４−８",
+              "placeId": "ChIJtzu14UjzGGARIOKWezetu5Q",
+              "area": "渋谷区"
+            },
+            {
+              "name": "Latina PARRILLA（ラティーナ パリージャ）",
+              "address": "日本、〒104-0061 東京都中央区銀座８丁目８−１ 第7 セントラルビル B1F",
+              "placeId": "ChIJ0eYnmOiLGGARdnDe6X6xB3A",
+              "area": "中央区"
+            }
+          ]
         }
       }
     },
     {
       "cuisineName": "ポルトガル料理",
       "flag": "🇵🇹",
-      "totalCount": 22,
+      "totalCount": 21,
       "byArea": {
         "tokyo-23": {
           "count": 8,
@@ -615,6 +613,12 @@
               "area": "千代田区"
             },
             {
+              "name": "クリスチアノ",
+              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目５１−１０",
+              "placeId": "ChIJlVilg0zzGGAR21fsRKK_IR4",
+              "area": "渋谷区"
+            },
+            {
               "name": "マヌエル 四ツ谷店",
               "address": "日本、〒102-0085 東京都千代田区六番町１１−７ アークスアトリウム B1",
               "placeId": "ChIJFSkwGWKMGGARmZpwdY0h1fE",
@@ -627,22 +631,16 @@
               "area": "目黒区"
             },
             {
-              "name": "クリスチアノ",
-              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目５１−１０",
-              "placeId": "ChIJlVilg0zzGGAR21fsRKK_IR4",
-              "area": "渋谷区"
+              "name": "ヴィラモウラ 銀座本店",
+              "address": "日本、〒104-0061 東京都中央区銀座６丁目２−３ ﾀﾞｲﾜ銀座ｱﾈｯｸｽ B1F",
+              "placeId": "ChIJq3khEu-LGGARg246AkpVDV4",
+              "area": "中央区"
             },
             {
               "name": "café e bar copo do dia",
               "address": "日本、〒167-0042 東京都杉並区西荻北４丁目２６−１０ 山愛コーポラス 103",
               "placeId": "ChIJV5DOOmvuGGARuc9GNO2QovQ",
               "area": "杉並区"
-            },
-            {
-              "name": "ヴィラモウラ 銀座本店",
-              "address": "日本、〒104-0061 東京都中央区銀座６丁目２−３ ﾀﾞｲﾜ銀座ｱﾈｯｸｽ B1F",
-              "placeId": "ChIJq3khEu-LGGARg246AkpVDV4",
-              "area": "中央区"
             },
             {
               "name": "ナタ・デ・クリスチアノ",
@@ -662,12 +660,6 @@
               "area": "目黒区"
             },
             {
-              "name": "マル・デ・クリスチアノ Mar de Cristiano",
-              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目３−１２ サンシティ 4階",
-              "placeId": "ChIJYwZvekvzGGARJ7cBjNbR7cY",
-              "area": "渋谷区"
-            },
-            {
               "name": "マヌエル タスカ・ド・ターリョ",
               "address": "日本、〒100-0005 東京都千代田区丸の内３丁目３−１ 新東京ビル B1",
               "placeId": "ChIJi34-g_qLGGARsh4jsMFcuCI",
@@ -680,9 +672,9 @@
               "area": "中央区"
             },
             {
-              "name": "クリスチアノ",
-              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目５１−１０",
-              "placeId": "ChIJlVilg0zzGGAR21fsRKK_IR4",
+              "name": "マル・デ・クリスチアノ Mar de Cristiano",
+              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目３−１２ サンシティ 4階",
+              "placeId": "ChIJYwZvekvzGGARJ7cBjNbR7cY",
               "area": "渋谷区"
             },
             {
@@ -690,6 +682,12 @@
               "address": "日本、〒102-0085 東京都千代田区六番町１１−７ アークスアトリウム B1",
               "placeId": "ChIJFSkwGWKMGGARmZpwdY0h1fE",
               "area": "千代田区六番町"
+            },
+            {
+              "name": "クリスチアノ",
+              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目５１−１０",
+              "placeId": "ChIJlVilg0zzGGAR21fsRKK_IR4",
+              "area": "渋谷区"
             },
             {
               "name": "ペルー料理ALDO南青山店",
@@ -700,7 +698,7 @@
           ]
         },
         "yokohama-kawasaki": {
-          "count": 7,
+          "count": 6,
           "restaurants": [
             {
               "name": "横濱馬車道 葡萄牙料理ピリピリ",
@@ -715,16 +713,16 @@
               "area": "川崎市川崎区"
             },
             {
+              "name": "REY ペルー料理レストラン",
+              "address": "日本、〒211-0064 神奈川県川崎市中原区今井南町１９−２",
+              "placeId": "ChIJnwDMMBr1GGARwE7lR0cZovY",
+              "area": "川崎市中原区今井南町"
+            },
+            {
               "name": "メルカド",
               "address": "日本、〒247-0056 神奈川県鎌倉市大船１丁目１８−１２",
               "placeId": "ChIJrUBG1GBFGGARCFrmqnIasBA",
               "area": "鎌倉市"
-            },
-            {
-              "name": "パライゾ ブラジル ヨコハマ （Paraiso Brasil Yokohama）",
-              "address": "日本、〒230-0038 神奈川県横浜市鶴見区栄町通１丁目１０−１２ 高島ハイツ 2階",
-              "placeId": "ChIJXYQyKgBeGGAR_vTom1Ns1O4",
-              "area": "横浜市鶴見区栄町"
             },
             {
               "name": "ARCO IRIS アルコイリス 川崎店",
@@ -733,16 +731,10 @@
               "area": "川崎市幸区中幸町"
             },
             {
-              "name": "マル・デ・クリスチアノ Mar de Cristiano",
-              "address": "日本、〒151-0063 東京都渋谷区富ケ谷１丁目３−１２ サンシティ 4階",
-              "placeId": "ChIJYwZvekvzGGARJ7cBjNbR7cY",
-              "area": "渋谷区"
-            },
-            {
-              "name": "Yuri Shop（ユリ・ショップ）",
-              "address": "日本、〒230-0042 神奈川県横浜市鶴見区仲通２丁目６０−１５ 小松原ハイツ",
-              "placeId": "ChIJ85HVG_ldGGAR2iWpfjaswnE",
-              "area": "横浜市鶴見区"
+              "name": "パライゾ ブラジル ヨコハマ （Paraiso Brasil Yokohama）",
+              "address": "日本、〒230-0038 神奈川県横浜市鶴見区栄町通１丁目１０−１２ 高島ハイツ 2階",
+              "placeId": "ChIJXYQyKgBeGGAR_vTom1Ns1O4",
+              "area": "横浜市鶴見区栄町"
             }
           ]
         }
@@ -751,10 +743,10 @@
     {
       "cuisineName": "ドイツ料理",
       "flag": "🇩🇪",
-      "totalCount": 9,
+      "totalCount": 8,
       "byArea": {
         "yokohama-kawasaki": {
-          "count": 9,
+          "count": 8,
           "restaurants": [
             {
               "name": "G.G.C. 川崎店",
@@ -763,16 +755,16 @@
               "area": "川崎市川崎区東田町"
             },
             {
-              "name": "ドイツ料理 カッツロイファー",
-              "address": "日本、〒213-0011 神奈川県川崎市高津区久本２丁目８−１ フィオーレの森3号館2階",
-              "placeId": "ChIJaWi9lCj0GGARxt4m2FFt3vQ",
-              "area": "川崎市高津区"
-            },
-            {
               "name": "CAPTAIN ROLF",
               "address": "日本、〒231-0861 神奈川県横浜市中区元町３丁目１２１",
               "placeId": "ChIJia_WIABdGGAR4d42uvyHHFQ",
               "area": "横浜市中区元町"
+            },
+            {
+              "name": "ドイツ料理 カッツロイファー",
+              "address": "日本、〒213-0011 神奈川県川崎市高津区久本２丁目８−１ フィオーレの森3号館2階",
+              "placeId": "ChIJaWi9lCj0GGARxt4m2FFt3vQ",
+              "area": "川崎市高津区"
             },
             {
               "name": "G.G.C 鶴見店 Great German Cook",
@@ -787,22 +779,16 @@
               "area": "横浜市中区山下町"
             },
             {
-              "name": "ブーシェル",
-              "address": "日本、〒221-0802 神奈川県横浜市神奈川区六角橋６丁目１−１３ 丸山ビルヂング",
-              "placeId": "ChIJ1-i6g7peGGARzEN2Ciz4Z88",
-              "area": "横浜市神奈川区"
-            },
-            {
               "name": "Am Rhein German wine bar & Dining",
               "address": "日本、〒231-0012 神奈川県横浜市中区相生町２丁目５０ 柏木ビル 2階",
               "placeId": "ChIJUZH3MvdcGGAR82faXrO1-nA",
               "area": "横浜市中区相生町"
             },
             {
-              "name": "Schmatz CIAL Yokohama",
-              "address": "日本、〒221-0835 神奈川県横浜市神奈川区鶴屋町１丁目66−９ JR横浜鶴屋町ビル 3F",
-              "placeId": "ChIJv7THiaJdGGARbLrMBOqMGm8",
-              "area": "横浜市神奈川区鶴屋町"
+              "name": "ブーシェル",
+              "address": "日本、〒221-0802 神奈川県横浜市神奈川区六角橋６丁目１−１３ 丸山ビルヂング",
+              "placeId": "ChIJ1-i6g7peGGARzEN2Ciz4Z88",
+              "area": "横浜市神奈川区"
             },
             {
               "name": "シュマッツ 武蔵小杉",
@@ -817,10 +803,10 @@
     {
       "cuisineName": "ロシア料理",
       "flag": "🇷🇺",
-      "totalCount": 13,
+      "totalCount": 15,
       "byArea": {
         "yokohama-kawasaki": {
-          "count": 5,
+          "count": 6,
           "restaurants": [
             {
               "name": "TWINS",
@@ -835,16 +821,22 @@
               "area": "横浜市中区野毛町"
             },
             {
+              "name": "ロシア料理火の鳥",
+              "address": "日本、〒239-0841 神奈川県横須賀市野比２丁目２１−１９",
+              "placeId": "ChIJbREiTf89GGARunKZGhWU6Q8",
+              "area": "横須賀市"
+            },
+            {
               "name": "ロシア料理レストラン ロゴスキー",
               "address": "日本、〒104-0061 東京都中央区銀座５丁目７−１０ EXITMELSA 7F",
               "placeId": "ChIJUbDDbOaLGGARK0qGyLxXDK4",
               "area": "中央区"
             },
             {
-              "name": "ロシア料理火の鳥",
-              "address": "日本、〒239-0841 神奈川県横須賀市野比２丁目２１−１９",
-              "placeId": "ChIJbREiTf89GGARunKZGhWU6Q8",
-              "area": "横須賀市"
+              "name": "REY ペルー料理レストラン",
+              "address": "日本、〒211-0064 神奈川県川崎市中原区今井南町１９−２",
+              "placeId": "ChIJnwDMMBr1GGARwE7lR0cZovY",
+              "area": "川崎市中原区今井南町"
             },
             {
               "name": "CHEGA+MAIS シェーガマイス",
@@ -855,7 +847,7 @@
           ]
         },
         "kanagawa-other": {
-          "count": 8,
+          "count": 9,
           "restaurants": [
             {
               "name": "TWINS",
@@ -870,16 +862,22 @@
               "area": "中央区"
             },
             {
-              "name": "用賀イクラバル",
-              "address": "日本、〒158-0097 東京都世田谷区用賀３丁目１４−９",
-              "placeId": "ChIJSculCfr1GGARA4_kYtrzZIo",
-              "area": "世田谷区"
-            },
-            {
               "name": "ロシア料理火の鳥",
               "address": "日本、〒239-0841 神奈川県横須賀市野比２丁目２１−１９",
               "placeId": "ChIJbREiTf89GGARunKZGhWU6Q8",
               "area": "横須賀市"
+            },
+            {
+              "name": "CARVAAN BAY YOKOHAMA",
+              "address": "日本、〒231-0062 神奈川県横浜市中区桜木町１丁目１−７",
+              "placeId": "ChIJySFMRG1dGGARXN7p-2eOCc4",
+              "area": "横浜市中区桜木町"
+            },
+            {
+              "name": "用賀イクラバル",
+              "address": "日本、〒158-0097 東京都世田谷区用賀３丁目１４−９",
+              "placeId": "ChIJSculCfr1GGARA4_kYtrzZIo",
+              "area": "世田谷区"
             },
             {
               "name": "うくるてぃえ Укрытие",
@@ -894,16 +892,16 @@
               "area": "横浜市西区"
             },
             {
-              "name": "コ・トゥ・タモ・ペヴァ",
-              "address": "日本、〒164-0003 東京都中野区東中野１丁目１５−３",
-              "placeId": "ChIJ6bvUhM7yGGARsjB93J3mYHE",
-              "area": "中野区"
-            },
-            {
               "name": "Mira! たまプラーザ",
               "address": "日本、〒225-0002 神奈川県横浜市青葉区美しが丘１丁目１２−３ 102",
               "placeId": "ChIJV4vEwBb3GGAR5_DVQFiCFFw",
               "area": "横浜市青葉区"
+            },
+            {
+              "name": "Deli＆Restaurant Bar Maachin",
+              "address": "日本、〒231-0023 神奈川県横浜市中区山下町８２ 徳永ビル 1F",
+              "placeId": "ChIJPVAHVJVdGGARzasUu2-BEBI",
+              "area": "横浜市中区山下町"
             }
           ]
         }
