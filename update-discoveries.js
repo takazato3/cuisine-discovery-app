@@ -19,21 +19,15 @@ if (!API_KEY) {
 // Target rare cuisines
 // ============================================================
 const RARE_CUISINES = [
-  { name: 'エチオピア料理',   flag: '🇪🇹', query: 'ethiopian restaurant' },
-  { name: 'ジョージア料理',   flag: '🇬🇪', query: 'georgian restaurant' },
-  { name: 'イラン料理',       flag: '🇮🇷', query: 'persian restaurant OR iranian restaurant' },
-  { name: 'モロッコ料理',     flag: '🇲🇦', query: 'moroccan restaurant' },
-  { name: 'ウクライナ料理',   flag: '🇺🇦', query: 'ukrainian restaurant' },
-  { name: 'ポーランド料理',   flag: '🇵🇱', query: 'polish restaurant' },
-  { name: 'フィリピン料理',   flag: '🇵🇭', query: 'filipino restaurant' },
-  { name: 'インドネシア料理', flag: '🇮🇩', query: 'indonesian restaurant' },
-  { name: 'マレーシア料理',   flag: '🇲🇾', query: 'malaysian restaurant' },
-  { name: 'スリランカ料理',   flag: '🇱🇰', query: 'sri lankan restaurant' },
-  { name: 'アルゼンチン料理', flag: '🇦🇷', query: 'argentinian restaurant' },
-  { name: 'ポルトガル料理',   flag: '🇵🇹', query: 'portuguese restaurant' },
-  { name: 'ドイツ料理',       flag: '🇩🇪', query: 'german restaurant' },
-  { name: 'ロシア料理',       flag: '🇷🇺', query: 'russian restaurant' },
-  { name: 'ネパール料理',     flag: '🇳🇵', query: 'nepali restaurant' },
+  { name: 'ネパール料理',                  flag: '🇳🇵', query: 'nepali restaurant OR ネパール料理 OR ダルバート OR モモ OR ネパール民族料理' },
+  { name: '地中海料理',                    flag: '🌊', query: 'mediterranean restaurant OR 地中海料理' },
+  { name: '中・東欧料理',                  flag: '🇦🇹', query: 'austrian restaurant OR czech restaurant OR hungarian restaurant OR polish restaurant OR swiss restaurant OR オーストリア料理 OR チェコ料理 OR ハンガリー料理 OR ポーランド料理 OR スイス料理' },
+  { name: 'ウズベキスタン・中央アジア料理', flag: '🇺🇿', query: 'uzbek restaurant OR central asian restaurant OR ウズベキスタン料理 OR プロフ OR マンティ OR 中央アジア料理' },
+  { name: 'ロシア・旧ソ連系料理',          flag: '🇷🇺', query: 'russian restaurant OR ukrainian restaurant OR georgian restaurant OR ロシア料理 OR ウクライナ料理 OR ジョージア料理 OR ボルシチ OR シュクメルリ' },
+  { name: 'イラン料理',                    flag: '🇮🇷', query: 'persian restaurant OR iranian restaurant OR イラン料理 OR ペルシャ料理 OR フェセンジャン' },
+  { name: 'フィリピン料理',                flag: '🇵🇭', query: 'filipino restaurant OR フィリピン料理 OR アドボ' },
+  { name: 'アルゼンチン料理',              flag: '🇦🇷', query: 'argentinian restaurant OR アルゼンチン料理 OR アサード OR エンパナーダ' },
+  { name: 'カリブ料理',                    flag: '🇯🇲', query: 'jamaican restaurant OR cuban restaurant OR caribbean restaurant OR ジャマイカ料理 OR キューバ料理 OR ジャークチキン' },
 ];
 
 // ============================================================
