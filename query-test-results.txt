@@ -1,1 +1,475 @@
-Error: GOOGLE_MAPS_API_KEY environment variable is not set.
+=== Google Places API 検索挙動調査 ===
+実行日時: 2026-02-28T06:19:49.231Z
+エリア: 東京23区中心 (lat: 35.6762, lng: 139.6503, radius: 12000m)
+クエリ数: 9件
+
+
+============================================================
+=== ペルー料理 (peruvian restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  peruvian_restaurant                      ██████████████████ 18件
+  argentinian_restaurant                   █ 1件
+  chilean_restaurant                       █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  peruvian_restaurant                      ██████████████████ 18件
+  latin_american_restaurant                █████ 5件
+  south_american_restaurant                █████ 5件
+  japanese_izakaya_restaurant              ███ 3件
+  japanese_restaurant                      ███ 3件
+  argentinian_restaurant                   █ 1件
+  fine_dining_restaurant                   █ 1件
+  wine_bar                                 █ 1件
+  bar                                      █ 1件
+  chilean_restaurant                       █ 1件
+
+【最初の5件詳細】
+
+1. Lima Grill
+   住所: 日本、〒107-0052 東京都港区赤坂３丁目２１−１２ １F
+   primaryType: peruvian_restaurant
+   types: [peruvian_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. akowa peruvian restaurant
+   住所: 日本、〒106-0047 東京都港区南麻布２丁目１３−１３ コーポミナモト 102
+   primaryType: peruvian_restaurant
+   types: [peruvian_restaurant, restaurant, food, point_of_interest, establishment]
+
+3. べポカ
+   住所: 日本、〒150-0001 東京都渋谷区神宮前２丁目１７−６
+   primaryType: peruvian_restaurant
+   types: [peruvian_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. ペルー料理ALDO南青山店
+   住所: 日本、〒107-0062 東京都港区南青山３丁目３−２３
+   primaryType: peruvian_restaurant
+   types: [peruvian_restaurant, latin_american_restaurant, south_american_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. DESTINO51 ペルー料理
+   住所: 日本、〒107-0062 東京都港区南青山５丁目４−３０ CASA SERENA 1F
+   primaryType: peruvian_restaurant
+   types: [peruvian_restaurant, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== アルゼンチン料理 (argentinian restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  argentinian_restaurant                   ████ 4件
+  restaurant                               ████ 4件
+  italian_restaurant                       ███ 3件
+  steak_house                              ██ 2件
+  bar_and_grill                            ██ 2件
+  yakiniku_restaurant                      █ 1件
+  japanese_restaurant                      █ 1件
+  hamburger_restaurant                     █ 1件
+  japanese_izakaya_restaurant              █ 1件
+  cafe                                     █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  south_american_restaurant                ███████ 7件
+  argentinian_restaurant                   ██████ 6件
+  steak_house                              ██████ 6件
+  japanese_restaurant                      ██████ 6件
+  bar                                      █████ 5件
+  bar_and_grill                            ████ 4件
+  italian_restaurant                       ████ 4件
+  cafe                                     ███ 3件
+  yakiniku_restaurant                      ███ 3件
+  japanese_izakaya_restaurant              ███ 3件
+
+【最初の5件詳細】
+
+1. ミ・チョリパン
+   住所: 日本、〒151-0064 東京都渋谷区上原２丁目４−８
+   primaryType: argentinian_restaurant
+   types: [argentinian_restaurant, south_american_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. アルゼンチングリル
+   住所: 日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５
+   primaryType: argentinian_restaurant
+   types: [argentinian_restaurant, south_american_restaurant, bar_and_grill, bar, restaurant, food, point_of_interest, establishment]
+
+3. コスタ・ラティーナ
+   住所: 日本、〒153-0041 東京都目黒区駒場１丁目１６−１２
+   primaryType: argentinian_restaurant
+   types: [argentinian_restaurant, south_american_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. Don Gaucho
+   住所: 日本、〒102-0073 東京都千代田区九段北１丁目１０−５ ２階
+   primaryType: argentinian_restaurant
+   types: [argentinian_restaurant, steak_house, south_american_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. La Nostalgia
+   住所: 日本、〒248-0014 神奈川県鎌倉市由比ガ浜２丁目６−２２
+   primaryType: restaurant
+   types: [restaurant, argentinian_restaurant, cafe, south_american_restaurant, deli, food_store, store, food, point_of_interest, establishment]
+
+============================================================
+=== トルコ料理 (turkish restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  turkish_restaurant                       ████████████████ 16件
+  kebab_shop                               █ 1件
+  restaurant                               █ 1件
+  bar                                      █ 1件
+  middle_eastern_restaurant                █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  turkish_restaurant                       ██████████████████ 18件
+  kebab_shop                               ██████ 6件
+  halal_restaurant                         ██ 2件
+  yakiniku_restaurant                      █ 1件
+  meal_takeaway                            █ 1件
+  japanese_restaurant                      █ 1件
+  bar                                      █ 1件
+  taco_restaurant                          █ 1件
+  middle_eastern_restaurant                █ 1件
+  asian_restaurant                         █ 1件
+
+【最初の5件詳細】
+
+1. TOSYA KEBAB 方南町店
+   住所: 日本、〒168-0062 東京都杉並区方南２丁目２１−２２ シティハウス方南 1F-2
+   primaryType: turkish_restaurant
+   types: [turkish_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. Ruya Kebab
+   住所: 日本、〒166-0011 東京都杉並区梅里2-chōme−１−２１
+   primaryType: turkish_restaurant
+   types: [turkish_restaurant, restaurant, food, point_of_interest, establishment]
+
+3. Saray Kebab
+   住所: 日本、〒151-0072 東京都渋谷区幡ケ谷２丁目８−９
+   primaryType: turkish_restaurant
+   types: [turkish_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. トルコ料理レストラン バルシュTurkish Restaurant BARIŞ
+   住所: 日本、〒164-0003 東京都中野区東中野３丁目１４−１５ ステラ落合駅前 1階
+   primaryType: turkish_restaurant
+   types: [turkish_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. Kebab Chefs ケバブ シェフス 渋谷
+   住所: 日本、〒152-0002 東京都渋谷区渋谷３丁目１６−１
+   primaryType: turkish_restaurant
+   types: [turkish_restaurant, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== 中東料理 (middle eastern restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  middle_eastern_restaurant                █████████████ 13件
+  turkish_restaurant                       ██ 2件
+  lebanese_restaurant                      █ 1件
+  persian_restaurant                       █ 1件
+  falafel_restaurant                       █ 1件
+  cafe                                     █ 1件
+  israeli_restaurant                       █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  middle_eastern_restaurant                ████████████████ 16件
+  asian_restaurant                         ███ 3件
+  turkish_restaurant                       ███ 3件
+  vegetarian_restaurant                    ██ 2件
+  lebanese_restaurant                      ██ 2件
+  cafe                                     ██ 2件
+  vegan_restaurant                         █ 1件
+  coffee_shop                              █ 1件
+  hookah_bar                               █ 1件
+  food_store                               █ 1件
+
+【最初の5件詳細】
+
+1. Baba Meena
+   住所: 日本、〒156-0041 東京都世田谷区大原２丁目１７−１５
+   primaryType: middle_eastern_restaurant
+   types: [middle_eastern_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. Salam
+   住所: 日本、〒150-0012 東京都渋谷区広尾５丁目４−１６
+   primaryType: middle_eastern_restaurant
+   types: [middle_eastern_restaurant, vegan_restaurant, vegetarian_restaurant, restaurant, food, point_of_interest, establishment]
+
+3. ビブロス レバニーズ レストラン
+   住所: 日本、〒105-0014 東京都港区芝１丁目７−１ 第二中島ビル
+   primaryType: lebanese_restaurant
+   types: [lebanese_restaurant, middle_eastern_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. アラビアレストラン ゼノビア 広尾店
+   住所: 日本、〒150-0012 東京都渋谷区広尾５丁目２−２５
+   primaryType: middle_eastern_restaurant
+   types: [middle_eastern_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. Arabic Restaurant & Cafe Abu Essam
+   住所: 日本、〒162-0805 東京都新宿区矢来町１１１−１ Y’s Kagurazaka 101
+   primaryType: middle_eastern_restaurant
+   types: [middle_eastern_restaurant, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== 南インド料理 (south indian restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  south_indian_restaurant                  █████████████ 13件
+  indian_restaurant                        ██████ 6件
+  vegan_restaurant                         █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  indian_restaurant                        ████████████████████ 20件
+  south_indian_restaurant                  ██████████████████ 18件
+  halal_restaurant                         ███ 3件
+  asian_restaurant                         ███ 3件
+  japanese_curry_restaurant                ██ 2件
+  japanese_restaurant                      ██ 2件
+  buffet_restaurant                        ██ 2件
+  vegan_restaurant                         █ 1件
+  pakistani_restaurant                     █ 1件
+  north_indian_restaurant                  █ 1件
+
+【最初の5件詳細】
+
+1. エリックサウス 八重洲店
+   住所: 日本、〒104-0028 東京都中央区八重洲２丁目１ １番 地下街中 4号
+   primaryType: south_indian_restaurant
+   types: [south_indian_restaurant, japanese_curry_restaurant, indian_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. 南印度料理 TOKYO BHAVAN
+   住所: 日本、〒102-0072 東京都千代田区飯田橋１丁目１２−７ 日新ＭＳビル 1F
+   primaryType: south_indian_restaurant
+   types: [south_indian_restaurant, indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+3. タンジャイミールス
+   住所: 日本、〒151-0072 東京都渋谷区幡ケ谷２丁目７−１０ 松本ビル 2F
+   primaryType: south_indian_restaurant
+   types: [south_indian_restaurant, indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. マサラバイツ
+   住所: 日本、〒111-0054 東京都台東区鳥越１丁目５−４
+   primaryType: vegan_restaurant
+   types: [vegan_restaurant, south_indian_restaurant, pakistani_restaurant, north_indian_restaurant, vegetarian_restaurant, indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. ナンディニ 虎ノ門店
+   住所: 日本、〒105-0003 東京都港区西新橋２丁目２２−１
+   primaryType: south_indian_restaurant
+   types: [south_indian_restaurant, indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== インド料理 (indian restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  indian_restaurant                        █████████████████ 17件
+  japanese_restaurant                      █ 1件
+  asian_restaurant                         █ 1件
+  south_indian_restaurant                  █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  indian_restaurant                        ████████████████████ 20件
+  japanese_restaurant                      ██████████ 10件
+  japanese_curry_restaurant                █████████ 9件
+  japanese_izakaya_restaurant              ███ 3件
+  meal_takeaway                            ███ 3件
+  bar                                      ██ 2件
+  asian_restaurant                         ██ 2件
+  vegan_restaurant                         ██ 2件
+  vegetarian_restaurant                    ██ 2件
+  meal_delivery                            ██ 2件
+
+【最初の5件詳細】
+
+1. Indian Restaurant Mumbai SHINJUKU SUMITOMO Bldg/インド料理ムンバイ新宿住友ビル
+   住所: 日本、〒163-0290 東京都新宿区西新宿２丁目６−１ 新宿住友ビル B1F
+   primaryType: indian_restaurant
+   types: [indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. アジアンレストラン＆バー ナマステ・ジャパン
+   住所: 日本、〒168-0063 東京都杉並区和泉３丁目１３−２１ ２Ｆ
+   primaryType: indian_restaurant
+   types: [indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+3. アジアンダイニング YUMMY 新宿駅前
+   住所: あぜみビル 2F, ３丁目-３５-11 新宿 新宿区 東京都 160-0022 日本
+   primaryType: indian_restaurant
+   types: [indian_restaurant, japanese_izakaya_restaurant, bar, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. ダウンタウン ビーズ
+   住所: 日本、〒106-0032 東京都港区六本木３丁目４−２
+   primaryType: indian_restaurant
+   types: [indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. エベレストカレー
+   住所: 日本、〒168-0064 東京都杉並区永福２丁目５１−１２ 安藤ビル
+   primaryType: indian_restaurant
+   types: [indian_restaurant, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== シンガポール料理 (singaporean restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  restaurant                               ██████████████████ 18件
+  chicken_restaurant                       █ 1件
+  chinese_restaurant                       █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  japanese_izakaya_restaurant              ████████ 8件
+  japanese_restaurant                      ████████ 8件
+  asian_restaurant                         ██████ 6件
+  chinese_restaurant                       ████ 4件
+  thai_restaurant                          ███ 3件
+  meal_takeaway                            ██ 2件
+  vietnamese_restaurant                    █ 1件
+  japanese_curry_restaurant                █ 1件
+  indonesian_restaurant                    █ 1件
+  ramen_restaurant                         █ 1件
+
+【最初の5件詳細】
+
+1. SINGAPORE HOLIC LAKSA
+   住所: 日本、〒150-0042 東京都渋谷区宇田川町３７−１５ 2階
+   primaryType: restaurant
+   types: [vietnamese_restaurant, asian_restaurant, thai_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. SINGAPORE CUISINE SINKIES（シンガポールキュイジーヌシンキーズ）
+   住所: 日本、〒150-0002 東京都渋谷区渋谷２丁目９−１１ 1F
+   primaryType: restaurant
+   types: [restaurant, food, point_of_interest, establishment]
+
+3. 獅天鶏飯
+   住所: 日本、〒150-0002 東京都渋谷区渋谷３丁目１８−１０ 大野ビル2 号館 2F
+   primaryType: restaurant
+   types: [japanese_izakaya_restaurant, asian_restaurant, chinese_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. SLOWJAM GARAGE Singaporean Cuisine
+   住所: 日本、〒153-0051 東京都目黒区上目黒１丁目１７−３
+   primaryType: restaurant
+   types: [japanese_curry_restaurant, japanese_izakaya_restaurant, thai_restaurant, indonesian_restaurant, chinese_restaurant, ramen_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. Rayard Mityashita Park Singapore Chicken Rice
+   住所: Rayard Mityashita Park North 3rd floor, ６丁目-２０-10 神宮前 渋谷区 東京都 150-0002 日本
+   primaryType: chicken_restaurant
+   types: [chicken_restaurant, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== モンゴル料理 (mongolian restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  mongolian_barbecue_restaurant            █████████ 9件
+  asian_restaurant                         ████ 4件
+  restaurant                               ███ 3件
+  bar_and_grill                            █ 1件
+  halal_restaurant                         █ 1件
+  japanese_curry_restaurant                █ 1件
+  japanese_restaurant                      █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  mongolian_barbecue_restaurant            ██████████ 10件
+  asian_restaurant                         ██████████ 10件
+  japanese_restaurant                      ███████ 7件
+  japanese_izakaya_restaurant              ████ 4件
+  chinese_restaurant                       ███ 3件
+  yakiniku_restaurant                      ██ 2件
+  banquet_hall                             █ 1件
+  hot_pot_restaurant                       █ 1件
+  event_venue                              █ 1件
+  bar_and_grill                            █ 1件
+
+【最初の5件詳細】
+
+1. モンゴル料理 IKH MONGOL
+   住所: 日本、〒114-0012 東京都北区田端新町１丁目２０−４
+   primaryType: mongolian_barbecue_restaurant
+   types: [mongolian_barbecue_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. Mongolian restaurant モンゴルレストラン
+   住所: 日本、〒332-0021 埼玉県川口市西川口１丁目９−１４ ベルタウン 3f
+   primaryType: asian_restaurant
+   types: [asian_restaurant, restaurant, food, point_of_interest, establishment]
+
+3. モンゴル料理 シリンゴル
+   住所: 日本、〒112-0011 東京都文京区千石４丁目１１−９
+   primaryType: mongolian_barbecue_restaurant
+   types: [mongolian_barbecue_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
+
+4. 草原の料理スヨリト
+   住所: 日本、〒162-0805 東京都新宿区矢来町８２ ウィルズウェイ神楽坂 第二 ビル
+   primaryType: mongolian_barbecue_restaurant
+   types: [mongolian_barbecue_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
+
+5. モンゴル料理老綏元
+   住所: 日本、〒171-0022 東京都豊島区南池袋１丁目２６−２ 近代ビル ８F
+   primaryType: asian_restaurant
+   types: [asian_restaurant, banquet_hall, hot_pot_restaurant, yakiniku_restaurant, japanese_izakaya_restaurant, japanese_restaurant, chinese_restaurant, event_venue, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== イギリス料理 (british restaurant) ===
+============================================================
+ヒット件数: 20件
+
+【primaryType 集計（全件）】
+  pub                                      ███████ 7件
+  irish_pub                                ████ 4件
+  gastropub                                ██ 2件
+  japanese_izakaya_restaurant              █ 1件
+  british_restaurant                       █ 1件
+  indian_restaurant                        █ 1件
+  restaurant                               █ 1件
+  bar                                      █ 1件
+  dutch_restaurant                         █ 1件
+  fish_and_chips_restaurant                █ 1件
+
+【types 集計（上位10件、汎用タグ除く）】
+  bar                                      ██████████████████ 18件
+  pub                                      █████████████████ 17件
+  british_restaurant                       ███████ 7件
+  irish_pub                                ██████ 6件
+  sports_bar                               ████ 4件
+  gastropub                                ████ 4件
+  fish_and_chips_restaurant                ████ 4件
+  japanese_izakaya_restaurant              ██ 2件
+  japanese_restaurant                      ██ 2件
+  bar_and_grill                            ██ 2件
+
+【最初の5件詳細】
+
+1. スワン＆ライオン
+   住所: Meguroku, ２丁目-１６-14 上目黒 目黒区 東京都 153-0051 日本
+   primaryType: japanese_izakaya_restaurant
+   types: [japanese_izakaya_restaurant, british_restaurant, pub, bar, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+
+2. Ye Malthouse /イエ モルトハウス
+   住所: 日本、〒153-0051 東京都目黒区上目黒２丁目２４−１４
+   primaryType: irish_pub
+   types: [irish_pub, pub, bar, restaurant, food, point_of_interest, establishment]
+
+3. モーリス ラムチョップ
+   住所: 日本、〒160-0022 東京都新宿区新宿３丁目２０−８ ワモールトップスハウスB1
+   primaryType: pub
+   types: [pub, sports_bar, bar, restaurant, food, point_of_interest, establishment]
+
+4. ザ ブルー ポスト
+   住所: 日本、〒150-0013 東京都渋谷区恵比寿１丁目８−１４ １F
+   primaryType: pub
+   types: [pub, irish_pub, bar, restaurant, food, point_of_interest, establishment]
+
+5. The Old Arrow オールドアロウ
+   住所: 日本、〒167-0042 東京都杉並区西荻北３丁目１４−２
+   primaryType: pub
+   types: [pub, gastropub, british_restaurant, bar, restaurant, food, point_of_interest, establishment]
+
+============================================================
+=== 調査完了 ===
+============================================================
