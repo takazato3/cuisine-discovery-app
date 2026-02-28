@@ -28,32 +28,44 @@ const AREAS = {
 };
 
 // ============================================================
-// Cuisine definitions — must match CUISINES in app.js (23 genres)
+// Cuisine definitions — must match CUISINES in app.js (24 genres)
 // ============================================================
 const CUISINES = [
-  { id: 'thai',           name: 'タイ料理',           query: 'thai restaurant' },
-  { id: 'vietnamese',     name: 'ベトナム料理',       query: 'vietnamese restaurant' },
-  { id: 'korean',         name: '韓国料理',           query: 'korean restaurant' },
-  { id: 'indian-nepali',  name: 'インド・ネパール料理', query: 'indian restaurant OR nepali restaurant' },
-  { id: 'south-indian',   name: '南インド料理',       query: 'south indian restaurant OR ミールス OR ドーサ' },
-  { id: 'machi-chuka',    name: '町中華',             query: '中華料理 OR ラーメン OR 餃子' },
-  { id: 'honkaku-chuka',  name: '本格中華',           query: '本格中華 OR 四川料理 OR 広東料理 OR 上海料理' },
-  { id: 'taiwanese',      name: '台湾料理',           query: '台湾料理 OR 魯肉飯' },
-  { id: 'mexican',        name: 'メキシコ料理',       query: 'mexican restaurant' },
-  { id: 'italian',        name: 'イタリア料理',       query: 'italian restaurant' },
-  { id: 'french',         name: 'フランス料理',       query: 'french restaurant' },
-  { id: 'greek',          name: 'ギリシャ料理',       query: 'greek restaurant' },
-  { id: 'middle-eastern', name: '中東料理',           query: 'middle eastern restaurant OR lebanese restaurant' },
-  { id: 'peruvian',       name: 'ペルー料理',         query: 'peruvian restaurant' },
-  { id: 'turkish',        name: 'トルコ料理',         query: 'turkish restaurant' },
-  { id: 'spanish',        name: 'スペイン料理',       query: 'spanish restaurant' },
-  { id: 'brazilian',      name: 'ブラジル料理',       query: 'brazilian restaurant' },
-  { id: 'african',        name: 'アフリカ料理',       query: 'african restaurant OR ethiopian restaurant OR moroccan restaurant' },
-  { id: 'sri-lankan',     name: 'スリランカ料理',     query: 'sri lankan restaurant' },
-  { id: 'mongolian',      name: 'モンゴル料理',       query: 'mongolian restaurant' },
-  { id: 'singaporean',    name: 'シンガポール料理',   query: 'singaporean restaurant' },
-  { id: 'uzbek',          name: 'ウズベキスタン料理', query: 'uzbek restaurant' },
-  { id: 'british',        name: 'イギリス料理',       query: 'british restaurant' },
+  // === 中国・台湾系 ===
+  { id: 'taiwanese',               name: '台湾料理',                   query: 'taiwanese restaurant OR 台湾料理 OR 魯肉飯 OR ルーローハン OR 小籠包' },
+  { id: 'authentic-chinese',       name: '本格中華',                   query: 'authentic chinese restaurant OR 四川料理 OR 湖南料理 OR 東北料理 OR 飲茶 OR 本格中華' },
+
+  // === インド・南アジア系 ===
+  { id: 'indian',                  name: 'インド料理',                 query: 'indian restaurant OR インド料理 OR ナン' },
+  { id: 'south-indian-sri-lankan', name: '南インド・スリランカ料理',   query: 'south indian restaurant OR sri lankan restaurant OR ミールス OR スリランカ料理 OR アーユルヴェーダ' },
+
+  // === 東南アジア・東アジア系 ===
+  { id: 'korean',                  name: '韓国料理',                   query: 'korean restaurant OR 韓国料理 OR サムギョプサル OR スンドゥブ' },
+  { id: 'thai',                    name: 'タイ料理',                   query: 'thai restaurant OR タイ料理 OR トムヤムクン OR パッタイ' },
+  { id: 'vietnamese',              name: 'ベトナム料理',               query: 'vietnamese restaurant OR ベトナム料理 OR フォー OR バインミー' },
+  { id: 'singaporean',             name: 'シンガポール料理',           query: 'singaporean restaurant OR シンガポール料理 OR 海南鶏飯 OR チリクラブ OR hainanese chicken rice' },
+  { id: 'indonesian-malaysian',    name: 'インドネシア・マレーシア料理', query: 'indonesian restaurant OR malaysian restaurant OR ナシゴレン OR サテ OR ナシレマ OR ルンダン' },
+
+  // === ヨーロッパ系 ===
+  { id: 'spanish',                 name: 'スペイン料理',               query: 'spanish restaurant OR スペイン料理 OR パエリア OR アヒージョ' },
+  { id: 'portuguese',              name: 'ポルトガル料理',             query: 'portuguese restaurant OR ポルトガル料理 OR バカリャウ' },
+  { id: 'greek',                   name: 'ギリシャ料理',               query: 'greek restaurant OR ギリシャ料理 OR ムサカ' },
+  { id: 'belgian',                 name: 'ベルギー料理',               query: 'belgian restaurant OR ベルギー料理 OR ベルギービール OR ムール貝' },
+  { id: 'german',                  name: 'ドイツ料理',                 query: 'german restaurant OR ドイツ料理 OR シュニッツェル OR ソーセージ' },
+  { id: 'british-irish',           name: 'イギリス・アイルランド料理', query: 'british restaurant OR irish restaurant OR アイリッシュパブ OR フィッシュアンドチップス' },
+  { id: 'nordic',                  name: '北欧料理',                   query: 'scandinavian restaurant OR swedish restaurant OR danish restaurant OR finnish restaurant OR 北欧料理 OR ミートボール' },
+
+  // === 中東・中央アジア・モンゴル系 ===
+  { id: 'mongolian',               name: 'モンゴル料理',               query: 'mongolian restaurant OR モンゴル料理 OR スーテーツァイ OR ホーショール' },
+  { id: 'turkish',                 name: 'トルコ料理',                 query: 'turkish restaurant OR トルコ料理 OR ケバブ' },
+  { id: 'middle-eastern',          name: '中東・アラビア料理',         query: 'lebanese restaurant OR middle eastern restaurant OR アラブ料理 OR ヨルダン料理 OR フムス OR ファラフェル' },
+
+  // === 中南米・アフリカ系 ===
+  { id: 'mexican',                 name: 'メキシコ料理',               query: 'mexican restaurant OR メキシコ料理 OR タコス' },
+  { id: 'brazilian',               name: 'ブラジル料理',               query: 'brazilian restaurant OR ブラジル料理 OR シュラスコ' },
+  { id: 'peruvian',                name: 'ペルー料理',                 query: 'peruvian restaurant OR ペルー料理 OR セビーチェ' },
+  { id: 'moroccan',                name: 'モロッコ料理',               query: 'moroccan restaurant OR モロッコ料理 OR タジン鍋 OR クスクス' },
+  { id: 'african',                 name: 'アフリカ料理',               query: 'african restaurant OR ethiopian restaurant OR egyptian restaurant OR アフリカ料理 OR エチオピア料理 OR エジプト料理 OR コシャリ OR インジェラ' },
 ];
 
 // ============================================================
