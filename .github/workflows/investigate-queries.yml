@@ -15,27 +15,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: claude/investigate-places-api-snkuH
+          ref: claude/retry-push-test-queries-n04jF
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Run query investigation
+      - name: Run filter purity investigation
         env:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
-        run: node test-queries.js | tee query-test-results.txt
+        run: node test-filter-purity.js | tee filter-purity-results.txt
 
       - name: Commit results
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add query-test-results.txt
+          git add filter-purity-results.txt
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
             DATE=$(date -u +%Y-%m-%d)
-            git commit -m "chore: save query investigation results [${DATE}]"
-            git push origin claude/investigate-places-api-snkuH
+            git commit -m "chore: save filter purity results [${DATE}]"
+            git push origin claude/retry-push-test-queries-n04jF
           fi
