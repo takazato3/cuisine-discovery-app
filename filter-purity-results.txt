@@ -1,5 +1,5 @@
 === Google Places API 2次フィルタ純度検証 ===
-実行日時: 2026-02-28T07:26:10.306Z
+実行日時: 2026-02-28T07:34:36.887Z
 エリア: 東京23区中心 (lat: 35.6762, lng: 139.6503, radius: 12000m)
 クエリ数: 12件
 
@@ -36,7 +36,7 @@
    types: peruvian_restaurant
 4. ペルー料理ALDO南青山店
    primaryType: peruvian_restaurant
-   types: peruvian_restaurant, south_american_restaurant, latin_american_restaurant
+   types: peruvian_restaurant, latin_american_restaurant, south_american_restaurant
 5. DESTINO51 ペルー料理
    primaryType: peruvian_restaurant
    types: peruvian_restaurant
@@ -48,13 +48,13 @@
    types: peruvian_restaurant
 8. ペルー料理 ミラフローレス 渋谷桜ヶ丘店
    primaryType: peruvian_restaurant
-   types: peruvian_restaurant, south_american_restaurant, japanese_izakaya_restaurant, latin_american_restaurant, japanese_restaurant
+   types: peruvian_restaurant, japanese_izakaya_restaurant, latin_american_restaurant, japanese_restaurant, south_american_restaurant
 9. ペルー料理 マリネラ
    primaryType: peruvian_restaurant
    types: peruvian_restaurant
 10. ペルー料理ALDO 麻布台ヒルズ店
    primaryType: peruvian_restaurant
-   types: peruvian_restaurant, south_american_restaurant, latin_american_restaurant
+   types: peruvian_restaurant, latin_american_restaurant, south_american_restaurant
 
 【判定】
 ⭕ 使用可（純度90.0%、2次フィルタ必須）
@@ -68,9 +68,9 @@
 総ヒット件数: 20件
 
 【2次フィルタ適用後】
-フィルタ後件数: 6件
-純度: 30.0%
-除外件数: 14件
+フィルタ後件数: 7件
+純度: 35.0%
+除外件数: 13件
 
 【除外された店舗（最大10件）】
 1. WAGYU YAKINIKU SHOGUN -Shogun-
@@ -78,7 +78,7 @@
    types: yakiniku_restaurant, japanese_izakaya_restaurant, japanese_restaurant
 2. 鉄板焼八七／Teppanyaki Hachi-Nana
    primaryType: japanese_restaurant
-   types: juice_shop, yakiniku_restaurant, japanese_restaurant
+   types: yakiniku_restaurant, juice_shop, japanese_restaurant
 3. Grill de viento
    primaryType: italian_restaurant
    types: italian_restaurant, japanese_izakaya_restaurant, japanese_restaurant
@@ -102,7 +102,7 @@
    types: japanese_izakaya_restaurant, japanese_restaurant
 10. 外苑前 THE CARNE tokyo お肉が美味しいイタリアン
    primaryType: italian_restaurant
-   types: italian_restaurant, fusion_restaurant, steak_house
+   types: italian_restaurant, steak_house, fusion_restaurant
 
 【フィルタ後の店舗（最大10件）】
 1. ミ・チョリパン
@@ -110,7 +110,7 @@
    types: argentinian_restaurant, south_american_restaurant
 2. アルゼンチングリル
    primaryType: argentinian_restaurant
-   types: argentinian_restaurant, bar_and_grill, south_american_restaurant, bar
+   types: argentinian_restaurant, south_american_restaurant, bar_and_grill, bar
 3. コスタ・ラティーナ
    primaryType: argentinian_restaurant
    types: argentinian_restaurant, south_american_restaurant
@@ -119,13 +119,16 @@
    types: argentinian_restaurant, steak_house, south_american_restaurant
 5. La Nostalgia
    primaryType: restaurant
-   types: argentinian_restaurant, deli, south_american_restaurant, cafe, food_store, store
+   types: cafe, argentinian_restaurant, south_american_restaurant, deli, food_store, store
 6. AREVA（ステーキ＆BAR）
    primaryType: bar_and_grill
-   types: bar_and_grill, argentinian_restaurant, karaoke, steak_house, south_american_restaurant, night_club, bar
+   types: bar_and_grill, steak_house, karaoke, argentinian_restaurant, south_american_restaurant, night_club, bar
+7. Flora King Steakhouse
+   primaryType: argentinian_restaurant
+   types: argentinian_restaurant, steak_house, south_american_restaurant
 
 【判定】
-❌ 使用不可（純度30.0%）
+❌ 使用不可（純度35.0%）
 
 ============================================================
 === トルコ料理 (turkish restaurant) ===
@@ -143,7 +146,7 @@
 【除外された店舗（最大10件）】
 1. Kebab Chef ケバブ シェフ レストラン 下北沢
    primaryType: restaurant
-   types: kebab_shop, yakiniku_restaurant, meal_takeaway, japanese_restaurant
+   types: kebab_shop, yakiniku_restaurant, japanese_restaurant, meal_takeaway
 2. ザクロ
    primaryType: middle_eastern_restaurant
    types: middle_eastern_restaurant, asian_restaurant
@@ -235,12 +238,12 @@
 8. Arabic Restaurant AL AIN (アラビア料理アル・アイン)
    primaryType: middle_eastern_restaurant
    types: middle_eastern_restaurant, lebanese_restaurant
-9. ザクロ
-   primaryType: middle_eastern_restaurant
-   types: middle_eastern_restaurant, asian_restaurant
-10. Zenobia & Shisha Restaurant
+9. Zenobia & Shisha Restaurant
    primaryType: middle_eastern_restaurant
    types: middle_eastern_restaurant, hookah_bar, coffee_shop, cafe, food_store, store
+10. ザクロ
+   primaryType: middle_eastern_restaurant
+   types: middle_eastern_restaurant, asian_restaurant
 
 【判定】
 ⭕ 使用可（純度80.0%、2次フィルタ必須）
@@ -264,7 +267,7 @@
    types: indian_restaurant
 2. サウスパーク浅草 ケララの味
    primaryType: indian_restaurant
-   types: indian_restaurant, diner, halal_restaurant, asian_restaurant, fine_dining_restaurant
+   types: indian_restaurant, fine_dining_restaurant, halal_restaurant, diner, asian_restaurant
 
 【フィルタ後の店舗（最大10件）】
 1. エリックサウス 八重洲店
@@ -278,25 +281,25 @@
    types: south_indian_restaurant, indian_restaurant
 4. マサラバイツ
    primaryType: vegan_restaurant
-   types: vegan_restaurant, vegetarian_restaurant, pakistani_restaurant, south_indian_restaurant, north_indian_restaurant, indian_restaurant
+   types: vegan_restaurant, vegetarian_restaurant, south_indian_restaurant, pakistani_restaurant, north_indian_restaurant, indian_restaurant
 5. ナンディニ 虎ノ門店
    primaryType: south_indian_restaurant
    types: south_indian_restaurant, indian_restaurant
 6. アーンドラ・ダイニング 渋谷
    primaryType: indian_restaurant
    types: indian_restaurant, south_indian_restaurant
-7. SOUTH INDIAN DHABA
-   primaryType: south_indian_restaurant
-   types: south_indian_restaurant, halal_restaurant, indian_restaurant
-8. ケララキッチン
-   primaryType: indian_restaurant
-   types: indian_restaurant, south_indian_restaurant
-9. Uneeda Curry
+7. Uneeda Curry
    primaryType: south_indian_restaurant
    types: south_indian_restaurant, indian_restaurant
+8. SOUTH INDIAN DHABA
+   primaryType: south_indian_restaurant
+   types: south_indian_restaurant, halal_restaurant, indian_restaurant
+9. ケララキッチン
+   primaryType: indian_restaurant
+   types: indian_restaurant, south_indian_restaurant
 10. ニルワナム 赤坂店
    primaryType: indian_restaurant
-   types: indian_restaurant, halal_restaurant, buffet_restaurant, south_indian_restaurant
+   types: indian_restaurant, halal_restaurant, south_indian_restaurant, buffet_restaurant
 
 【判定】
 ⭕ 使用可（純度90.0%、2次フィルタ必須）
@@ -365,22 +368,22 @@
 【除外された店舗（最大10件）】
 1. SINGAPORE HOLIC LAKSA
    primaryType: restaurant
-   types: vietnamese_restaurant, thai_restaurant, asian_restaurant
+   types: thai_restaurant, asian_restaurant, vietnamese_restaurant
 2. SINGAPORE CUISINE SINKIES（シンガポールキュイジーヌシンキーズ）
    primaryType: restaurant
    types: 
 3. 獅天鶏飯
    primaryType: restaurant
-   types: japanese_izakaya_restaurant, japanese_restaurant, asian_restaurant, chinese_restaurant
+   types: japanese_izakaya_restaurant, chinese_restaurant, asian_restaurant, japanese_restaurant
 4. SLOWJAM GARAGE Singaporean Cuisine
    primaryType: restaurant
-   types: japanese_curry_restaurant, japanese_izakaya_restaurant, ramen_restaurant, thai_restaurant, japanese_restaurant, chinese_restaurant, indonesian_restaurant
+   types: thai_restaurant, japanese_izakaya_restaurant, japanese_curry_restaurant, ramen_restaurant, chinese_restaurant, indonesian_restaurant, japanese_restaurant
 5. Rayard Mityashita Park Singapore Chicken Rice
    primaryType: chicken_restaurant
    types: chicken_restaurant
 6. 海南鶏飯食堂 渋谷 MIYASHITA PARK
    primaryType: restaurant
-   types: japanese_izakaya_restaurant, snack_bar, cafe, meal_takeaway, japanese_restaurant, asian_restaurant
+   types: japanese_izakaya_restaurant, cafe, asian_restaurant, snack_bar, meal_takeaway, japanese_restaurant
 7. オリエンタル カフェ&レストラン
    primaryType: restaurant
    types: 
@@ -389,7 +392,7 @@
    types: 
 9. 獅天鶏飯ハナレ
    primaryType: restaurant
-   types: japanese_izakaya_restaurant, japanese_restaurant, chinese_restaurant
+   types: japanese_izakaya_restaurant, chinese_restaurant, japanese_restaurant
 10. 海南チキンライス 夢飯
    primaryType: restaurant
    types: malaysian_restaurant
@@ -428,7 +431,7 @@
    types: mongolian_barbecue_restaurant, asian_restaurant
 5. モンゴル料理老綏元
    primaryType: asian_restaurant
-   types: asian_restaurant, banquet_hall, japanese_izakaya_restaurant, yakiniku_restaurant, hot_pot_restaurant, chinese_restaurant, japanese_restaurant, event_venue
+   types: asian_restaurant, japanese_izakaya_restaurant, hot_pot_restaurant, chinese_restaurant, yakiniku_restaurant, japanese_restaurant, banquet_hall, event_venue
 6. モンゴル料理ウランバートル
    primaryType: restaurant
    types: 
@@ -479,7 +482,7 @@
    types: indian_restaurant
 5. ホブゴブリン 六本木 （HOBGOBLIN）
    primaryType: gastropub
-   types: gastropub, sports_bar, brewpub, pub, bar
+   types: gastropub, brewpub, sports_bar, pub, bar
 6. THE R.C. GATE 八重洲店
    primaryType: pub
    types: pub, fish_and_chips_restaurant, bar
@@ -488,7 +491,7 @@
    types: irish_pub, pub, bar
 8. The Rising Sun
    primaryType: pub
-   types: pub, bar_and_grill, japanese_izakaya_restaurant, bar, japanese_restaurant
+   types: pub, japanese_izakaya_restaurant, bar_and_grill, japanese_restaurant, bar
 9. Publion パブリオン
    primaryType: irish_pub
    types: irish_pub, sports_bar, pub, bar
@@ -502,7 +505,7 @@
    types: pub, gastropub, bar, british_restaurant
 2. スワン＆ライオン
    primaryType: japanese_izakaya_restaurant
-   types: japanese_izakaya_restaurant, pub, bar, british_restaurant, japanese_restaurant
+   types: japanese_izakaya_restaurant, pub, japanese_restaurant, bar, british_restaurant
 3. BESPOQUE | ビスポーク
    primaryType: british_restaurant
    types: gastropub, bar, british_restaurant
@@ -511,13 +514,13 @@
    types: fish_and_chips_restaurant, pub, bar, british_restaurant
 5. 銀座アームス
    primaryType: pub
-   types: pub, bistro, bar_and_grill, lounge_bar, french_restaurant, german_restaurant, night_club, bar, european_restaurant, british_restaurant, italian_restaurant
+   types: pub, lounge_bar, bistro, bar_and_grill, french_restaurant, night_club, bar, italian_restaurant, german_restaurant, european_restaurant, british_restaurant
 6. THE R.C. GATE 神田店
    primaryType: pub
    types: pub, bar, british_restaurant
 7. THE GRAFTON
    primaryType: gastropub
-   types: gastropub, irish_pub, sports_bar, brewpub, pub, bar, british_restaurant
+   types: gastropub, brewpub, irish_pub, sports_bar, pub, bar, british_restaurant
 8. THE R.C. ARMS 新橋店
    primaryType: bar
    types: pub, bar, british_restaurant
@@ -573,7 +576,7 @@
    types: indonesian_restaurant, halal_restaurant
 7. MBハラール和牛ラーメン 大久保
    primaryType: restaurant
-   types: halal_restaurant, indonesian_restaurant, ramen_restaurant, japanese_restaurant
+   types: ramen_restaurant, halal_restaurant, indonesian_restaurant, japanese_restaurant
 8. Bintang Bali 大久保
    primaryType: indonesian_restaurant
    types: indonesian_restaurant
@@ -606,16 +609,16 @@
    types: indonesian_restaurant
 2. HALAL RAMEN & WAGYU 「SAMURAI SOUL」
    primaryType: ramen_restaurant
-   types: ramen_restaurant, vegetarian_restaurant, halal_restaurant, japanese_restaurant
+   types: ramen_restaurant, halal_restaurant, vegetarian_restaurant, japanese_restaurant
 3. 95YOOYA (၉၅ရိုးရာ)
    primaryType: burmese_restaurant
-   types: burmese_restaurant, vegan_restaurant, vegetarian_restaurant, tapas_restaurant, halal_restaurant, breakfast_restaurant, chinese_restaurant
+   types: burmese_restaurant, tapas_restaurant, halal_restaurant, breakfast_restaurant, chinese_restaurant, vegan_restaurant, vegetarian_restaurant
 4. SINGAPORE HOLIC LAKSA
    primaryType: restaurant
-   types: vietnamese_restaurant, thai_restaurant, asian_restaurant
+   types: thai_restaurant, asian_restaurant, vietnamese_restaurant
 5. MBハラール和牛ラーメン 大久保
    primaryType: restaurant
-   types: halal_restaurant, indonesian_restaurant, ramen_restaurant, japanese_restaurant
+   types: halal_restaurant, ramen_restaurant, indonesian_restaurant, japanese_restaurant
 6. オリエンタル カフェ&レストラン
    primaryType: restaurant
    types: 
@@ -632,7 +635,7 @@
    types: malaysian_restaurant
 4. マレーカンポンコピティアム（Malaysia Halal Cafe restaurant）水道橋店
    primaryType: cafe
-   types: cafe, malaysian_restaurant, halal_restaurant
+   types: cafe, halal_restaurant, malaysian_restaurant
 5. ペナン レストラン
    primaryType: malaysian_restaurant
    types: malaysian_restaurant
@@ -641,7 +644,7 @@
    types: malaysian_restaurant
 7. マレーシア屋台食堂ちりばり malaysian restaurant Chilibali
    primaryType: malaysian_restaurant
-   types: malaysian_restaurant, vietnamese_restaurant, thai_restaurant, asian_restaurant, japanese_izakaya_restaurant, halal_restaurant, japanese_curry_restaurant, japanese_restaurant
+   types: malaysian_restaurant, halal_restaurant, thai_restaurant, japanese_izakaya_restaurant, japanese_curry_restaurant, asian_restaurant, vietnamese_restaurant, japanese_restaurant
 8. 馬来西亜マレー
    primaryType: malaysian_restaurant
    types: malaysian_restaurant, asian_restaurant
@@ -686,7 +689,7 @@
    types: ramen_restaurant, halal_restaurant, japanese_restaurant, indonesian_restaurant
 6. アロヒディン 日本橋店
    primaryType: restaurant
-   types: wine_bar, kebab_shop, turkish_restaurant, asian_restaurant, meal_takeaway, bar
+   types: asian_restaurant, turkish_restaurant, wine_bar, kebab_shop, bar, meal_takeaway
 7. サライケバブ東新宿店
    primaryType: turkish_restaurant
    types: turkish_restaurant
