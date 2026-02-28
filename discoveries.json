@@ -70,10 +70,10 @@
     {
       "cuisineName": "イラン料理",
       "flag": "🇮🇷",
-      "totalCount": 11,
+      "totalCount": 12,
       "byArea": {
         "yokohama-kawasaki": {
-          "count": 9,
+          "count": 10,
           "restaurants": [
             {
               "name": "Caspian",
@@ -106,22 +106,28 @@
               "area": "横浜市中区長者町"
             },
             {
-              "name": "サバラン",
-              "address": "日本、〒152-0035 東京都目黒区自由が丘１丁目２８−８",
-              "placeId": "ChIJkYMdpB_1GGARnX58VvKyfbQ",
-              "area": "目黒区"
-            },
-            {
               "name": "OISHARAPフィリピンレストラン",
               "address": "日本、〒210-0005 神奈川県川崎市川崎区東田町３−１６ 末広・川一屋共同ビル １階",
               "placeId": "ChIJ6ebitLxgGGARzFRs2LnWXPc",
               "area": "川崎市川崎区東田町"
             },
             {
+              "name": "サバラン",
+              "address": "日本、〒152-0035 東京都目黒区自由が丘１丁目２８−８",
+              "placeId": "ChIJkYMdpB_1GGARnX58VvKyfbQ",
+              "area": "目黒区"
+            },
+            {
               "name": "ペルシャ料理 テヘラン",
               "address": "日本、〒321-0136 栃木県宇都宮市みどり野町１８−２５",
               "placeId": "ChIJvVYblHhdH2ARqyWOgJbVers",
               "area": "宮市みどり野町"
+            },
+            {
+              "name": "Bolbol Persian",
+              "address": "日本、〒166-0002 東京都杉並区高円寺北３丁目２−１５",
+              "placeId": "ChIJFbZksX3yGGARiNnvyZ1v1qg",
+              "area": "杉並区"
             },
             {
               "name": "ジャーメ ジャム JameJam",
@@ -165,12 +171,6 @@
               "area": "千葉市中央区栄町"
             },
             {
-              "name": "ATE",
-              "address": "日本、〒167-0053 東京都杉並区西荻南２丁目２２−１１ 2F",
-              "placeId": "ChIJCXJJow_uGGARPO4KRv-05iM",
-              "area": "杉並区"
-            },
-            {
               "name": "イハワン IHAWAN",
               "address": "日本、〒160-0021 東京都新宿区歌舞伎町２丁目１４−８ メトロプラザ 2 1F",
               "placeId": "ChIJWZ2qlfCNGGARMoCQ5zJVD6A",
@@ -181,6 +181,12 @@
               "address": "日本、〒190-0001 東京都立川市若葉町４丁目１２−５ 三ツ葉コーポ 1F",
               "placeId": "ChIJaV-gJDvhGGARJwYrEV3F5HI",
               "area": "立川市若葉町"
+            },
+            {
+              "name": "ATE",
+              "address": "日本、〒167-0053 東京都杉並区西荻南２丁目２２−１１ 2F",
+              "placeId": "ChIJCXJJow_uGGARPO4KRv-05iM",
+              "area": "杉並区"
             },
             {
               "name": "ウエンズ・キッチン",
@@ -267,7 +273,7 @@
     {
       "cuisineName": "カリブ料理",
       "flag": "🇯🇲",
-      "totalCount": 14,
+      "totalCount": 9,
       "byArea": {
         "tokyo-23": {
           "count": 2,
@@ -300,41 +306,6 @@
               "address": "日本、〒142-0062 東京都品川区小山３丁目２４−１４",
               "placeId": "ChIJZ28gyduKGGARwUlb2d1VL9w",
               "area": "品川区"
-            }
-          ]
-        },
-        "yokohama-kawasaki": {
-          "count": 5,
-          "restaurants": [
-            {
-              "name": "YOKOHAMA JERK CENTRE",
-              "address": "日本、〒231-0057 神奈川県横浜市中区曙町４丁目５０",
-              "placeId": "ChIJuTYYogFdGGARjmy-n9kCCDg",
-              "area": "横浜市中区曙町"
-            },
-            {
-              "name": "KINGSTON JERK CHICKEN 弘明寺店",
-              "address": "日本、〒232-0067 神奈川県横浜市南区弘明寺町１３３",
-              "placeId": "ChIJlUQ4RgBbGGARJ363O5FrrlY",
-              "area": "横浜市南区弘明寺町"
-            },
-            {
-              "name": "相模DAYZz",
-              "address": "日本、〒242-0026 神奈川県大和市草柳３丁目１９−９",
-              "placeId": "ChIJ4V-RSLRXGGARE2OeoEFlr7w",
-              "area": "大和市"
-            },
-            {
-              "name": "コロンビアン・レストラン「メデジン・ヨコハマ」",
-              "address": "Yachi BLD 5F, ８丁目-133 長者町 中区 横浜市 神奈川県 231-0033 日本",
-              "placeId": "ChIJRRGxNYtcGGARpCaWRKyuL7U",
-              "area": "長者町"
-            },
-            {
-              "name": "JESS CLUB Burger stand &Bar",
-              "address": "日本、〒210-0014 神奈川県川崎市川崎区貝塚２丁目６−３ 高橋ビル 103",
-              "placeId": "ChIJXVghft9hGGARafvqxuGkIoU",
-              "area": "川崎市川崎区"
             }
           ]
         },
