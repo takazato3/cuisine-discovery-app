@@ -1,5 +1,5 @@
 === Google Places API 検索挙動調査 ===
-実行日時: 2026-02-28T06:19:49.231Z
+実行日時: 2026-02-28T06:19:57.342Z
 エリア: 東京23区中心 (lat: 35.6762, lng: 139.6503, radius: 12000m)
 クエリ数: 9件
 
@@ -59,8 +59,8 @@
 ヒット件数: 20件
 
 【primaryType 集計（全件）】
-  argentinian_restaurant                   ████ 4件
-  restaurant                               ████ 4件
+  argentinian_restaurant                   █████ 5件
+  restaurant                               ███ 3件
   italian_restaurant                       ███ 3件
   steak_house                              ██ 2件
   bar_and_grill                            ██ 2件
@@ -71,16 +71,16 @@
   cafe                                     █ 1件
 
 【types 集計（上位10件、汎用タグ除く）】
-  south_american_restaurant                ███████ 7件
-  argentinian_restaurant                   ██████ 6件
+  south_american_restaurant                ████████ 8件
+  argentinian_restaurant                   ███████ 7件
   steak_house                              ██████ 6件
   japanese_restaurant                      ██████ 6件
   bar                                      █████ 5件
   bar_and_grill                            ████ 4件
   italian_restaurant                       ████ 4件
-  cafe                                     ███ 3件
   yakiniku_restaurant                      ███ 3件
   japanese_izakaya_restaurant              ███ 3件
+  cafe                                     ██ 2件
 
 【最初の5件詳細】
 
@@ -92,7 +92,7 @@
 2. アルゼンチングリル
    住所: 日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５
    primaryType: argentinian_restaurant
-   types: [argentinian_restaurant, south_american_restaurant, bar_and_grill, bar, restaurant, food, point_of_interest, establishment]
+   types: [argentinian_restaurant, bar_and_grill, bar, south_american_restaurant, restaurant, food, point_of_interest, establishment]
 
 3. コスタ・ラティーナ
    住所: 日本、〒153-0041 東京都目黒区駒場１丁目１６−１２
@@ -107,7 +107,7 @@
 5. La Nostalgia
    住所: 日本、〒248-0014 神奈川県鎌倉市由比ガ浜２丁目６−２２
    primaryType: restaurant
-   types: [restaurant, argentinian_restaurant, cafe, south_american_restaurant, deli, food_store, store, food, point_of_interest, establishment]
+   types: [restaurant, deli, cafe, argentinian_restaurant, south_american_restaurant, food_store, food, point_of_interest, store, establishment]
 
 ============================================================
 === トルコ料理 (turkish restaurant) ===
@@ -201,7 +201,7 @@
 3. ビブロス レバニーズ レストラン
    住所: 日本、〒105-0014 東京都港区芝１丁目７−１ 第二中島ビル
    primaryType: lebanese_restaurant
-   types: [lebanese_restaurant, middle_eastern_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [lebanese_restaurant, asian_restaurant, middle_eastern_restaurant, restaurant, food, point_of_interest, establishment]
 
 4. アラビアレストラン ゼノビア 広尾店
    住所: 日本、〒150-0012 東京都渋谷区広尾５丁目２−２５
@@ -240,7 +240,7 @@
 1. エリックサウス 八重洲店
    住所: 日本、〒104-0028 東京都中央区八重洲２丁目１ １番 地下街中 4号
    primaryType: south_indian_restaurant
-   types: [south_indian_restaurant, japanese_curry_restaurant, indian_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [south_indian_restaurant, japanese_curry_restaurant, japanese_restaurant, indian_restaurant, restaurant, food, point_of_interest, establishment]
 
 2. 南印度料理 TOKYO BHAVAN
    住所: 日本、〒102-0072 東京都千代田区飯田橋１丁目１２−７ 日新ＭＳビル 1F
@@ -255,7 +255,7 @@
 4. マサラバイツ
    住所: 日本、〒111-0054 東京都台東区鳥越１丁目５−４
    primaryType: vegan_restaurant
-   types: [vegan_restaurant, south_indian_restaurant, pakistani_restaurant, north_indian_restaurant, vegetarian_restaurant, indian_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [vegan_restaurant, pakistani_restaurant, north_indian_restaurant, vegetarian_restaurant, south_indian_restaurant, indian_restaurant, restaurant, food, point_of_interest, establishment]
 
 5. ナンディニ 虎ノ門店
    住所: 日本、〒105-0003 東京都港区西新橋２丁目２２−１
@@ -300,7 +300,7 @@
 3. アジアンダイニング YUMMY 新宿駅前
    住所: あぜみビル 2F, ３丁目-３５-11 新宿 新宿区 東京都 160-0022 日本
    primaryType: indian_restaurant
-   types: [indian_restaurant, japanese_izakaya_restaurant, bar, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [indian_restaurant, japanese_izakaya_restaurant, japanese_restaurant, bar, restaurant, food, point_of_interest, establishment]
 
 4. ダウンタウン ビーズ
    住所: 日本、〒106-0032 東京都港区六本木３丁目４−２
@@ -331,15 +331,15 @@
   meal_takeaway                            ██ 2件
   vietnamese_restaurant                    █ 1件
   japanese_curry_restaurant                █ 1件
-  indonesian_restaurant                    █ 1件
   ramen_restaurant                         █ 1件
+  indonesian_restaurant                    █ 1件
 
 【最初の5件詳細】
 
 1. SINGAPORE HOLIC LAKSA
    住所: 日本、〒150-0042 東京都渋谷区宇田川町３７−１５ 2階
    primaryType: restaurant
-   types: [vietnamese_restaurant, asian_restaurant, thai_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [thai_restaurant, asian_restaurant, vietnamese_restaurant, restaurant, food, point_of_interest, establishment]
 
 2. SINGAPORE CUISINE SINKIES（シンガポールキュイジーヌシンキーズ）
    住所: 日本、〒150-0002 東京都渋谷区渋谷２丁目９−１１ 1F
@@ -349,12 +349,12 @@
 3. 獅天鶏飯
    住所: 日本、〒150-0002 東京都渋谷区渋谷３丁目１８−１０ 大野ビル2 号館 2F
    primaryType: restaurant
-   types: [japanese_izakaya_restaurant, asian_restaurant, chinese_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [japanese_izakaya_restaurant, chinese_restaurant, asian_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
 
 4. SLOWJAM GARAGE Singaporean Cuisine
    住所: 日本、〒153-0051 東京都目黒区上目黒１丁目１７−３
    primaryType: restaurant
-   types: [japanese_curry_restaurant, japanese_izakaya_restaurant, thai_restaurant, indonesian_restaurant, chinese_restaurant, ramen_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [thai_restaurant, japanese_izakaya_restaurant, japanese_curry_restaurant, ramen_restaurant, chinese_restaurant, indonesian_restaurant, japanese_restaurant, restaurant, food, point_of_interest, establishment]
 
 5. Rayard Mityashita Park Singapore Chicken Rice
    住所: Rayard Mityashita Park North 3rd floor, ６丁目-２０-10 神宮前 渋谷区 東京都 150-0002 日本
@@ -367,52 +367,53 @@
 ヒット件数: 20件
 
 【primaryType 集計（全件）】
-  mongolian_barbecue_restaurant            █████████ 9件
+  mongolian_barbecue_restaurant            ██████ 6件
   asian_restaurant                         ████ 4件
   restaurant                               ███ 3件
+  ramen_restaurant                         ███ 3件
   bar_and_grill                            █ 1件
   halal_restaurant                         █ 1件
-  japanese_curry_restaurant                █ 1件
+  yakiniku_restaurant                      █ 1件
   japanese_restaurant                      █ 1件
 
 【types 集計（上位10件、汎用タグ除く）】
-  mongolian_barbecue_restaurant            ██████████ 10件
-  asian_restaurant                         ██████████ 10件
-  japanese_restaurant                      ███████ 7件
+  japanese_restaurant                      ██████████ 10件
+  asian_restaurant                         █████████ 9件
+  mongolian_barbecue_restaurant            ███████ 7件
   japanese_izakaya_restaurant              ████ 4件
   chinese_restaurant                       ███ 3件
-  yakiniku_restaurant                      ██ 2件
+  yakiniku_restaurant                      ███ 3件
+  ramen_restaurant                         ███ 3件
   banquet_hall                             █ 1件
   hot_pot_restaurant                       █ 1件
   event_venue                              █ 1件
-  bar_and_grill                            █ 1件
 
 【最初の5件詳細】
 
-1. モンゴル料理 IKH MONGOL
-   住所: 日本、〒114-0012 東京都北区田端新町１丁目２０−４
-   primaryType: mongolian_barbecue_restaurant
-   types: [mongolian_barbecue_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
-
-2. Mongolian restaurant モンゴルレストラン
+1. Mongolian restaurant モンゴルレストラン
    住所: 日本、〒332-0021 埼玉県川口市西川口１丁目９−１４ ベルタウン 3f
    primaryType: asian_restaurant
    types: [asian_restaurant, restaurant, food, point_of_interest, establishment]
 
-3. モンゴル料理 シリンゴル
-   住所: 日本、〒112-0011 東京都文京区千石４丁目１１−９
+2. モリンホール屋
+   住所: 日本、〒160-0021 東京都新宿区歌舞伎町２丁目４１−３ 2F
    primaryType: mongolian_barbecue_restaurant
-   types: [mongolian_barbecue_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [mongolian_barbecue_restaurant, restaurant, food, point_of_interest, establishment]
+
+3. 遊牧ラム焼き スヨリト
+   住所: 日本、〒160-0022 東京都新宿区新宿１丁目１７−９
+   primaryType: mongolian_barbecue_restaurant
+   types: [mongolian_barbecue_restaurant, restaurant, food, point_of_interest, establishment]
 
 4. 草原の料理スヨリト
    住所: 日本、〒162-0805 東京都新宿区矢来町８２ ウィルズウェイ神楽坂 第二 ビル
    primaryType: mongolian_barbecue_restaurant
    types: [mongolian_barbecue_restaurant, asian_restaurant, restaurant, food, point_of_interest, establishment]
 
-5. モンゴル料理老綏元
-   住所: 日本、〒171-0022 東京都豊島区南池袋１丁目２６−２ 近代ビル ８F
-   primaryType: asian_restaurant
-   types: [asian_restaurant, banquet_hall, hot_pot_restaurant, yakiniku_restaurant, japanese_izakaya_restaurant, japanese_restaurant, chinese_restaurant, event_venue, restaurant, food, point_of_interest, establishment]
+5. モンゴリアン・チャイニーズ BAO
+   住所: 日本、〒105-0004 東京都港区新橋３丁目１４−６ 小林ビル 1F
+   primaryType: restaurant
+   types: [restaurant, asian_restaurant, chinese_restaurant, japanese_izakaya_restaurant, japanese_restaurant, food, point_of_interest, establishment]
 
 ============================================================
 === イギリス料理 (british restaurant) ===
@@ -448,27 +449,27 @@
 1. スワン＆ライオン
    住所: Meguroku, ２丁目-１６-14 上目黒 目黒区 東京都 153-0051 日本
    primaryType: japanese_izakaya_restaurant
-   types: [japanese_izakaya_restaurant, british_restaurant, pub, bar, japanese_restaurant, restaurant, food, point_of_interest, establishment]
+   types: [japanese_izakaya_restaurant, pub, british_restaurant, japanese_restaurant, restaurant, food, bar, point_of_interest, establishment]
 
 2. Ye Malthouse /イエ モルトハウス
    住所: 日本、〒153-0051 東京都目黒区上目黒２丁目２４−１４
    primaryType: irish_pub
-   types: [irish_pub, pub, bar, restaurant, food, point_of_interest, establishment]
+   types: [irish_pub, pub, restaurant, food, bar, point_of_interest, establishment]
 
 3. モーリス ラムチョップ
    住所: 日本、〒160-0022 東京都新宿区新宿３丁目２０−８ ワモールトップスハウスB1
    primaryType: pub
-   types: [pub, sports_bar, bar, restaurant, food, point_of_interest, establishment]
+   types: [pub, sports_bar, restaurant, food, bar, point_of_interest, establishment]
 
 4. ザ ブルー ポスト
    住所: 日本、〒150-0013 東京都渋谷区恵比寿１丁目８−１４ １F
    primaryType: pub
-   types: [pub, irish_pub, bar, restaurant, food, point_of_interest, establishment]
+   types: [pub, irish_pub, restaurant, food, bar, point_of_interest, establishment]
 
 5. The Old Arrow オールドアロウ
    住所: 日本、〒167-0042 東京都杉並区西荻北３丁目１４−２
    primaryType: pub
-   types: [pub, gastropub, british_restaurant, bar, restaurant, food, point_of_interest, establishment]
+   types: [pub, gastropub, british_restaurant, restaurant, food, bar, point_of_interest, establishment]
 
 ============================================================
 === 調査完了 ===
