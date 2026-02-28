@@ -21,10 +21,10 @@ if (!API_KEY) {
 // Area definitions — must match AREAS in app.js
 // ============================================================
 const AREAS = {
-  'tokyo-23':          { name: '東京23区',               lat: 35.6762, lng: 139.6503, radius: 15000 },
-  'tokyo-outside':     { name: '東京（23区外）',          lat: 35.7141, lng: 139.3627, radius: 20000 },
-  'yokohama-kawasaki': { name: '横浜・川崎',              lat: 35.4437, lng: 139.6380, radius: 15000 },
-  'kanagawa-other':    { name: '神奈川（横浜・川崎以外）', lat: 35.3387, lng: 139.2779, radius: 25000 },
+  'tokyo-23':          { name: '東京23区',               lat: 35.6762, lng: 139.6503, radius: 12000 },
+  'tokyo-outside':     { name: '東京（23区外）',          lat: 35.7141, lng: 139.3627, radius: 15000 },
+  'yokohama-kawasaki': { name: '横浜・川崎',              lat: 35.4437, lng: 139.6380, radius: 10000 },
+  'kanagawa-other':    { name: '神奈川（横浜・川崎以外）', lat: 35.3387, lng: 139.2779, radius: 20000 },
 };
 
 // ============================================================
@@ -61,20 +61,25 @@ const CUISINES = [
 // Removes restaurants whose address falls outside the target area.
 // ============================================================
 function filterByArea(restaurants, areaKey) {
-  const OUTSIDE_CITIES = /八王子|町田|立川|府中|調布|三鷹|武蔵野|小金井|国分寺|国立|狛江|東大和|清瀬|東久留米|武蔵村山|多摩|稲城|羽村|あきる野|西東京/;
+  const OUTSIDE_CITIES = /八王子市|町田市|立川市|武蔵野市|三鷹市|青梅市|府中市|昭島市|調布市|小金井市|小平市|日野市|東村山市|国分寺市|国立市|福生市|狛江市|東大和市|清瀬市|東久留米市|武蔵村山市|多摩市|稲城市|羽村市|あきる野市|西東京市/;
   return restaurants.filter(r => {
     const addr = r.address;
     switch (areaKey) {
       case 'tokyo-23':
-        return addr.includes('東京都') && !OUTSIDE_CITIES.test(addr) &&
-               !addr.match(/瑞穂|日の出|檜原|奥多摩/);
+        return addr.includes('東京都') &&
+               !OUTSIDE_CITIES.test(addr) &&
+               !addr.match(/瑞穂町|日の出町|檜原村|奥多摩町/);
       case 'tokyo-outside':
         return addr.includes('東京都') && OUTSIDE_CITIES.test(addr);
-      case 'yokohama-kawasaki':
-        return addr.includes('横浜市') || addr.includes('川崎市');
+      case 'yokohama-kawasaki': {
+        const isTarget    = addr.includes('横浜市') || addr.includes('川崎市');
+        const isOtherCity = addr.match(/座間市|相模原市|町田市|大和市|海老名市|厚木市|藤沢市/);
+        return isTarget && !isOtherCity;
+      }
       case 'kanagawa-other':
         return addr.includes('神奈川県') &&
-               !addr.includes('横浜市') && !addr.includes('川崎市');
+               !addr.includes('横浜市') &&
+               !addr.includes('川崎市');
       default:
         return true;
     }
