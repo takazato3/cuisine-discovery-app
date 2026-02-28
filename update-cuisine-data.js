@@ -29,43 +29,38 @@ const AREAS = {
 
 // ============================================================
 // Cuisine definitions — must match CUISINES in app.js (24 genres)
+// filterLevel: 3 = types + primaryType, 2 = types のみ, 1 = フィルタなし
 // ============================================================
 const CUISINES = [
-  // === 中国・台湾系 ===
-  { id: 'taiwanese',               name: '台湾料理',                   query: 'taiwanese restaurant OR 台湾料理 OR 魯肉飯 OR ルーローハン OR 小籠包' },
-  { id: 'authentic-chinese',       name: '本格中華',                   query: 'authentic chinese restaurant OR 四川料理 OR 湖南料理 OR 東北料理 OR 飲茶 OR 本格中華' },
+  // === レベル3: types + primaryType（超厳格） ===
+  { id: 'taiwanese',               name: '台湾料理',                   query: 'taiwanese restaurant OR 台湾料理 OR ルーローハン OR 小籠包',                                                                                        filterType: 'taiwanese_restaurant',    filterPrimaryType: 'taiwanese_restaurant',    filterLevel: 3 },
+  { id: 'authentic-chinese',       name: '本格中華',                   query: 'authentic chinese restaurant OR 四川料理 OR 湖南料理 OR 東北料理 OR 飲茶 OR 本格中華',                                                             filterType: 'chinese_restaurant',      filterPrimaryType: 'chinese_restaurant',      filterLevel: 3 },
+  { id: 'indian',                  name: 'インド料理',                 query: 'indian restaurant OR インド料理 OR ナン',                                                                                                             filterType: 'indian_restaurant',       filterPrimaryType: 'indian_restaurant',       filterLevel: 3 },
+  { id: 'korean',                  name: '韓国料理',                   query: 'korean restaurant OR 韓国料理 OR サムギョプサル OR スンドゥブ',                                                                                      filterType: 'korean_restaurant',       filterPrimaryType: 'korean_restaurant',       filterLevel: 3 },
+  { id: 'thai',                    name: 'タイ料理',                   query: 'thai restaurant OR タイ料理 OR トムヤムクン OR パッタイ',                                                                                            filterType: 'thai_restaurant',         filterPrimaryType: 'thai_restaurant',         filterLevel: 3 },
 
-  // === インド・南アジア系 ===
-  { id: 'indian',                  name: 'インド料理',                 query: 'indian restaurant OR インド料理 OR ナン' },
-  { id: 'south-indian-sri-lankan', name: '南インド・スリランカ料理',   query: 'south indian restaurant OR sri lankan restaurant OR ミールス OR スリランカ料理 OR アーユルヴェーダ' },
+  // === レベル2: types のみ（バランス型） ===
+  { id: 'vietnamese',              name: 'ベトナム料理',               query: 'vietnamese restaurant OR ベトナム料理 OR フォー OR バインミー',                                                                                     filterType: 'vietnamese_restaurant',                                                        filterLevel: 2 },
+  { id: 'indonesian-malaysian',    name: 'インドネシア・マレーシア料理', query: 'indonesian restaurant OR malaysian restaurant OR ナシゴレン OR サテ OR ナシレマ OR ルンダン',                                                    filterType: 'indonesian_restaurant',                                                        filterLevel: 2 },
+  { id: 'spanish',                 name: 'スペイン料理',               query: 'spanish restaurant OR スペイン料理 OR パエリア OR アヒージョ OR スペインバル OR タパス',                                                           filterType: 'spanish_restaurant',                                                           filterLevel: 2 },
+  { id: 'turkish',                 name: 'トルコ料理',                 query: 'turkish restaurant OR トルコ料理 OR ケバブ OR メゼ OR キョフテ',                                                                                    filterType: 'turkish_restaurant',                                                           filterLevel: 2 },
+  { id: 'middle-eastern',          name: '中東・アラビア料理',         query: 'lebanese restaurant OR middle eastern restaurant OR アラブ料理 OR ヨルダン料理 OR フムス OR ファラフェル OR ピデ',                                  filterType: 'middle_eastern_restaurant',                                                    filterLevel: 2 },
+  { id: 'mexican',                 name: 'メキシコ料理',               query: 'mexican restaurant OR メキシコ料理 OR タコス OR ブリトー OR エンチラーダ OR ケサディーヤ',                                                        filterType: 'mexican_restaurant',                                                           filterLevel: 2 },
+  { id: 'brazilian',               name: 'ブラジル料理',               query: 'brazilian restaurant OR ブラジル料理 OR シュラスコ OR フェイジョアーダ',                                                                           filterType: 'brazilian_restaurant',                                                         filterLevel: 2 },
+  { id: 'peruvian',                name: 'ペルー料理',                 query: 'peruvian restaurant OR ペルー料理 OR セビーチェ OR ロモサルタード',                                                                                 filterType: 'peruvian_restaurant',                                                          filterLevel: 2 },
+  { id: 'greek',                   name: 'ギリシャ料理',               query: 'greek restaurant OR ギリシャ料理 OR ムサカ',                                                                                                         filterType: 'greek_restaurant',                                                             filterLevel: 2 },
+  { id: 'german',                  name: 'ドイツ料理',                 query: 'german restaurant OR ドイツ料理 OR シュニッツェル OR ソーセージ OR ドイツビール',                                                                   filterType: 'german_restaurant',                                                            filterLevel: 2 },
 
-  // === 東南アジア・東アジア系 ===
-  { id: 'korean',                  name: '韓国料理',                   query: 'korean restaurant OR 韓国料理 OR サムギョプサル OR スンドゥブ' },
-  { id: 'thai',                    name: 'タイ料理',                   query: 'thai restaurant OR タイ料理 OR トムヤムクン OR パッタイ' },
-  { id: 'vietnamese',              name: 'ベトナム料理',               query: 'vietnamese restaurant OR ベトナム料理 OR フォー OR バインミー' },
-  { id: 'singaporean',             name: 'シンガポール料理',           query: 'singaporean restaurant OR シンガポール料理 OR 海南鶏飯 OR チリクラブ OR hainanese chicken rice' },
-  { id: 'indonesian-malaysian',    name: 'インドネシア・マレーシア料理', query: 'indonesian restaurant OR malaysian restaurant OR ナシゴレン OR サテ OR ナシレマ OR ルンダン' },
-
-  // === ヨーロッパ系 ===
-  { id: 'spanish',                 name: 'スペイン料理',               query: 'spanish restaurant OR スペイン料理 OR パエリア OR アヒージョ' },
-  { id: 'portuguese',              name: 'ポルトガル料理',             query: 'portuguese restaurant OR ポルトガル料理 OR バカリャウ' },
-  { id: 'greek',                   name: 'ギリシャ料理',               query: 'greek restaurant OR ギリシャ料理 OR ムサカ' },
-  { id: 'belgian',                 name: 'ベルギー料理',               query: 'belgian restaurant OR ベルギー料理 OR ベルギービール OR ムール貝' },
-  { id: 'german',                  name: 'ドイツ料理',                 query: 'german restaurant OR ドイツ料理 OR シュニッツェル OR ソーセージ' },
-  { id: 'british-irish',           name: 'イギリス・アイルランド料理', query: 'british restaurant OR irish restaurant OR アイリッシュパブ OR フィッシュアンドチップス' },
-  { id: 'nordic',                  name: '北欧料理',                   query: 'scandinavian restaurant OR swedish restaurant OR danish restaurant OR finnish restaurant OR 北欧料理 OR ミートボール' },
-
-  // === 中東・中央アジア・モンゴル系 ===
-  { id: 'mongolian',               name: 'モンゴル料理',               query: 'mongolian restaurant OR モンゴル料理 OR スーテーツァイ OR ホーショール' },
-  { id: 'turkish',                 name: 'トルコ料理',                 query: 'turkish restaurant OR トルコ料理 OR ケバブ' },
-  { id: 'middle-eastern',          name: '中東・アラビア料理',         query: 'lebanese restaurant OR middle eastern restaurant OR アラブ料理 OR ヨルダン料理 OR フムス OR ファラフェル' },
-
-  // === 中南米・アフリカ系 ===
-  { id: 'mexican',                 name: 'メキシコ料理',               query: 'mexican restaurant OR メキシコ料理 OR タコス' },
-  { id: 'brazilian',               name: 'ブラジル料理',               query: 'brazilian restaurant OR ブラジル料理 OR シュラスコ' },
-  { id: 'peruvian',                name: 'ペルー料理',                 query: 'peruvian restaurant OR ペルー料理 OR セビーチェ' },
-  { id: 'moroccan',                name: 'モロッコ料理',               query: 'moroccan restaurant OR モロッコ料理 OR タジン鍋 OR クスクス' },
-  { id: 'african',                 name: 'アフリカ料理',               query: 'african restaurant OR ethiopian restaurant OR egyptian restaurant OR アフリカ料理 OR エチオピア料理 OR エジプト料理 OR コシャリ OR インジェラ' },
+  // === レベル1: フィルタなし ===
+  { id: 'south-indian-sri-lankan', name: '南インド・スリランカ料理',   query: 'south indian restaurant OR sri lankan restaurant OR ミールス OR スリランカ料理 OR アーユルヴェーダ',                                              filterLevel: 1 },
+  { id: 'singaporean',             name: 'シンガポール料理',           query: 'singaporean restaurant OR シンガポール料理 OR 海南鶏飯 OR チリクラブ OR シンガポールチキンライス',                                                 filterLevel: 1 },
+  { id: 'portuguese',              name: 'ポルトガル料理',             query: 'portuguese restaurant OR ポルトガル料理 OR バカリャウ',                                                                                              filterLevel: 1 },
+  { id: 'belgian',                 name: 'ベルギー料理',               query: 'belgian restaurant OR ベルギー料理 OR ベルギービール OR ムール貝 OR ベルギーワッフル',                                                              filterLevel: 1 },
+  { id: 'british-irish',           name: 'イギリス・アイルランド料理', query: 'british restaurant OR irish restaurant OR アイリッシュパブ OR フィッシュアンドチップス',                                                           filterLevel: 1 },
+  { id: 'nordic',                  name: '北欧料理',                   query: 'scandinavian restaurant OR swedish restaurant OR danish restaurant OR finnish restaurant OR 北欧料理 OR ミートボール',                             filterLevel: 1 },
+  { id: 'mongolian',               name: 'モンゴル料理',               query: 'mongolian restaurant OR モンゴル料理 OR スーテーツァイ OR ホーショール',                                                                            filterLevel: 1 },
+  { id: 'moroccan',                name: 'モロッコ料理',               query: 'moroccan restaurant OR モロッコ料理 OR タジン鍋 OR クスクス',                                                                                       filterLevel: 1 },
+  { id: 'african',                 name: 'アフリカ料理',               query: 'african restaurant OR ethiopian restaurant OR egyptian restaurant OR アフリカ料理 OR エチオピア料理 OR エジプト料理 OR コシャリ OR インジェラ',      filterLevel: 1 },
 ];
 
 // ============================================================
@@ -151,6 +146,8 @@ async function fetchRestaurants(cuisine, areaId, area) {
         'places.rating',
         'places.userRatingCount',
         'places.formattedAddress',
+        'places.primaryType',
+        'places.types',
         'places.location',
         'places.photos',
         'places.currentOpeningHours',
@@ -171,6 +168,8 @@ async function fetchRestaurants(cuisine, areaId, area) {
       rating:      place.rating            ?? 0,
       ratingCount: place.userRatingCount   ?? 0,
       address:     place.formattedAddress  || '',
+      primaryType: place.primaryType       || null,
+      types:       place.types             || [],
       lat,
       lng,
       distance:    (lat != null && lng != null)
@@ -181,6 +180,29 @@ async function fetchRestaurants(cuisine, areaId, area) {
       placeId:     place.id || null,
     };
   });
+}
+
+// ============================================================
+// 3段階フィルタリング
+// レベル2: types に filterType が含まれるものだけ残す
+// レベル3: さらに primaryType が filterPrimaryType と一致するものだけ残す
+// ============================================================
+function applyFilters(results, cuisine) {
+  let filtered = results;
+
+  console.log(`  フィルタ前: ${results.length}件 (レベル${cuisine.filterLevel})`);
+
+  if (cuisine.filterLevel >= 2 && cuisine.filterType) {
+    filtered = filtered.filter(place => place.types.includes(cuisine.filterType));
+    console.log(`  types フィルタ後 (${cuisine.filterType}): ${filtered.length}件`);
+  }
+
+  if (cuisine.filterLevel === 3 && cuisine.filterPrimaryType) {
+    filtered = filtered.filter(place => place.primaryType === cuisine.filterPrimaryType);
+    console.log(`  primaryType フィルタ後 (${cuisine.filterPrimaryType}): ${filtered.length}件`);
+  }
+
+  return filtered;
 }
 
 // ============================================================
@@ -215,11 +237,10 @@ async function main() {
       console.log(`  Area: ${areaId}`);
       let restaurants = [];
       try {
-        const raw = await fetchRestaurants(cuisine, areaId, area);
-        console.log(`  Found ${raw.length} restaurants`);
-        restaurants = filterByArea(raw, areaId);
-        console.log(`  After filtering: ${restaurants.length} restaurants`);
-        console.log(`  ✓ ${areaId}: ${raw.length}件取得 → ${restaurants.length}件（住所フィルタ後）`);
+        const raw      = await fetchRestaurants(cuisine, areaId, area);
+        const filtered = applyFilters(raw, cuisine);
+        restaurants    = filterByArea(filtered, areaId);
+        console.log(`  ✓ ${areaId}: ${raw.length}件取得 → ${filtered.length}件（typesフィルタ後） → ${restaurants.length}件（住所フィルタ後）`);
         totalOk++;
       } catch (err) {
         console.warn(`  ⚠ ${areaId}: 失敗 — ${err.message}`);
