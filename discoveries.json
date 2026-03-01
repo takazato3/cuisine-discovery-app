@@ -76,10 +76,10 @@
     {
       "cuisineName": "ロシア・旧ソ連系料理",
       "flag": "🇷🇺",
-      "totalCount": 6,
+      "totalCount": 8,
       "byArea": {
         "kanagawa-other": {
-          "count": 6,
+          "count": 8,
           "restaurants": [
             {
               "name": "うくるてぃえ Укрытие",
@@ -100,10 +100,22 @@
               "area": "中央区"
             },
             {
+              "name": "マトリキッチン",
+              "address": "日本、〒104-0061 東京都中央区銀座３丁目１０−１４ 東銀1ビル ２Ｆ",
+              "placeId": "ChIJ2Zah0qSLGGARL2FROPwVbcY",
+              "area": "中央区"
+            },
+            {
               "name": "スンガリー 新宿東口本店",
               "address": "日本、〒160-0021 東京都新宿区歌舞伎町２丁目４５−６ 千代田ビル Ｂ１Ｆ",
               "placeId": "ChIJ-VAVGiiNGGARBVCicGsjN8Q",
               "area": "新宿区歌舞伎町"
+            },
+            {
+              "name": "スカズカ",
+              "address": "日本、〒130-0022 東京都墨田区江東橋４丁目１９−１２ ２階",
+              "placeId": "ChIJ23KpW9iIGGARMYC8M_fOTfQ",
+              "area": "墨田区"
             },
             {
               "name": "チャイカ",
@@ -136,16 +148,28 @@
               "area": "横浜市鶴見区"
             },
             {
+              "name": "イラン料理サダフ",
+              "address": "日本、〒285-0834 千葉県佐倉市吉見６０２−３２",
+              "placeId": "ChIJNw5vEK6IImARiqIWvHKWcFE",
+              "area": "佐倉市"
+            },
+            {
               "name": "イラン料理レストラン アラジン",
               "address": "日本、〒150-0012 東京都渋谷区広尾５丁目１４−１４",
               "placeId": "ChIJgfxbRHeLGGAR8Z--GxaqT0Y",
               "area": "渋谷区"
             },
             {
-              "name": "イラン料理サダフ",
-              "address": "日本、〒285-0834 千葉県佐倉市吉見６０２−３２",
-              "placeId": "ChIJNw5vEK6IImARiqIWvHKWcFE",
-              "area": "佐倉市"
+              "name": "ペルシャ料理 クーチェ（移動販売車）",
+              "address": "日本、〒106-0031 東京都港区西麻布３丁目５−５ ワールド東京店西麻布ビル",
+              "placeId": "ChIJe5EUCRqLGGARQ5XbH-K-MCI",
+              "area": "港区"
+            },
+            {
+              "name": "Apache",
+              "address": "日本、〒231-0033 神奈川県横浜市中区長者町８丁目１３３ YACHI BUILDING 1F",
+              "placeId": "ChIJfX3fNItcGGARQcIM8aOAZl4",
+              "area": "横浜市中区長者町"
             },
             {
               "name": "OISHARAPフィリピンレストラン",
@@ -154,16 +178,16 @@
               "area": "川崎市川崎区東田町"
             },
             {
+              "name": "サバラン",
+              "address": "日本、〒152-0035 東京都目黒区自由が丘１丁目２８−８",
+              "placeId": "ChIJkYMdpB_1GGARnX58VvKyfbQ",
+              "area": "目黒区"
+            },
+            {
               "name": "Bolbol Persian",
               "address": "日本、〒166-0002 東京都杉並区高円寺北３丁目２−１５",
               "placeId": "ChIJFbZksX3yGGARiNnvyZ1v1qg",
               "area": "杉並区"
-            },
-            {
-              "name": "Apache",
-              "address": "日本、〒231-0033 神奈川県横浜市中区長者町８丁目１３３ YACHI BUILDING 1F",
-              "placeId": "ChIJfX3fNItcGGARQcIM8aOAZl4",
-              "area": "横浜市中区長者町"
             },
             {
               "name": "ペルシャ料理 テヘラン",
@@ -176,18 +200,6 @@
               "address": "日本、〒166-0004 東京都杉並区阿佐谷南２丁目２０−７ F1",
               "placeId": "ChIJf4yoFXfyGGAR1EdGCY3aVrY",
               "area": "杉並区"
-            },
-            {
-              "name": "サバラン",
-              "address": "日本、〒152-0035 東京都目黒区自由が丘１丁目２８−８",
-              "placeId": "ChIJkYMdpB_1GGARnX58VvKyfbQ",
-              "area": "目黒区"
-            },
-            {
-              "name": "ペルシャ料理 クーチェ（移動販売車）",
-              "address": "日本、〒106-0031 東京都港区西麻布３丁目５−５ ワールド東京店西麻布ビル",
-              "placeId": "ChIJe5EUCRqLGGARQ5XbH-K-MCI",
-              "area": "港区"
             }
           ]
         },
@@ -213,23 +225,11 @@
     {
       "cuisineName": "フィリピン料理",
       "flag": "🇵🇭",
-      "totalCount": 8,
+      "totalCount": 9,
       "byArea": {
         "tokyo-outside": {
-          "count": 8,
+          "count": 9,
           "restaurants": [
-            {
-              "name": "ウエンズ・キッチン",
-              "address": "日本、〒192-0911 東京都八王子市打越町３４５−２",
-              "placeId": "ChIJUUSV340dGWARfMkctMCDrq0",
-              "area": "八王子市打越町"
-            },
-            {
-              "name": "ATE",
-              "address": "日本、〒167-0053 東京都杉並区西荻南２丁目２２−１１ 2F",
-              "placeId": "ChIJCXJJow_uGGARPO4KRv-05iM",
-              "area": "杉並区"
-            },
             {
               "name": "Kamayan's",
               "address": "日本、〒190-0001 東京都立川市若葉町４丁目１２−５ 三ツ葉コーポ 1F",
@@ -243,10 +243,10 @@
               "area": "千葉市中央区栄町"
             },
             {
-              "name": "OISHARAPフィリピンレストラン",
-              "address": "日本、〒210-0005 神奈川県川崎市川崎区東田町３−１６ 末広・川一屋共同ビル １階",
-              "placeId": "ChIJ6ebitLxgGGARzFRs2LnWXPc",
-              "area": "川崎市川崎区東田町"
+              "name": "ウエンズ・キッチン",
+              "address": "日本、〒192-0911 東京都八王子市打越町３４５−２",
+              "placeId": "ChIJUUSV340dGWARfMkctMCDrq0",
+              "area": "八王子市打越町"
             },
             {
               "name": "イハワン IHAWAN",
@@ -255,10 +255,28 @@
               "area": "新宿区歌舞伎町"
             },
             {
-              "name": "キングアドボ",
-              "address": "日本、〒904-1201 沖縄県国頭郡金武町金武４２４８−７",
-              "placeId": "ChIJQ_eTBfMH5TQRCgbWoK5wL0Y",
-              "area": "国頭郡金武町"
+              "name": "ATE",
+              "address": "日本、〒167-0053 東京都杉並区西荻南２丁目２２−１１ 2F",
+              "placeId": "ChIJCXJJow_uGGARPO4KRv-05iM",
+              "area": "杉並区"
+            },
+            {
+              "name": "OISHARAPフィリピンレストラン",
+              "address": "日本、〒210-0005 神奈川県川崎市川崎区東田町３−１６ 末広・川一屋共同ビル １階",
+              "placeId": "ChIJ6ebitLxgGGARzFRs2LnWXPc",
+              "area": "川崎市川崎区東田町"
+            },
+            {
+              "name": "アミーズ ロティサリーチキン",
+              "address": "日本、〒156-0052 東京都世田谷区経堂４丁目７−８",
+              "placeId": "ChIJ0dGiF2_zGGAR91v180eiqfs",
+              "area": "世田谷区"
+            },
+            {
+              "name": "Pogi philippine restaurant bar",
+              "address": "日本、〒110-0005 東京都台東区上野２丁目４−４",
+              "placeId": "ChIJuwTtXyCMGGARFPjrfwVAqKU",
+              "area": "台東区"
             },
             {
               "name": "イポイポ フィリピンレストラン",
@@ -273,7 +291,7 @@
     {
       "cuisineName": "アルゼンチン料理",
       "flag": "🇦🇷",
-      "totalCount": 16,
+      "totalCount": 18,
       "byArea": {
         "tokyo-23": {
           "count": 10,
@@ -291,16 +309,16 @@
               "area": "新宿区"
             },
             {
-              "name": "Don Gaucho",
-              "address": "日本、〒102-0073 東京都千代田区九段北１丁目１０−５ ２階",
-              "placeId": "ChIJyYK7lmqMGGARrod2NNXX-h0",
-              "area": "千代田区"
-            },
-            {
               "name": "ミ・チョリパン",
               "address": "日本、〒151-0064 東京都渋谷区上原２丁目４−８",
               "placeId": "ChIJtzu14UjzGGARIOKWezetu5Q",
               "area": "渋谷区"
+            },
+            {
+              "name": "Don Gaucho",
+              "address": "日本、〒102-0073 東京都千代田区九段北１丁目１０−５ ２階",
+              "placeId": "ChIJyYK7lmqMGGARrod2NNXX-h0",
+              "area": "千代田区"
             },
             {
               "name": "La Nostalgia",
@@ -341,7 +359,7 @@
           ]
         },
         "tokyo-outside": {
-          "count": 6,
+          "count": 8,
           "restaurants": [
             {
               "name": "コスタ・ラティーナ",
@@ -372,6 +390,18 @@
               "address": "日本、〒130-0022 東京都墨田区江東橋４丁目２５−１５ 第３東永ビル ２Ｆ",
               "placeId": "ChIJ65UDpdmIGGAR0xNmshusXjA",
               "area": "墨田区"
+            },
+            {
+              "name": "外苑前 THE CARNE tokyo お肉が美味しいイタリアン",
+              "address": "日本、〒107-0062 東京都港区南青山３丁目１−３４ ３ｒｄ ＭＩＮＡＭＩ ＡＯＹＡＭＡ１階",
+              "placeId": "ChIJ2xlSWwqNGGARuloKpHvYmNk",
+              "area": "港区"
+            },
+            {
+              "name": "Mi tiempo ミ・ティエンポ",
+              "address": "日本、〒108-0023 東京都港区芝浦２丁目２−１８",
+              "placeId": "ChIJpWNJfDiLGGARbxfidW11PTo",
+              "area": "港区"
             },
             {
               "name": "Grill de viento",
