@@ -40,7 +40,7 @@ const COMMON_EXCLUSIONS = '-イタリア料理 -フランス料理 -町中華';
 const CUISINES = [
   // === レベル3: types + primaryType（超厳格） ===
   { id: 'taiwanese',               name: '台湾料理',                   query: 'taiwanese restaurant OR 台湾料理 OR ルーローハン OR 小籠包',                                                                                        filterType: 'taiwanese_restaurant',    filterPrimaryType: 'taiwanese_restaurant',    filterLevel: 3, excludeCommon: false },
-  { id: 'authentic-chinese',       name: '本格中華',                   query: 'authentic chinese restaurant OR 四川料理 OR 湖南料理 OR 東北料理 OR 飲茶 OR 本格中華',                                                             filterType: 'chinese_restaurant',      filterPrimaryType: 'chinese_restaurant',      filterLevel: 3, excludeCommon: true  },
+  { id: 'authentic-chinese',       name: '本格中華',                   query: 'authentic chinese restaurant OR 四川料理 OR 湖南料理 OR 東北料理 OR 飲茶 OR 本格中華 OR 広東料理 OR 上海料理',                               filterType: 'chinese_restaurant',      filterPrimaryType: ['chinese_restaurant', 'cantonese_restaurant', 'dim_sum_restaurant', 'asian_restaurant'], filterLevel: 3, excludeCommon: true  },
   { id: 'indian',                  name: 'インド料理',                 query: 'indian restaurant OR インド料理 OR ナン',                                                                                                             filterType: 'indian_restaurant',       filterPrimaryType: 'indian_restaurant',       filterLevel: 3, excludeCommon: false },
   { id: 'korean',                  name: '韓国料理',                   query: 'korean restaurant OR 韓国料理 OR サムギョプサル OR スンドゥブ',                                                                                      filterType: 'korean_restaurant',       filterPrimaryType: 'korean_restaurant',       filterLevel: 3, excludeCommon: false },
   { id: 'thai',                    name: 'タイ料理',                   query: 'thai restaurant OR タイ料理 OR トムヤムクン OR パッタイ',                                                                                            filterType: 'thai_restaurant',         filterPrimaryType: 'thai_restaurant',         filterLevel: 3, excludeCommon: false },
@@ -211,8 +211,11 @@ function applyFilters(results, cuisine) {
   }
 
   if (cuisine.filterLevel === 3 && cuisine.filterPrimaryType) {
-    filtered = filtered.filter(place => place.primaryType === cuisine.filterPrimaryType);
-    console.log(`  primaryType フィルタ後 (${cuisine.filterPrimaryType}): ${filtered.length}件`);
+    const allowedTypes = Array.isArray(cuisine.filterPrimaryType)
+      ? cuisine.filterPrimaryType
+      : [cuisine.filterPrimaryType];
+    filtered = filtered.filter(place => allowedTypes.includes(place.primaryType));
+    console.log(`  primaryType フィルタ後 (${allowedTypes.join(', ')}): ${filtered.length}件`);
   }
 
   return filtered;
