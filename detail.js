@@ -196,6 +196,51 @@ function formatDistance(meters) {
 }
 
 // ============================================================
+// Utility: map primaryType to Japanese category name
+// ============================================================
+function getCategoryName(primaryType) {
+  const typeMap = {
+    'thai_restaurant':            'タイ料理専門店',
+    'vietnamese_restaurant':      'ベトナム料理専門店',
+    'korean_restaurant':          '韓国料理専門店',
+    'chinese_restaurant':         '中華料理専門店',
+    'taiwanese_restaurant':       '台湾料理専門店',
+    'indian_restaurant':          'インド料理専門店',
+    'south_indian_restaurant':    '南インド料理専門店',
+    'indonesian_restaurant':      'インドネシア料理専門店',
+    'malaysian_restaurant':       'マレーシア料理専門店',
+    'spanish_restaurant':         'スペイン料理専門店',
+    'portuguese_restaurant':      'ポルトガル料理専門店',
+    'greek_restaurant':           'ギリシャ料理専門店',
+    'belgian_restaurant':         'ベルギー料理専門店',
+    'german_restaurant':          'ドイツ料理専門店',
+    'turkish_restaurant':         'トルコ料理専門店',
+    'middle_eastern_restaurant':  '中東料理専門店',
+    'mexican_restaurant':         'メキシコ料理専門店',
+    'brazilian_restaurant':       'ブラジル料理専門店',
+    'peruvian_restaurant':        'ペルー料理専門店',
+    'moroccan_restaurant':        'モロッコ料理専門店',
+    'african_restaurant':         'アフリカ料理専門店',
+    'restaurant':                 'レストラン',
+  };
+  return typeMap[primaryType] || 'レストラン';
+}
+
+// ============================================================
+// Utility: format price level to Japanese label
+// ============================================================
+function formatPriceLevel(priceLevel) {
+  const priceMap = {
+    'PRICE_LEVEL_FREE':           '無料',
+    'PRICE_LEVEL_INEXPENSIVE':    '$（低価格帯）',
+    'PRICE_LEVEL_MODERATE':       '$$（中価格帯）',
+    'PRICE_LEVEL_EXPENSIVE':      '$$$（高価格帯）',
+    'PRICE_LEVEL_VERY_EXPENSIVE': '$$$$（高級）',
+  };
+  return priceMap[priceLevel] || '$$（中価格帯）';
+}
+
+// ============================================================
 // Utility: escape HTML to prevent XSS
 // ============================================================
 function escapeHtml(str) {
@@ -266,11 +311,15 @@ function createRestaurantCard(r) {
     card.rel    = 'noopener noreferrer';
   }
 
-  // Photos require an API key on the client — show placeholder instead
-  const photoHtml = `<div class="restaurant-photo-placeholder">🍽️</div>`;
+  const infoHtml = `
+    <div class="restaurant-info">
+      <div class="restaurant-category">🏷️ ${getCategoryName(r.primaryType)}</div>
+      ${r.priceLevel ? `<div class="restaurant-price">💰 ${formatPriceLevel(r.priceLevel)}</div>` : ''}
+      ${r.editorialSummary ? `<div class="restaurant-summary">📝 ${escapeHtml(r.editorialSummary)}</div>` : ''}
+    </div>
+  `;
 
   card.innerHTML = `
-    <div class="restaurant-photo-wrap">${photoHtml}</div>
     <div class="restaurant-card-body">
       <div class="restaurant-name">${escapeHtml(r.name)}</div>
       <div class="restaurant-rating">
@@ -280,7 +329,7 @@ function createRestaurantCard(r) {
       </div>
       <div class="restaurant-address">📍 ${escapeHtml(r.address)}</div>
       ${renderHoursRow(r)}
-      <div class="restaurant-distance">🚶 ${formatDistance(r.distance)}</div>
+      ${infoHtml}
     </div>
   `;
 
@@ -362,12 +411,22 @@ function goToPage(page) {
 }
 
 // ============================================================
-// Render: full restaurant list (stores data, resets to page 0)
+// Render: full restaurant list (sorts by rating, stores data, resets to page 0)
 // ============================================================
 function renderRestaurantCards(restaurants) {
-  allRestaurants = restaurants;
+  allRestaurants = [...restaurants].sort((a, b) => (b.rating || 0) - (a.rating || 0));
   currentPage    = 0;
+
+  const sortInfo = document.getElementById('sort-info');
+  if (sortInfo) sortInfo.hidden = false;
+
   renderPagedCards(0);
+
+  // Update map to first sorted restaurant
+  const first = allRestaurants[0];
+  if (first?.lat != null && first?.lng != null) {
+    updateMapCenter(first.lat, first.lng);
+  }
 }
 
 // ============================================================
@@ -462,12 +521,8 @@ async function init() {
     const restaurants  = areaEntry?.restaurants;
 
     if (restaurants && restaurants.length > 0) {
-      // Real data available
+      // Real data available (renderRestaurantCards handles sort + map center)
       renderRestaurantCards(restaurants);
-      const first = restaurants[0];
-      if (first?.lat != null && first?.lng != null) {
-        updateMapCenter(first.lat, first.lng);
-      }
       return;
     }
 
