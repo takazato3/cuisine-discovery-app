@@ -25,29 +25,30 @@ const areaName = areaData.name;
 // Representative Menu Items per Cuisine Genre
 // ============================================================
 const CUISINE_REPRESENTATIVE_MENUS = {
-  thai:             'トムヤムクン・ガパオライス・パッタイ',
-  vietnamese:       'フォー・バインミー・生春巻き',
-  korean:           'サムギョプサル・ビビンバ・チヂミ',
-  'indian-nepali':  'バターチキンカレー・ナン・モモ',
-  'south-indian':   'ミールス・ドーサ・イドゥリ',
-  'machi-chuka':    'ラーメン・チャーハン・餃子',
-  'honkaku-chuka':  '麻婆豆腐・小籠包・北京ダック',
-  taiwanese:        '魯肉飯・小籠包・タピオカティー',
-  mexican:          'タコス・ブリトー・ナチョス',
-  italian:          'マルゲリータ・カルボナーラ・ティラミス',
-  french:           'キッシュ・ラタトゥイユ・ガレット',
-  greek:            'ムサカ・スブラキ・ギリシャサラダ',
-  'middle-eastern': 'フムス・ファラフェル・シャワルマ',
-  peruvian:         'セビーチェ・ロモサルタード・アンティクーチョ',
-  turkish:          'ケバブ・バクラヴァ・メゼ',
-  spanish:          'パエリア・タパス・ガスパチョ',
-  brazilian:        'シュラスコ・フェジョアーダ・ポンデケージョ',
-  african:          'インジェラ・タジン・クスクス',
-  'sri-lankan':     'カレー・ホッパー・コットゥ',
-  mongolian:        'ホーショール・ボーズ・羊肉',
-  singaporean:      'チキンライス・ラクサ・バクテー',
-  uzbek:            'プロフ・シャシリク・サムサ',
-  british:          'フィッシュ&チップス・ローストビーフ・スコーン',
+  taiwanese:                '魯肉飯・小籠包・タピオカティー',
+  'authentic-chinese':      '麻婆豆腐・小籠包・飲茶',
+  indian:                   'バターチキンカレー・ナン・チャパティ',
+  korean:                   'サムギョプサル・ビビンバ・チヂミ',
+  thai:                     'トムヤムクン・ガパオライス・パッタイ',
+  vietnamese:               'フォー・バインミー・生春巻き',
+  'indonesian-malaysian':   'ナシゴレン・サテ・ラクサ',
+  spanish:                  'パエリア・タパス・ガスパチョ',
+  turkish:                  'ケバブ・バクラヴァ・メゼ',
+  'middle-eastern':         'フムス・ファラフェル・シャワルマ',
+  mexican:                  'タコス・ブリトー・ナチョス',
+  brazilian:                'シュラスコ・フェジョアーダ・ポンデケージョ',
+  peruvian:                 'セビーチェ・ロモサルタード・アンティクーチョ',
+  greek:                    'ムサカ・スブラキ・ギリシャサラダ',
+  german:                   'シュニッツェル・ソーセージ・ザウアークラウト',
+  'south-indian-sri-lankan': 'ミールス・ドーサ・ホッパー',
+  singaporean:              'チキンライス・ラクサ・バクテー',
+  portuguese:               'バカリャウ・パステル・デ・ナタ・ガスパチョ',
+  belgian:                  'ムール貝・ベルギービール・ワッフル',
+  'british-irish':          'フィッシュ&チップス・ローストビーフ・ギネスビール',
+  nordic:                   'ミートボール・スモーブロー・クネッケ',
+  mongolian:                'ホーショール・ボーズ・羊肉スープ',
+  moroccan:                 'タジン鍋・クスクス・ミント茶',
+  african:                  'インジェラ・コシャリ・ジョロフライス',
 };
 
 // ============================================================
@@ -470,7 +471,18 @@ async function init() {
       return;
     }
 
-    // Fall through to dummy data below
+    if (areaEntry) {
+      // Data fetched but 0 restaurants in this area — show empty state
+      const list    = document.getElementById('restaurant-list');
+      const countEl = document.getElementById('restaurant-count');
+      const paging  = document.getElementById('pagination');
+      if (list)    list.innerHTML = '<p class="no-results">このエリアには該当するお店が見つかりませんでした。</p>';
+      if (countEl) countEl.textContent = '0件';
+      if (paging)  paging.hidden = true;
+      return;
+    }
+
+    // No entry for this cuisine yet — fall through to dummy data
     throw new Error('no-data');
 
   } catch (err) {
