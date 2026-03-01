@@ -160,6 +160,8 @@ async function fetchRestaurants(cuisine, areaId, area) {
         'places.location',
         'places.photos',
         'places.currentOpeningHours',
+        'places.priceLevel',
+        'places.editorialSummary',
       ].join(','),
     },
     body: JSON.stringify(body),
@@ -184,9 +186,11 @@ async function fetchRestaurants(cuisine, areaId, area) {
       distance:    (lat != null && lng != null)
         ? calcDistance(area.lat, area.lng, lat, lng)
         : null,
-      photoName:   place.photos?.[0]?.name || null,
-      todayHours:  getTodayHoursText(place.currentOpeningHours?.weekdayDescriptions),
-      placeId:     place.id || null,
+      photoName:        place.photos?.[0]?.name || null,
+      todayHours:       getTodayHoursText(place.currentOpeningHours?.weekdayDescriptions),
+      placeId:          place.id || null,
+      priceLevel:       place.priceLevel || null,
+      editorialSummary: place.editorialSummary?.text || null,
     };
   });
 }
