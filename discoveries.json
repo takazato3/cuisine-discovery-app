@@ -1,207 +1,11 @@
 {
-  "lastUpdated": "2026-07-06",
+  "lastUpdated": "2026-07-13",
   "discoveries": [
-    {
-      "cuisineName": "ウズベキスタン・中央アジア料理",
-      "flag": "🇺🇿",
-      "totalCount": 19,
-      "byArea": {
-        "tokyo-23": {
-          "count": 10,
-          "restaurants": [
-            {
-              "name": "SARAY Turkish & Uzbek Restaurant 大久保店 (HALAL)",
-              "address": "日本、〒169-0073 東京都新宿区百人町１丁目２４−１０",
-              "placeId": "ChIJq5opAgCNGGARPROmAgIfBzM",
-              "area": "新宿区百人町"
-            },
-            {
-              "name": "サマルカンド·テラス",
-              "address": "日本、〒169-0075 東京都新宿区高田馬場３丁目５−５ 3F",
-              "placeId": "ChIJdcolegeNGGARlrm7hwY9do4",
-              "area": "新宿区"
-            },
-            {
-              "name": "グランド サマルカンド",
-              "address": "日本、〒113-0031 東京都文京区根津１丁目１−１９ シティハイツ根津",
-              "placeId": "ChIJLdvWwSWNGGAR0hcdc3l1drs",
-              "area": "文京区"
-            },
-            {
-              "name": "アロヒディン 日本橋店",
-              "address": "日本、〒103-0027 東京都中央区日本橋２丁目１６−４ 山田ビル 1階",
-              "placeId": "ChIJq6otzFmJGGAR6BbBe_AmyHw",
-              "area": "中央区"
-            },
-            {
-              "name": "ウイグルレストラン シルクロード・タリム(新疆料理)",
-              "address": "日本、〒160-0023 東京都新宿区西新宿３丁目１５−８",
-              "placeId": "ChIJ9WBWai3zGGAR4PZkxBzZs10",
-              "area": "新宿区"
-            },
-            {
-              "name": "HÅN",
-              "address": "日本、〒152-0001 東京都目黒区中央町１丁目１９−１４ Medith 学芸大学 2階2号室",
-              "placeId": "ChIJgaD_jS31GGARtUq_ZhnoITA",
-              "area": "目黒区中央町"
-            },
-            {
-              "name": "GoodTime東京赤坂",
-              "address": "日本、〒107-0052 東京都港区赤坂７丁目９−６ MIMARU東京赤坂 １F",
-              "placeId": "ChIJ_wwe6dCLGGARs54w-FZGxx4",
-              "area": "港区"
-            },
-            {
-              "name": "SAFIA",
-              "address": "日本、〒120-0004 東京都足立区東綾瀬２丁目３−５ ワコーレアヤセ２",
-              "placeId": "ChIJ3zpNLr6PGGARPoffblu-kXs",
-              "area": "足立区"
-            },
-            {
-              "name": "Karghay - Halal 町工場",
-              "address": "日本、〒110-0005 東京都台東区上野１丁目２−９",
-              "placeId": "ChIJPed9IgCNGGARifRQqiyw3cw",
-              "area": "台東区"
-            },
-            {
-              "name": "東京穆斯林飯店",
-              "address": "日本、〒130-0022 東京都墨田区江東橋２丁目１８−６ 地下 一階",
-              "placeId": "ChIJUao8byiJGGARIUdxV0YGrBg",
-              "area": "墨田区"
-            }
-          ]
-        },
-        "tokyo-outside": {
-          "count": 9,
-          "restaurants": [
-            {
-              "name": "サマルカンド·テラス",
-              "address": "日本、〒169-0075 東京都新宿区高田馬場３丁目５−５ 3F",
-              "placeId": "ChIJdcolegeNGGARlrm7hwY9do4",
-              "area": "新宿区"
-            },
-            {
-              "name": "グランド サマルカンド",
-              "address": "日本、〒113-0031 東京都文京区根津１丁目１−１９ シティハイツ根津",
-              "placeId": "ChIJLdvWwSWNGGAR0hcdc3l1drs",
-              "area": "文京区"
-            },
-            {
-              "name": "アロヒディン 日本橋店",
-              "address": "日本、〒103-0027 東京都中央区日本橋２丁目１６−４ 山田ビル 1階",
-              "placeId": "ChIJq6otzFmJGGAR6BbBe_AmyHw",
-              "area": "中央区"
-            },
-            {
-              "name": "ウイグルレストラン シルクロード・タリム(新疆料理)",
-              "address": "日本、〒160-0023 東京都新宿区西新宿３丁目１５−８",
-              "placeId": "ChIJ9WBWai3zGGAR4PZkxBzZs10",
-              "area": "新宿区"
-            },
-            {
-              "name": "SAFIA",
-              "address": "日本、〒120-0004 東京都足立区東綾瀬２丁目３−５ ワコーレアヤセ２",
-              "placeId": "ChIJ3zpNLr6PGGARPoffblu-kXs",
-              "area": "足立区"
-            },
-            {
-              "name": "トルコレストラン チャンカヤ",
-              "address": "日本、〒160-0023 東京都新宿区西新宿１丁目１５−７ 新宿西口ライフビル 3F",
-              "placeId": "ChIJXYoActGMGGARDOu61Afz128",
-              "area": "新宿区"
-            },
-            {
-              "name": "GoodTime東京赤坂",
-              "address": "日本、〒107-0052 東京都港区赤坂７丁目９−６ MIMARU東京赤坂 １F",
-              "placeId": "ChIJ_wwe6dCLGGARs54w-FZGxx4",
-              "area": "港区"
-            },
-            {
-              "name": "タバスム ハラル レストラン",
-              "address": "日本、〒453-0021 愛知県名古屋市中村区松原町１丁目４９",
-              "placeId": "ChIJv0Jwvq53A2ARuh3cL1KPf4g",
-              "area": "名古屋市中村区松原町"
-            },
-            {
-              "name": "東京穆斯林飯店",
-              "address": "日本、〒130-0022 東京都墨田区江東橋２丁目１８−６ 地下 一階",
-              "placeId": "ChIJUao8byiJGGARIUdxV0YGrBg",
-              "area": "墨田区"
-            }
-          ]
-        }
-      }
-    },
     {
       "cuisineName": "イラン料理",
       "flag": "🇮🇷",
-      "totalCount": 11,
+      "totalCount": 1,
       "byArea": {
-        "yokohama-kawasaki": {
-          "count": 10,
-          "restaurants": [
-            {
-              "name": "Caspian",
-              "address": "日本、〒230-0077 神奈川県横浜市鶴見区東寺尾４丁目７−１４ ペルシャビル １F",
-              "placeId": "ChIJ-UvK_ndeGGARiZ_7_nFaB1Q",
-              "area": "横浜市鶴見区"
-            },
-            {
-              "name": "Iranian Restaurant Apache",
-              "address": "YACHI, BUILDING 2F, ８丁目-133 長者町 中区 横浜市 神奈川県 231-0033 日本",
-              "placeId": "ChIJMRZutbddGGAR8vuSe_3Zrsg",
-              "area": "長者町"
-            },
-            {
-              "name": "ニューアリババトルコレストラン＆バー",
-              "address": "日本、〒231-0012 神奈川県横浜市中区相生町１丁目２−１ パレ関内 １F",
-              "placeId": "ChIJJeeTofBcGGARUKvSGYkoFZU",
-              "area": "横浜市中区相生町"
-            },
-            {
-              "name": "アパッチ",
-              "address": "日本、〒231-0033 神奈川県横浜市中区長者町８丁目１３３ YACHI BUILDING 1F",
-              "placeId": "ChIJfX3fNItcGGARQcIM8aOAZl4",
-              "area": "横浜市中区長者町"
-            },
-            {
-              "name": "イラン料理レストラン アラジン",
-              "address": "日本、〒150-0012 東京都渋谷区広尾５丁目１４−１４",
-              "placeId": "ChIJgfxbRHeLGGAR8Z--GxaqT0Y",
-              "area": "渋谷区"
-            },
-            {
-              "name": "ザザ ドネル ケバブ",
-              "address": "日本、〒220-0005 神奈川県横浜市西区南幸２丁目１５−５ Alic 日進ビル Unnamed Road",
-              "placeId": "ChIJAyHUvQ1cGGARbPNhox-XFHs",
-              "area": "横浜市西区"
-            },
-            {
-              "name": "サバラン",
-              "address": "日本、〒152-0035 東京都目黒区自由が丘１丁目２８−８",
-              "placeId": "ChIJkYMdpB_1GGARnX58VvKyfbQ",
-              "area": "目黒区"
-            },
-            {
-              "name": "イラン料理サダフ",
-              "address": "日本、〒285-0834 千葉県佐倉市吉見６０２−３２",
-              "placeId": "ChIJNw5vEK6IImARiqIWvHKWcFE",
-              "area": "佐倉市"
-            },
-            {
-              "name": "BOLBOL Persian Restaurant",
-              "address": "日本、〒166-0002 東京都杉並区高円寺北３丁目２−１５ 八字ビル 2F",
-              "placeId": "ChIJFbZksX3yGGARiNnvyZ1v1qg",
-              "area": "杉並区"
-            },
-            {
-              "name": "ジャーメ ジャム JameJam",
-              "address": "日本、〒166-0004 東京都杉並区阿佐谷南２丁目２０−７ F1",
-              "placeId": "ChIJf4yoFXfyGGAR1EdGCY3aVrY",
-              "area": "杉並区"
-            }
-          ]
-        },
         "kanagawa-other": {
           "count": 1,
           "restaurants": [
@@ -218,7 +22,7 @@
     {
       "cuisineName": "アルゼンチン料理",
       "flag": "🇦🇷",
-      "totalCount": 16,
+      "totalCount": 7,
       "byArea": {
         "tokyo-outside": {
           "count": 7,
@@ -236,16 +40,16 @@
               "area": "千代田区"
             },
             {
-              "name": "アルゼンチングリル",
-              "address": "日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５",
-              "placeId": "ChIJi_nZBp6NGGARtnSwv20YJkk",
-              "area": "新宿区"
-            },
-            {
               "name": "ミ・チョリパン",
               "address": "日本、〒151-0064 東京都渋谷区上原２丁目４−８",
               "placeId": "ChIJtzu14UjzGGARIOKWezetu5Q",
               "area": "渋谷区"
+            },
+            {
+              "name": "アルゼンチングリル",
+              "address": "日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５",
+              "placeId": "ChIJi_nZBp6NGGARtnSwv20YJkk",
+              "area": "新宿区"
             },
             {
               "name": "La Nostalgia",
@@ -266,72 +70,13 @@
               "area": "墨田区"
             }
           ]
-        },
-        "yokohama-kawasaki": {
-          "count": 9,
-          "restaurants": [
-            {
-              "name": "La Nostalgia",
-              "address": "日本、〒248-0014 神奈川県鎌倉市由比ガ浜２丁目６−２２",
-              "placeId": "ChIJRVVpxylFGGAREOESc0kcroo",
-              "area": "鎌倉市"
-            },
-            {
-              "name": "コスタ・ラティーナ",
-              "address": "日本、〒153-0041 東京都目黒区駒場１丁目１６−１２",
-              "placeId": "ChIJm6DVnVXzGGARDUc8I-cBo2c",
-              "area": "目黒区"
-            },
-            {
-              "name": "アルゼンチングリル",
-              "address": "日本、〒160-0023 東京都新宿区西新宿７丁目１９−２２−１０５",
-              "placeId": "ChIJi_nZBp6NGGARtnSwv20YJkk",
-              "area": "新宿区"
-            },
-            {
-              "name": "Don Gaucho",
-              "address": "日本、〒102-0073 東京都千代田区九段北１丁目１０−５ ２階",
-              "placeId": "ChIJyYK7lmqMGGARrod2NNXX-h0",
-              "area": "千代田区"
-            },
-            {
-              "name": "ミ・チョリパン",
-              "address": "日本、〒151-0064 東京都渋谷区上原２丁目４−８",
-              "placeId": "ChIJtzu14UjzGGARIOKWezetu5Q",
-              "area": "渋谷区"
-            },
-            {
-              "name": "GAKU NO TOBOE",
-              "address": "日本、〒252-0813 神奈川県藤沢市亀井野８０９−１３",
-              "placeId": "ChIJkSEk_89RGGARVb9Ij5zLofQ",
-              "area": "藤沢市"
-            },
-            {
-              "name": "CAMINITO(カミニート)",
-              "address": "日本、〒901-2122 沖縄県浦添市勢理客２丁目２−１",
-              "placeId": "ChIJAdcEW79r5TQRGG76BYEN22o",
-              "area": "浦添市"
-            },
-            {
-              "name": "ミ・カサ",
-              "address": "日本、〒248-0017 神奈川県鎌倉市佐助１丁目１２−９",
-              "placeId": "ChIJGzJzylVFGGARBINsEEy49Ug",
-              "area": "鎌倉市"
-            },
-            {
-              "name": "飯場/酒場 ニクノカタマリ",
-              "address": "日本、〒211-0005 神奈川県川崎市中原区新丸子町９１１ 103",
-              "placeId": "ChIJdygcnev1GGARFx2NRvBy3gU",
-              "area": "川崎市中原区新丸子町"
-            }
-          ]
         }
       }
     },
     {
       "cuisineName": "カリブ料理",
       "flag": "🇯🇲",
-      "totalCount": 6,
+      "totalCount": 8,
       "byArea": {
         "tokyo-23": {
           "count": 2,
@@ -368,24 +113,36 @@
           ]
         },
         "yokohama-kawasaki": {
-          "count": 1,
+          "count": 2,
           "restaurants": [
             {
               "name": "YOKOHAMA JERK CENTRE",
               "address": "日本、〒231-0057 神奈川県横浜市中区曙町４丁目５０",
               "placeId": "ChIJuTYYogFdGGARjmy-n9kCCDg",
               "area": "横浜市中区曙町"
+            },
+            {
+              "name": "KINGSTON JERK CHICKEN 弘明寺店",
+              "address": "日本、〒232-0067 神奈川県横浜市南区弘明寺町１３３",
+              "placeId": "ChIJlUQ4RgBbGGARJ363O5FrrlY",
+              "area": "横浜市南区弘明寺町"
             }
           ]
         },
         "kanagawa-other": {
-          "count": 1,
+          "count": 2,
           "restaurants": [
             {
               "name": "YOKOHAMA JERK CENTRE",
               "address": "日本、〒231-0057 神奈川県横浜市中区曙町４丁目５０",
               "placeId": "ChIJuTYYogFdGGARjmy-n9kCCDg",
               "area": "横浜市中区曙町"
+            },
+            {
+              "name": "KINGSTON JERK CHICKEN 弘明寺店",
+              "address": "日本、〒232-0067 神奈川県横浜市南区弘明寺町１３３",
+              "placeId": "ChIJlUQ4RgBbGGARJ363O5FrrlY",
+              "area": "横浜市南区弘明寺町"
             }
           ]
         }
