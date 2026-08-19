@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "料理ジャンル発見型レストラン検索アプリ",
   "scripts": {
-    "update-counts": "node update-counts.js"
+    "update-cuisine-data": "node update-cuisine-data.js",
+    "update-discoveries": "node update-discoveries.js"
   },
   "engines": {
     "node": ">=18"

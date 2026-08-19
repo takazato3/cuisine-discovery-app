@@ -88,7 +88,7 @@ Places APIのレスポンスは `localStorage` にキャッシュされます:
 | `discovery.js` | Discovery セクションのロジック |
 | `styles.css` | 全ページ共通スタイル |
 | `config.js` | **APIキー設定（Gitignore済み・要作成）** |
-| `update-counts.js` | 店舗数を更新する Node.js スクリプト（GitHub Actions 用） |
+| `update-cuisine-data.js` | 店舗データ・件数を更新する Node.js スクリプト（GitHub Actions 用、現行の主更新スクリプト） |
 | `update-discoveries.js` | Discovery データを更新する Node.js スクリプト（GitHub Actions 用） |
 | `discoveries.json` | Discovery データ（GitHub Actions が週次更新） |
 
@@ -140,16 +140,17 @@ Places APIのレスポンスは `localStorage` にキャッシュされます:
 ### ローカルでのテスト実行
 
 ```bash
-GOOGLE_MAPS_API_KEY=your_api_key npm run update-counts
+GOOGLE_MAPS_API_KEY=your_api_key npm run update-cuisine-data
+GOOGLE_MAPS_API_KEY=your_api_key npm run update-discoveries
 ```
 
 ### 更新スクリプトの動作
 
-**update-counts.js**
-- 各ジャンル（18種）× 各エリア（4箇所）でPlaces API Text Searchを呼び出す（最大3ページ = 60件）
+**update-cuisine-data.js**
+- 各ジャンル × 各エリアでPlaces API Text Searchを呼び出し、店舗詳細・件数を取得（最大3ページ = 60件）
 - 60件以上なら `'60+'`、未満は実数を記録
 - API呼び出しに失敗した場合は既存の値を維持し、警告をログに出力
-- `app.js` の `counts`・`lastUpdated`・`LAST_UPDATED` を書き換える
+- `cuisine-data.json` と `app.js` の `counts`・`lastUpdated`・`LAST_UPDATED` を書き換える
 
 **update-discoveries.js**
 - 珍しい料理（15種）× 各エリア（4箇所）でPlaces API Text Searchを実行
