@@ -2,6 +2,8 @@
 
 料理ジャンル発見型レストラン検索アプリ。ビルドツールなしの静的サイト(HTML/CSS/バニラJS)+ Google Places API連携のNode.js更新スクリプト群、という構成。
 
+**公開URL**: https://takazato3.github.io/cuisine-discovery-app/index.html (GitHub Pages。デプロイ用ワークフローはリポジトリ内になく、GitHubのSettings > Pagesから手動設定されていると思われる)
+
 ## 実行方法
 
 ビルド不要。ローカルサーバーで配信するだけ(CORS制約のため `file://` 直開きは不可)。
