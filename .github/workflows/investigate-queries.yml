@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: claude/retry-push-test-queries-n04jF
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,5 +35,5 @@ jobs:
           else
             DATE=$(date -u +%Y-%m-%d)
             git commit -m "chore: save filter purity results [${DATE}]"
-            git push origin claude/retry-push-test-queries-n04jF
+            git push origin HEAD:${{ github.ref_name }}
           fi
