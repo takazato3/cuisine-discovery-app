@@ -1,6 +1,36 @@
 {
-  "lastUpdated": "2026-10-19",
+  "lastUpdated": "2026-10-26",
   "discoveries": [
+    {
+      "cuisineName": "ロシア・旧ソ連系料理",
+      "flag": "🇷🇺",
+      "totalCount": 3,
+      "byArea": {
+        "kanagawa-other": {
+          "count": 3,
+          "restaurants": [
+            {
+              "name": "Dining & Bar KARAVAI(カラワイ)",
+              "address": "日本、〒231-0055 神奈川県横浜市中区末吉町３丁目５８−５",
+              "placeId": "ChIJgUN1ynldGGARnIvppSQ6Oog",
+              "area": "横浜市中区末吉町"
+            },
+            {
+              "name": "TWINS",
+              "address": "日本、〒214-0038 神奈川県川崎市多摩区生田７丁目１９−９ センダビル B1",
+              "placeId": "ChIJ6Q-_Xg3xGGAREiKxL1Ajwz8",
+              "area": "川崎市多摩区"
+            },
+            {
+              "name": "うくるてぃえ Укрытие",
+              "address": "日本、〒231-0042 神奈川県横浜市中区福富町西通り−51−２ ベルポリスパティオ 2階",
+              "placeId": "ChIJEyg6QixdGGARrTpHeCppww0",
+              "area": "横浜市中区福富町"
+            }
+          ]
+        }
+      }
+    },
     {
       "cuisineName": "イラン料理",
       "flag": "🇮🇷",
@@ -140,12 +170,6 @@
               "area": "新宿区"
             },
             {
-              "name": "GAKU NO TOBOE",
-              "address": "日本、〒252-0813 神奈川県藤沢市亀井野８０９−１３",
-              "placeId": "ChIJkSEk_89RGGARVb9Ij5zLofQ",
-              "area": "藤沢市"
-            },
-            {
               "name": "コスタ・ラティーナ",
               "address": "日本、〒153-0041 東京都目黒区駒場１丁目１６−１２",
               "placeId": "ChIJm6DVnVXzGGARDUc8I-cBo2c",
@@ -156,6 +180,12 @@
               "address": "日本、〒210-0023 神奈川県川崎市川崎区小川町４−１ ラチッタデッラ ビバーチェ棟 1階",
               "placeId": "ChIJV4PYfA1hGGARTta8li4y4RY",
               "area": "川崎市川崎区小川町"
+            },
+            {
+              "name": "GAKU NO TOBOE",
+              "address": "日本、〒252-0813 神奈川県藤沢市亀井野８０９−１３",
+              "placeId": "ChIJkSEk_89RGGARVb9Ij5zLofQ",
+              "area": "藤沢市"
             },
             {
               "name": "Don Gaucho",
